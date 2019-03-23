@@ -1,7 +1,47 @@
 
 <div id="loginBG">
-	<div class="section white container">
-		<div class="row">
+	<div class="section white loginCard">
+		<div class="card">
+        <div class="card-content white-text">
+          <span class="card-title"><h3>Sign In with</h2></span>
+			<div class="socialIcons col s12">
+				<a href="#" class="fa fa-facebook"> | Facebook</a>
+				<a href="#" class="fa fa-google"> | Google</a>
+			</div>
+			<div class="row">
+				<div class="loginForm col s12">
+					<form class="col s11">
+						<div class="row">
+							<div class="input-field col s11">
+							<input placeholder="" id="user_name" type="text" class="validate">
+							<label for="user_name">User Name</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s11">
+							<input placeholder="" id="password" type="password" class="validate">
+							<label for="password">Password<a id="forget" href="">Forget?</a></label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col s11">
+								<a class="btn">Sign In</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+        </div>
+        <div class="card-action">
+          	<div class="col s12">
+				<p id="not-a-member">Not a member?<a id="signUpNow" href="">Sign up now</a></p>
+			</div>
+        </div>
+      </div>
+
+
+		{{!-- <div class="row">
 			<div class="col s12">
 				<h2>Sign In with</h2> 
 			</div>
@@ -33,6 +73,6 @@
 			<div class="col s12">
 				<p id="not-a-member">Not a member?<a id="signUpNow" href="">Sign up now</a></p>
 			</div>
-		</div>
+		</div> --}}
 	</div>
 </div>
