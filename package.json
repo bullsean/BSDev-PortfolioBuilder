@@ -11,9 +11,10 @@
   },
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^6.0.0",
+    "dotenv": "^6.2.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "fullpage.js": "^3.0.4",
     "mysql2": "^1.5.3",
     "sequelize": "^4.38.0"
   },

@@ -8,6 +8,13 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/keys", function(req, res) {
+    var keys = {
+      fullPage_page: process.env.FULLPAGE_KEY
+    }
+    res.json(keys);
+  });
+
   // Create a new example
   app.post("/api/examples", function(req, res) {
     db.Example.create(req.body).then(function(dbExample) {
