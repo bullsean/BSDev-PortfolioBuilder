@@ -47,10 +47,11 @@ module.exports = function(app) {
   // });
 
   app.get("/api/keys", function(req, res) {
-    var fullPageKeys = {
+    var keys = {
       fullPageKeys: process.env.FULLPAGE_KEY
+      //reCaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
     };
-    res.json(fullPageKeys);
+    res.json(keys);
   });
 
   // // Create a new example
