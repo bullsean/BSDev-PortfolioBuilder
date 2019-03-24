@@ -1,5 +1,3 @@
-// var licenseKey = process.env.fullPage_key;
-
 $.ajax({
   url: "/api/keys",
   method: "GET"
@@ -34,4 +32,11 @@ $("#signup_form").submit(function() {
   });
   //Very important line, it disable the page refresh.
   return false;
+});
+
+$(".modal").modal();
+
+$("#tableBody tbody tr td addBtn").on("click", function(event) {
+  event.preventDefault();
+  $("#modal1").modal("open");
 });

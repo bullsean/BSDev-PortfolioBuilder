@@ -1,5 +1,5 @@
 <div class = "accountContainer"> 
-   <div class="row">
+    <div class="row">
         <form class="col s10 accountForm">
             <div class="row">
                 <div class="input-field col s6">
@@ -30,7 +30,7 @@
                 <tbody>
                     <tr>
                         <td><label for="experiences">Experiences</label></td>
-                        <td><a class="btn-floating waves-effect waves-light grey"><i class="material-icons">add</i></a></td>
+                        <td><a class="btn-floating waves-effect waves-light grey addBtn"><i class="material-icons">add</i></a></td>
                     </tr>
                     <tr>
                         <td><label for="projects">Projects</label></td>
@@ -59,5 +59,24 @@
                 </tbody>
             </table>
         </form>
-  </div>
+    </div>
+     
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <form class="col s12 accountForm">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="" id="new_experience" type="text" class="validate">
+                        <label for="new_experience">Experience</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Submit</a>
+        </div>
+    </div>
 </div>
