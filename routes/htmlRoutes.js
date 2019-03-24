@@ -40,4 +40,11 @@ module.exports = function(app) {
       title: "Log In | Portfolio Creator"
     });
   });
+
+  app.get("/account", function(req, res) {
+    res.render("account", {
+      title: "Account | Portfolio Creator"
+    });
+  });
+
 };

@@ -114,7 +114,7 @@
 		padding: 3.86%;
 	}
 	.loginFormContainer, .signupFormContainer, .card-action, .socialIcons,
-	.loginForm, .loginForm .signUpForm, .g-recaptcha{
+	.loginForm, .loginForm .signUpForm, .g-recaptcha {
 		display: flex;
 		justify-content: center;
 	}
@@ -152,6 +152,9 @@
 	}
 	form div.input-field label {
 		font-size: 25px;
+	}
+	#profileImgLabel {
+		font-size: 20px;
 	}
 	a#forget, p#not-a-member {
 		color: grey;
@@ -196,4 +199,12 @@
 		line-height: 1.5em;
 		color: #818078;
 		background-color: #fcfcfa;
+	}
+	.accountContainer {
+		background-color: coral;
+		padding: 10px;
+		margin: 30px;
+	}
+	.accountForm {
+		background-color: white;
 	}
