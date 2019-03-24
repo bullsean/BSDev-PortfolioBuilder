@@ -101,20 +101,23 @@
 
 	/* Defining login and signup pages background and styles
 	* --------------------------------------- */
-	div#loginBG {
+	div#loginBG, div#signUpBG, div#accountBG {
 		background-image: url(/images/loginBG.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	div#loginBG {
 		background-size: cover;
 		background-repeat: no-repeat;
 		padding: 2.2%;
 	}
 	div#signUpBG {
-		background-image: url(/images/loginBG.jpg);
 		background-size: cover;
 		background-repeat: no-repeat;
 		padding: 3.86%;
 	}
 	.loginFormContainer, .signupFormContainer, .card-action, .socialIcons,
-	.loginForm, .loginForm .signUpForm, .g-recaptcha {
+	.loginForm, .loginForm .signUpForm, .g-recaptcha, .accountFormContainer {
 		display: flex;
 		justify-content: center;
 	}
@@ -200,11 +203,17 @@
 		color: #818078;
 		background-color: #fcfcfa;
 	}
-	.accountContainer {
-		background-color: coral;
-		padding: 10px;
-		margin: 30px;
-	}
 	.accountForm {
-		background-color: white;
+		width: 700px;
+		margin: 0 auto;
+	}
+	#account_form {
+		width: 600px;
+	}
+	.card {
+		margin-top: 60px;
+	}
+
+	.td_add {
+		text-align: center;
 	}
