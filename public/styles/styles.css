@@ -120,17 +120,25 @@
 	* --------------------------------------- */
 	div#loginBG {
 		background-image: url(/images/loginBG.jpg);
+		padding: 3.59%;
 	}
 	div#signUpBG {
 		background-image: url(/images/signupBG.jpg);
 	}
+	.card-action, .socialIcons,
+	.loginForm, .signUpForm {
+		display: flex;
+		justify-content: center;
+	}
+	.loginFormContainer {
+		float: right;
+	}
+	.clear {
+		clear: both;
+	}
 	.card-title {
 		color: black;
-	}
-	.loginCard {
-		width: 500px;
-		height: 600px;
-		margin: 0 auto;
+		text-align: center;
 	}
 	.socialIcons {
 		font-size: 20px;
@@ -155,11 +163,9 @@
 	}
 	.loginForm, .signUpForm {
 		width: 400px;
-		display: flex;
-		justify-content: center;
-		justify-items: center;
+		margin: 0 auto;
 	}
-	form div.row label {
+	form div.input-field label {
 		font-size: 25px;
 	}
 	a#forget, p#not-a-member {
@@ -173,4 +179,5 @@
 	.btn {
 		width: 300px;
 		background-color: darkgray;
+		margin: 0;
 	}
