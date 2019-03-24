@@ -124,9 +124,10 @@
 	}
 	div#signUpBG {
 		background-image: url(/images/signupBG.jpg);
+		padding: 3.59%;
 	}
-	.card-action, .socialIcons,
-	.loginForm, .signUpForm {
+	.signupFormContainer, .card-action, .socialIcons,
+	.loginForm, .signUpForm, .g-recaptcha{
 		display: flex;
 		justify-content: center;
 	}
@@ -164,6 +165,9 @@
 	.loginForm, .signUpForm {
 		width: 400px;
 		margin: 0 auto;
+	}
+	#signup_form {
+		width: 300px;
 	}
 	form div.input-field label {
 		font-size: 25px;
