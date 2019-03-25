@@ -46,13 +46,13 @@ module.exports = function(app) {
   //   });
   // });
 
-  app.get("/api/keys", function(req, res) {
-    var keys = {
-      fullPageKeys: process.env.FULLPAGE_KEY
-      //reCaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
-    };
-    res.json(keys);
-  });
+  // app.get("/api/keys", function(req, res) {
+  //   console.log(process.env.RECAPTCHA_SITE_KEY);
+  //   var keys = {
+  //     reCaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
+  //   };
+  //   res.json(keys);
+  // });
 
   // // Create a new example
   // app.post("/api/examples", function(req, res) {
