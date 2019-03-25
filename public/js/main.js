@@ -1,42 +1,24 @@
-$.ajax({
-  url: "/api/keys",
-  method: "GET"
-}).then(function(data) {
-  var myFullpage = new fullpage("#fullpage", {
-    licenseKey: data.fullPageKeys,
-    verticalCentered: false,
-    //to avoid problems with css3 transforms and fixed elements in Chrome, as detailed here: https://github.com/alvarotrigo/fullPage.js/issues/208
-    css3: false
+$(document).ready(function() {
+  //Start of Document Ready function
+  //Parallax initialization
+  $(".parallax").parallax();
+
+  $(".carousel.carousel-slider").carousel({
+    fullWidth: true,
   });
-});
 
-// $.ajax({
-//   url: "/api/keys",
-//   method: "GET"
-// }).then(function(data) {
-//   var deCaptchaSiteKey = {
-//     deCaptchaSiteKey: data.deCaptchaSiteKey
-//   };
-// });
+  autoplay();
+  function autoplay() {
+    $(".carousel").carousel("next");
+    setTimeout(autoplay, 5000);
+  }
 
-// $(".g-recaptcha").attr("data-sitekey", )
-
-$("#signup_form").submit(function() {
-  $(this).ajaxSubmit({
-    error: function(xhr) {
-      status("Error: " + xhr.status);
-    },
-    success: function(response) {
-      console.log(response);
-    }
-  });
-  //Very important line, it disable the page refresh.
-  return false;
-});
-
-$(".modal").modal();
-
-$("#tableBody tbody tr td addBtn").on("click", function(event) {
-  event.preventDefault();
-  $("#modal1").modal("open");
-});
+  $(window).scroll(function() {
+  var scroll = $(window).scrollTop();
+  if (scroll > 550){
+    $("#header").css("background", "#f5c2aa");
+  } else {
+    $("#header").css("background", "transparent");
+  }
+})
+}); //End of Document Ready Function

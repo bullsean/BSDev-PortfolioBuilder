@@ -1,19 +1,145 @@
-
-<div id="header">
-	<div class="container">
-      <div id="#masthead">
-				<a id="first-child" href="#">Get Started</a>
-				<a href="login">Log In</a>
-      </div>
-  </div>
-</div>
-
-<div id="fullpage">
-	<div class="section" id="section0">
-		<h1>Portfolio Creator</h1>
-		<h3>Everything You Need. And More.</h3>
-	</div>
-	<div class="section" id="section1"></div>
-	<div class="section" id="section2"></div>
-	<div class="section" id="section3"></div>
-</div>
+<!-- Start navbar -->
+    <div id="header">
+        <div class="navContainer">
+            <div id="#masthead">
+                <a id="first-child" href="#signup">Get Started</a>
+                <a href="#login">Log In</a>
+                <a href="#contact">Contact</a>
+                <a id="logo" href="#"><i class="material-icons large">business</i> PB</a>
+            </div>
+        </div>
+    </div>
+<!-- End navbar -->
+<!--Start top parallax-->
+    <div class="parallax-container center valign-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 white-text">
+                    <h1>Portfolio Builder</h1>
+                    <h5>Everything You Need. And More.</h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="images/parallax1.jpg"></div>
+    </div> <br><br>
+    <!--End top parallax-->
+    <!--Start first section -->
+    <div class="section white content-container">
+        <div class="row">
+            <div class="col s6">
+                <img class="img-portfolio" src="images/img_01.jpg" alt="img_01">
+            </div>
+            <div class="col s6 first-para">
+                <h3>Build a portfolio in minutes, not days!</h3>
+                <p>
+                    Creating a website can be a frustrating process for those who do not have any technical knowledge. 
+                    That’s why we created a Portfolio Builder (CMS) that lets you create your own website. Get online, choose one of our templates
+                    and take control of your online presence.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <h3>Why CMS?</h3>
+                <p class="text-darken-3 lighten-3">
+                    A CMS or a 'Content Management System' allows you to control and manage the content within your 
+                    website without having any technical background. Using this uncomplicated system you can very easily 
+                    add, delete images and edit text in your website on the fly.
+                </p>
+            </div>
+        </div>
+        <div class="row relative">
+            <div class="col s12 photos"> 
+                <img class="img-cms" src="images/img_02.jpg" alt="img_01">
+                <img class="img-cms" src="images/img_03.jpg" alt="img_01">
+                <img class="img-cms" src="images/img_04.jpg" alt="img_01">
+                <img class="img-cms" src="images/img_05.jpg" alt="img_01">
+                <img class="img-cms" src="images/img_06.jpg" alt="img_01">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <h3>How to create portfolio?</h3>
+                <h5>1. Sign up</h5>
+                <h6 class="text-darken-3 lighten-3">Create an account and enter all of your infromation.</h6>
+                <h5>2. Choose a template</h5>
+                <h6 class="text-darken-3 lighten-3">Pick one of our desined templates. We have more than 100 templates.</h6>
+                <h5>3. Customize your portfolio</h5>
+                <h6 class="text-darken-3 lighten-3">Make a professional website that will represent you best! Find all the tools that will make your portfolio entries shine!</h6>
+                <h5>4. Publish</h5>
+                <h6 class="text-darken-3 lighten-3">Creating a portfolio is just the start! Check our services to learn more.</h6>
+            </div>
+        </div>
+        
+        {{!-- 
+        <div class="row fifth_row">
+            <div class="col s12">
+                <h1>Our Templates</h1>
+            </div>
+        </div>
+        <div class="row sixth_row">
+            <div class="col s12">
+                <div class="carousel carousel-slider">
+                    <a class="carousel-item" href="#one!"><img src="images/temp_01.jpg"></a>
+                    <a class="carousel-item" href="#two!"><img src="images/temp_02.jpg"></a>
+                    <a class="carousel-item" href="#three!"><img src="images/temp_03.jpg"></a>
+                </div>
+            </div>
+        </div>
+        <div class="row sixth_row">
+            <div class="col s12">
+                <h1>Get Started</h1>
+            </div>
+        </div>
+        <div class="row container seventh_row">
+            <div class="col s6">
+                <div class="card">
+                    <h1>Create an account</h1>
+                    <form id="signup_form">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="" id="first_name" type="text" class="validate">
+                                <label for="first_name">First Name</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder="" id="last_name" type="text" class="validate">
+                                <label for="last_name">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="" id="password" type="password" class="validate">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="" id="email" type="email" class="validate">
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="text-center col s12">
+                                <div class="g-recaptcha" data-sitekey="site key goes here"></div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="card-action">
+                        <a class="btn">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6">
+                <br><br><br>
+                <hr class="hr-text" data-content="OR">
+                <br>
+                <div class="socialIcons">
+                    <a href="#" class="fa fa-facebook "> | Log in with Facebook</a>
+                </div>
+                <div class="socialIcons">
+                    <a href="#" class="fa fa-google"> | Log in with Google</a>
+                </div>
+            </div>
+        </div> --}}
+    </div>
+    
