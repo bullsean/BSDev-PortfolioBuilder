@@ -1,3 +1,8 @@
+// Materialize parallax initialization
+$(document).ready(function() {
+  $(".parallax").parallax();
+});
+
 $.ajax({
   url: "/api/keys",
   method: "GET"
