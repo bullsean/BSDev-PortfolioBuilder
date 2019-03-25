@@ -47,4 +47,17 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/light", function(req, res) {
+    res.render("light", {
+      layout: "templates",
+      title: "Light Template | Portfolio Creator"
+    });
+  });
+
+  app.get("/dark", function(req, res) {
+    res.render("dark", {
+      layout: "templates",
+      title: "Dark Template | Portfolio Creator"
+    });
+  });
 };
