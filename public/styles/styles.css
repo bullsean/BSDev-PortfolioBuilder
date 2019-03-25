@@ -61,35 +61,18 @@
 	#section0{
 		background-image: url(/images/sec00.jpg);
 	}
-	#section0 h1, #section0 h3{
+	#section0 h1, #section0 h3 {
 		font-size: 5em;
 		color: #fff;
 		margin:0;
 		padding:0;
 		top: 40%;
-		transform: translateY(-50%);
+		left: 347px;
+		transform: translateY(-10%);
 		position: relative;
 	}
 	#section0 h3{
 		font-size: 2em;
-	}
-	#section0 .options a {
-		display: inline-block;
-		padding-left: 15px;
-		margin-left: 10px;
-		line-height: 18px;
-		color: white;
-		text-decoration: none;
-		border-left: 1px solid #efefef;
-		font-size: 25px;
-	}
-	#section0 .options a:first-child {
-		border-left: 0 none;
-	}
-	#section0 div {
-		top: 70%;
-		transform: translateY(-50%);
-		position: relative;
 	}
 
 	/* Defining section1 background and styles
@@ -118,23 +101,25 @@
 
 	/* Defining login and signup pages background and styles
 	* --------------------------------------- */
-	div#loginBG {
+	div#loginBG, div#signUpBG, div#accountBG {
 		background-image: url(/images/loginBG.jpg);
-		padding: 3.59%;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	div#loginBG {
+		background-size: cover;
+		background-repeat: no-repeat;
+		padding: 2.2%;
 	}
 	div#signUpBG {
-		background-image: url(/images/signupBG.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		padding: 3.86%;
 	}
-	.card-action, .socialIcons,
-	.loginForm, .signUpForm {
+	.loginFormContainer, .signupFormContainer, .card-action, .socialIcons,
+	.loginForm, .loginForm .signUpForm, .g-recaptcha, .accountFormContainer {
 		display: flex;
 		justify-content: center;
-	}
-	.loginFormContainer {
-		float: right;
-	}
-	.clear {
-		clear: both;
 	}
 	.card-title {
 		color: black;
@@ -161,12 +146,18 @@
 	.fa-google {
 		background: #dd4b39;
 	}
-	.loginForm, .signUpForm {
+	.signUpForm, .loginForm {
 		width: 400px;
 		margin: 0 auto;
 	}
+	#signup_form, #login_form {
+		width: 300px;
+	}
 	form div.input-field label {
 		font-size: 25px;
+	}
+	#profileImgLabel {
+		font-size: 20px;
 	}
 	a#forget, p#not-a-member {
 		color: grey;
@@ -174,10 +165,55 @@
 	}
 	a#signUpNow {
 		color: grey;
-		font-size: 15px;
+		font-size: 20px;
+		text-transform: none;
 	}
 	.btn {
 		width: 300px;
 		background-color: darkgray;
 		margin: 0;
+		text-transform: none;
+	}
+	.hr-text {
+		line-height: 1em;
+		position: relative;
+		outline: 0;
+		border: 0;
+		color: black;
+		text-align: center;
+		height: 1.5em;
+		opacity: .5;
+	}
+	.hr-text:before {
+		content: '';
+		background: linear-gradient(to right, transparent, #818078, transparent);
+		position: absolute;
+		left: 0;
+		top: 50%;
+		width: 100%;
+		height: 1px;
+	}
+	.hr-text:after {
+		content: attr(data-content);
+		position: relative;
+		display: inline-block;
+		color: black;
+		padding: 0 .5em;
+		line-height: 1.5em;
+		color: #818078;
+		background-color: #fcfcfa;
+	}
+	.accountForm {
+		width: 700px;
+		margin: 0 auto;
+	}
+	#account_form {
+		width: 600px;
+	}
+	.card {
+		margin-top: 60px;
+	}
+
+	.td_add {
+		text-align: center;
 	}
