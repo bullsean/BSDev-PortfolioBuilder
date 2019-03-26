@@ -1,8 +1,8 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   //reCaptcha feature
-  app.post("/submit", function(req, res) {
+  app.post("/submit", function (req, res) {
     // g-recaptcha-response is the key that browser will generate upon form submit.
     // if its blank or null means user has not selected the captcha, so return the error.
     if (
@@ -26,7 +26,7 @@ module.exports = function(app) {
       "&remoteip=" +
       req.connection.remoteAddress;
     // Hitting GET request to the URL, Google will respond with success or error scenario.
-    request(verificationUrl, function(_error, _response, body) {
+    request(verificationUrl, function (_error, _response, body) {
       body = JSON.parse(body);
       // Success will be true or false depending upon captcha validation.
       if (body.success !== undefined && !body.success) {
@@ -36,6 +36,23 @@ module.exports = function(app) {
         });
       }
       res.json({ responseCode: 0, responseDesc: "Sucess" });
+    });
+  });
+
+  app.post("/api/users", function(req, res) {
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName;
+    var password = req.body.password;
+    var email = req.body.email;
+
+    db.User.create({
+      firstName: firstName,
+      lastName: lastName,
+      password: password,
+      email: email
+    }).then(function(result) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
     });
   });
 
