@@ -1,3 +1,4 @@
 models
 models/user.js
 node_modules
+config
