@@ -1,2 +1,3 @@
-models/index.js
+models
+models/user.js
 node_modules
