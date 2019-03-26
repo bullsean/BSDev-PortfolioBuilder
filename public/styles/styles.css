@@ -164,7 +164,13 @@ p {
     border: solid 1px black;
 }
 
+.right {
+    margin: 0;
+}
 
+.clear {
+    clear: both;
+}
 
 
 
