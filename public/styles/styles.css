@@ -67,6 +67,9 @@ i.large {
 .parallax img { 
      width: 110vw;
 }
+.parallax02 h1 {
+    color: black;
+}
 /* Defining first row styles
 * --------------------------------------- */
 .content-container {
@@ -89,7 +92,7 @@ p {
 * --------------------------------------- */
 .relative {
     position: relative;
-    height: 300px;
+    height: 238px;
 }
 .img-cms {
     width: 300px;
@@ -98,54 +101,21 @@ p {
 }
 .photos .img-cms {
     position: absolute;
-}
+} 
 .photos img:nth-of-type(1) {
-    left: 150px;
-    -webkit-transform: rotate(5deg);
-    -moz-transform: rotate(5deg);
-    -o-transform: rotate(5deg);
-    transform: rotate(5deg);
+    left: 140px;
 }
 .photos img:nth-of-type(2) {
-    left: 300px;
-    -webkit-transform: rotate(-10deg);
-    -moz-transform: rotate(-10deg);
-    -o-transform: rotate(-10deg);
-    transform: rotate(-10deg);
+    left: 460px;
 }
 .photos img:nth-of-type(3) {
-    left: 450px;
-    -webkit-transform: rotate(7deg);
-    -moz-transform: rotate(7deg);
-    -o-transform: rotate(7deg);
-    transform: rotate(7deg);
-}
-.photos img:nth-of-type(4) {
-    left: 600px;
-    -webkit-transform: rotate(-3deg);
-    -moz-transform: rotate(-3deg);
-    -o-transform: rotate(-3deg);
-    transform: rotate(-3deg);
-}
-.photos img:nth-of-type(5) {
-    left: 750px;
-    -webkit-transform: rotate(2deg);
-    -moz-transform: rotate(2deg);
-    -o-transform: rotate(2deg);
-    transform: rotate(2deg);
+    left: 780px;
 }
 .photos img:hover {
-    -webkit-transform: scale(1.5);
-    -moz-transform: scale(1.5);
-    -o-transform: scale(1.5);
-    transform: scale(1.5);
-    z-index: 10;
-}
-.photos img:hover {
-    -webkit-transform: rotate(380deg) scale(1.5);
-    -moz-transform: rotate(380deg) scale(1.5);
-    -o-transform: rotate(380deg) scale(1.5);
-    transform: rotate(380deg) scale(1.5);
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
     z-index: 10;
 }
 .photos img {
@@ -159,11 +129,10 @@ p {
     -moz-transition: all 0.5s ease-out;
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
-    padding: 10px 10px 30px 10px;
+    padding: 10px;
     background: white;
     border: solid 1px black;
 }
-
 .right {
     margin: 0;
 }
@@ -171,46 +140,71 @@ p {
 .clear {
     clear: both;
 }
-
-
-
-/* 
-.container {
-      width: 90%;
-      margin-top: 20px;
+.create-portfolio {
+    background-color: #f5c2aa;
+    border-radius: 20px;
 }
-div .second_row {
-    display: flex;
-    align-items: center;
+.create-portfolio p {
+    font-size: 21px;
+    text-align: left;
+    text-indent: 30px;
 }
-div .second_row h3, div .forth_row h3 {
+.create-portfolio h5 {
+    font-weight: bold;
+}
+
+.templates-carousel {
+    padding: 15px;
+    background: white;
+    border: solid 2px black;
+}
+.templates-carousel-header {
     text-align: center;
-} 
-div .forth_row {
-    background: rgb(245, 219, 135);
-    border-radius: 10;
 }
-div .seventh_row h1 {
-    background: rgb(245, 219, 135);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+
+.card-wrap {
+    background-color: #f5c2aa;
+    padding: 20px;
+    border-radius: 10px;
 }
-div .fifth_row h1, div .seventh_row, div .sixth_row h1 {
+.card-wrap h1 {
     text-align: center;
+}
+.card-wrap label {
+    font-size: 20px;
 }
 .card .card-action {
     text-align: center;
 }
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+/* .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
     color: black;
-}
+} */
 .btn {
     text-transform: none;
-    background-color: rgb(245, 219, 135);
+    background-color: #f5c2aa;
     color: black;
     font-size: 20px;
     font-weight: bold;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
 }
+form {
+    margin: 10px;
+}
+.card {
+    border-radius: 10px;
+}
+/* Centering reCaptcha
+* --------------------------------------- */
+.text-center {
+    text-align: center;
+}
+.g-recaptcha {
+    display: inline-block;
+}
+/* Social media login styling
+* --------------------------------------- */
 .hr-text {
     line-height: 1em;
     position: relative;
@@ -235,14 +229,24 @@ div .fifth_row h1, div .seventh_row, div .sixth_row h1 {
     position: relative;
     display: inline-block;
     color: black;
-    padding: 0 .5em;
+    padding: 0.5em;
     line-height: 1.5em;
     color: #818078;
     background-color: #fcfcfa;
 }
 .socialIcons {
     font-size: 20px;
+    margin-left: 40px;
 }
+.loginPage-redirect {
+    font-size: 30px;
+    text-align: center;
+}
+.loginPage-redirect a {
+    border-left: 0 none;
+    color: black;
+}
+
 .fa {
     padding: 20px;
     width: 30px;
@@ -255,30 +259,32 @@ div .fifth_row h1, div .seventh_row, div .sixth_row h1 {
 .fa:hover {
     opacity: 0.7;
 }
-.fa-facebook {
+.fa-facebook-official{
     background: #3B5998;
 }
-.fa-google {
+.fa-google-plus-official {
     background: #dd4b39;
 }
-#loginDiv a {
-    text-transform: none;
-    color: black;
+
+.developer .card-image img {
+    width: 100px;
+    height: 200px;
+    padding: 15px;
+    background: white;
+}
+.developer .card-image {
+    width: 150px;
+    height: 200px;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
     font-size: 20px;
-    font-weight: bold;
+    border-left: 0 none;
+    color: black;
+    text-transform: none;
 }
-#loginDiv h1 {
-    font-size: 30px;
+.page-footer {
+    background-color: #f5c2aa;
 }
-form {
-    margin: 10px;
+.page-footer p {
+    text-align: left;
 }
-.card {
-    border-radius: 10px;
-}
-.text-center {
-    text-align: center;
-}
-.g-recaptcha {
-    display: inline-block;
-} */
