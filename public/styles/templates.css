@@ -1,0 +1,75 @@
+body {
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+ nav ul a,
+ nav .brand-logo {
+   color: #444;
+ }
+ 
+ p {
+   line-height: 2rem;
+ }
+ 
+ .sidenav-trigger {
+   color: #26a69a;
+ }
+ 
+ .parallax-container {
+   min-height: 100vh;
+   line-height: 0;
+   height: auto;
+   color: rgba(255,255,255,.9);
+ }
+.parallax-container .section {
+     width: 100%;
+   }
+
+.parallax img { 
+    width: 110vw;
+}
+
+h1 {
+    margin-top: 6vh;
+}
+
+.projectTitle {
+    margin-top: 0%;
+}
+.projectImg {
+    border-radius: 15px;
+}
+i {
+    margin: 0 5vw 0 0;
+}
+i:last-of-type {
+    margin: 0 0 0 0;
+}
+
+
+ @media only screen and (max-width : 992px) {
+   .parallax-container .section {
+     position: absolute;
+     top: 40%;
+   }
+   #index-banner .section {
+     top: 10%;
+   }
+ }
+ 
+ @media only screen and (max-width : 600px) {
+   #index-banner .section {
+     top: 0;
+   }
+ }
+ 
+ .icon-block {
+   padding: 0 15px;
+ }
+ .icon-block .material-icons {
+   font-size: inherit;
+ }
+ 
+ footer.page-footer {
+   margin: 0;
+ }
