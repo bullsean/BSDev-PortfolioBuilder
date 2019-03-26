@@ -73,6 +73,7 @@ i.large {
 .parallax03 h1, .parallax03 h3 {
     color: black;
 }
+
 /* Defining first row styles
 * --------------------------------------- */
 .content-container {
@@ -187,7 +188,6 @@ p {
     background-color: #f5c2aa;
     color: black;
     font-size: 20px;
-    font-weight: bold;
     width: 200px;
     height: 40px;
     border-radius: 10px;
@@ -290,4 +290,7 @@ form {
 }
 .page-footer p {
     text-align: left;
+}
+ul li {
+    margin: 10px;
 }
