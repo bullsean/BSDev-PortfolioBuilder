@@ -1,14 +1,5 @@
-<!-- Start navbar -->
-<div id="header-login">
-    <div class="navContainer">
-        <div id="#masthead-login">
-            <a id="first-child" href="index#signup">Sign up</a>
-            <a href="index#contact">Contact</a>
-            <a id="logo" href="#"><i class="material-icons large">business</i> PB</a>
-        </div>
-    </div>
-</div>
-<!-- End navbar -->
+{{>login-header}}
+
 <!--Start bottom parallax-->
 <div class="parallax-container center valign-wrapper">
     <div class="container">
@@ -55,25 +46,10 @@
         <div class="col s12 loginDiv">
             <div class="loginPage-redirect">
                 <h4>You don't have an account?</h4>
-                <a href="index#signup">Sign up here</a>
+                <a href="/#signup">Sign up here</a>
             </div>
         </div>
     </div>
 </div>
 <!-- End first section -->
-<!-- Start footer -->
-<footer class="page-footer">
-    <div class="row">
-        <div class="col s12">
-            <h5 >Bullock Seyam Developers</h5>
-            <p class="grey-text text-lighten-4">We are a duo of part-time Coding Bootcamp Freelancers working on this project like it's our
-                full time job. If you have any suggestions, would like to collaborate on a layout or wish to enter our design competition, please contact us at <a href="mailto:bsdev@gmail.com" class="blue-text text-darken-4">bsdev@gmail.com</a></p>
-        </div>
-    </div>
-        <div class="footer-copyright">
-        <div class="container">
-            Made by <a class="blue-text text-darken-4" href="">BSD</a>
-        </div>
-        </div>
-</footer>
-<!-- End footer -->
+{{>footer}}
