@@ -1,7 +1,7 @@
-{
+ {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "$eaN3119",
     "database": "exampledb",
     "host": "localhost",
     "dialect": "mysql"
@@ -18,4 +18,4 @@
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
-}
+} 
