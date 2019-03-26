@@ -1,8 +1,8 @@
 var db = require("../models");
 
-module.exports = function (app) {
+module.exports = function(app) {
   //reCaptcha feature
-  app.post("/submit", function (req, res) {
+  app.post("/submit", function(req, res) {
     // g-recaptcha-response is the key that browser will generate upon form submit.
     // if its blank or null means user has not selected the captcha, so return the error.
     if (

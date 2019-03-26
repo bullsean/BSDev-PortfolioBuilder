@@ -3,17 +3,7 @@ $(document).ready(function() {
   //Parallax initialization
   $(".parallax").parallax();
 
-  $(".carousel.carousel-slider").carousel({
-    fullWidth: true
-  });
-
   $(".collapsible").collapsible();
-
-  autoplay();
-  function autoplay() {
-    $(".carousel").carousel("next");
-    setTimeout(autoplay, 5000);
-  }
 
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
