@@ -7,6 +7,8 @@ $(document).ready(function() {
     fullWidth: true,
   });
 
+  $(".collapsible").collapsible();
+
   autoplay();
   function autoplay() {
     $(".carousel").carousel("next");
