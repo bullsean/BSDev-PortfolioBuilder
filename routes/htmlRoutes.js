@@ -55,9 +55,12 @@ module.exports = function(app) {
   });
 
   app.get("/dark", function(req, res) {
-    res.render("dark", {
-      layout: "templates",
-      title: "Dark Template | Portfolio Creator"
+    db.User.findAll({}).then(function(result) {
+      res.render("dark", {
+        layout: "templates",
+        title: "Dark Template | Portfolio Creator",
+        data: result
+      });
     });
   });
 };
