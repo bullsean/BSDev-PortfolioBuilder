@@ -61,6 +61,9 @@ i.large {
     height: auto;
     color: rgba(255,255,255,.9);
 }
+.other-pages-parallax {
+    min-height: 75vh;
+}
 .parallax-container .section {
     width: 100%;
 }
@@ -102,18 +105,6 @@ p {
     width: 300px;
     height: 200px;
     border-radius: 20px;
-}
-.photos .img-cms {
-    position: absolute;
-} 
-.photos img:nth-of-type(1) {
-    left: 140px;
-}
-.photos img:nth-of-type(2) {
-    left: 460px;
-}
-.photos img:nth-of-type(3) {
-    left: 780px;
 }
 .photos img:hover {
     -webkit-transform: scale(2);
