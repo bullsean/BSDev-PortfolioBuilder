@@ -111,7 +111,7 @@ $(document).ready(function() {
 
   $("#licertSubmit").on("click", function(event) {
     event.preventDefault();
-    var licert_Name = $("#ice-cert-name").val().trim();
+    var licert_Name = $("#lice-cert-name").val().trim();
 
     $.ajax({
       url: "/api/users",

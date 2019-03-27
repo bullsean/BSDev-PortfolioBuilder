@@ -51,12 +51,12 @@ module.exports = function(app) {
       password: password,
       email: email
     }).then(function(result) {
-      // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });
+  });
 
     app.post("/api/certifications", function(req, res) {
-      var nameOfCert = req.body.nameOfCert;
+      var nameOfCert = req.body.licert_Name;
   
       db.Certifications.create({
         nameOfCert: nameOfCert,
@@ -64,6 +64,7 @@ module.exports = function(app) {
         // We have access to the new todo as an argument inside of the callback function
         res.json(result);
       });
+    });
 
     app.post("/api/contact", function(req, res) {
       var facebook = req.body.facebook;
@@ -80,6 +81,7 @@ module.exports = function(app) {
         // We have access to the new todo as an argument inside of the callback function
         res.json(result);
       });
+    });
 
       app.post("/api/education", function(req, res) {
         var institution = req.body.institution;
