@@ -26,7 +26,7 @@ module.exports = function(app) {
       "&remoteip=" +
       req.connection.remoteAddress;
     // Hitting GET request to the URL, Google will respond with success or error scenario.
-    request(verificationUrl, function (_error, _response, body) {
+    request(verificationUrl, function(_error, _response, body) {
       body = JSON.parse(body);
       // Success will be true or false depending upon captcha validation.
       if (body.success !== undefined && !body.success) {
@@ -51,6 +51,49 @@ module.exports = function(app) {
       password: password,
       email: email
     }).then(function(result) {
+      console.log("this is the user result:" + result);
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  app.post("api/profile_name", function(req, res) {
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName
+
+    db.ProfileName.create({
+      firstName: firstName,
+      lastName: lastName
+    }).then(function(result) {
+      console.log("this is the profile name result:" + result);
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  app.post("/api/project", function(req, res) {
+    var inst_Name = req.body.inst_Name;
+    var title_role = req.body.title_role;
+    var desc = req.body.desc;
+
+    db.Project.create({
+      inst_Name: inst_Name,
+      title_role: title_role,
+      desc: desc
+    }).then(function(result) {
+      console.log("this is the Project result:" + result);
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  app.post("api/skills", function(req, res) {
+    var skill = req.body.skaccom;
+
+    db.Skills.create({
+      skill: skill
+    }).then(function(result) {
+      console.log("this is the skill result:" + result);
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });

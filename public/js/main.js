@@ -66,7 +66,7 @@ $(document).ready(function() {
       method: "POST",
       data: {
         firstName: firstName,
-        lastName: lastName,
+        lastName: lastName
       }
     }).then(function() {
       location.reload();
