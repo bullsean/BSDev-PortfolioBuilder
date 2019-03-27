@@ -56,10 +56,11 @@ module.exports = function(app) {
 
   app.get("/dark", function(req, res) {
     db.User.findAll({}).then(function(result) {
+      console.log(result[0].dataValues.firstName);
       res.render("dark", {
         layout: "templates",
         title: "Dark Template | Portfolio Creator",
-        data: result
+        data: result[0].dataValues
       });
     });
   });
