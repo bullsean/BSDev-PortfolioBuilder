@@ -8,11 +8,7 @@ module.exports = function (sequelize, DataTypes) {
   Skills.associate = function(models) {
     // We're saying that a Skills should belong to an Author
     // A Skills can't be created without an Author due to the foreign key constraint
-    Skills.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    Skills.belongsTo(models.User);
   };
   
     return Skills;

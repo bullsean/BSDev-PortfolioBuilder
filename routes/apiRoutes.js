@@ -1,8 +1,8 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   //reCaptcha feature
-  app.post("/submit", function(req, res) {
+  app.post("/submit", function (req, res) {
     // g-recaptcha-response is the key that browser will generate upon form submit.
     // if its blank or null means user has not selected the captcha, so return the error.
     if (
@@ -26,7 +26,7 @@ module.exports = function(app) {
       "&remoteip=" +
       req.connection.remoteAddress;
     // Hitting GET request to the URL, Google will respond with success or error scenario.
-    request(verificationUrl, function(_error, _response, body) {
+    request(verificationUrl, function (_error, _response, body) {
       body = JSON.parse(body);
       // Success will be true or false depending upon captcha validation.
       if (body.success !== undefined && !body.success) {
@@ -39,7 +39,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/users", function(req, res) {
+  app.post("/api/users", function (req, res) {
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     var password = req.body.password;
@@ -50,21 +50,22 @@ module.exports = function(app) {
       lastName: lastName,
       password: password,
       email: email
-    }).then(function(result) {
+    }).then(function (result) {
       console.log("this is the user result:" + result);
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });
   });
 
-  app.post("api/profile_name", function(req, res) {
+  app.post("/api/profileName", function(req, res) {
     var firstName = req.body.firstName;
-    var lastName = req.body.lastName
+    var lastName = req.body.lastName;
 
     db.ProfileName.create({
-      firstName: firstName,
-      lastName: lastName
+      profileFirstName: firstName,
+      profileLastName: lastName
     }).then(function(result) {
+      console.log("************************************")
       console.log("this is the profile name result:" + result);
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
@@ -72,14 +73,14 @@ module.exports = function(app) {
   });
 
   app.post("/api/project", function(req, res) {
-    var inst_Name = req.body.inst_Name;
-    var title_role = req.body.title_role;
-    var desc = req.body.desc;
+    var projectName = req.body.inst_Name;
+    var role = req.body.title_role;
+    var description = req.body.desc;
 
     db.Project.create({
-      inst_Name: inst_Name,
-      title_role: title_role,
-      desc: desc
+      projectName: projectName,
+      role: role,
+      description: description
     }).then(function(result) {
       console.log("this is the Project result:" + result);
       // We have access to the new todo as an argument inside of the callback function
@@ -87,58 +88,58 @@ module.exports = function(app) {
     });
   });
 
-  app.post("api/skills", function(req, res) {
-    var skill = req.body.skaccom;
+  app.post("/api/skills", function(req, res) {
+    var nameOfCert = req.body.skaccom;
 
     db.Skills.create({
-      skill: skill
-    }).then(function(result) {
+      nameOfCert: nameOfCert
+    }).then(function (result) {
       console.log("this is the skill result:" + result);
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });
-
-    app.post("/api/certifications", function(req, res) {
-      var nameOfCert = req.body.nameOfCert;
-  
-      db.Certifications.create({
-        nameOfCert: nameOfCert,
-      }).then(function(result) {
-        // We have access to the new todo as an argument inside of the callback function
-        res.json(result);
-      });
-
-    app.post("/api/contact", function(req, res) {
-      var facebook = req.body.facebook;
-      var linkedin = req.body.linkedin;
-      var github = req.body.github;
-      var instagram = req.body.instagram;
-  
-      db.ContactLinks.create({
-        facebook: facebook,
-        linkedin: linkedin,
-        github: github,
-        instagram: instagram
-      }).then(function(result) {
-        // We have access to the new todo as an argument inside of the callback function
-        res.json(result);
-      });
-
-      app.post("/api/education", function(req, res) {
-        var institution = req.body.institution;
-        var degree = req.body.degree;
-    
-        db.Education.create({
-          institution: institution,
-          degree: degree
-        }).then(function(result) {
-          // We have access to the new todo as an argument inside of the callback function
-          res.json(result);
-        });
-
   });
 
-  
+  app.post("/api/certifications", function (req, res) {
+    var nameOfCert = req.body.licert_Name;
+
+    db.Certifications.create({
+      nameOfCert: nameOfCert
+    }).then(function (result) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  app.post("/api/contact", function (req, res) {
+    var facebook = req.body.facebook;
+    var linkedin = req.body.linkedin;
+    var github = req.body.github;
+    var instagram = req.body.instagram;
+
+    db.ContactLinks.create({
+      facebook: facebook,
+      linkedin: linkedin,
+      github: github,
+      instagram: instagram
+    }).then(function (result) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  app.post("/api/education", function (req, res) {
+    var institution = req.body.institution;
+    var degree = req.body.degree;
+
+    db.Education.create({
+      institution: institution,
+      degree: degree
+    }).then(function (result) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
 
   // // Get all examples
   // app.get("/api/examples", function(req, res) {
