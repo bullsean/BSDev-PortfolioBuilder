@@ -97,7 +97,48 @@ module.exports = function(app) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });
+
+    app.post("/api/certifications", function(req, res) {
+      var nameOfCert = req.body.nameOfCert;
+  
+      db.Certifications.create({
+        nameOfCert: nameOfCert,
+      }).then(function(result) {
+        // We have access to the new todo as an argument inside of the callback function
+        res.json(result);
+      });
+
+    app.post("/api/contact", function(req, res) {
+      var facebook = req.body.facebook;
+      var linkedin = req.body.linkedin;
+      var github = req.body.github;
+      var instagram = req.body.instagram;
+  
+      db.ContactLinks.create({
+        facebook: facebook,
+        linkedin: linkedin,
+        github: github,
+        instagram: instagram
+      }).then(function(result) {
+        // We have access to the new todo as an argument inside of the callback function
+        res.json(result);
+      });
+
+      app.post("/api/education", function(req, res) {
+        var institution = req.body.institution;
+        var degree = req.body.degree;
+    
+        db.Education.create({
+          institution: institution,
+          degree: degree
+        }).then(function(result) {
+          // We have access to the new todo as an argument inside of the callback function
+          res.json(result);
+        });
+
   });
+
+  
 
   // // Get all examples
   // app.get("/api/examples", function(req, res) {
