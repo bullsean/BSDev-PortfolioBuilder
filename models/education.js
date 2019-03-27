@@ -3,7 +3,7 @@ module.exports = function (sequelize, DataTypes) {
       institution: {
           type: DataTypes.STRING,
       },
-      Degree: {
+      degree: {
           type: DataTypes.STRING,
       }
   });
