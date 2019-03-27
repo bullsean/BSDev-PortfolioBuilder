@@ -62,11 +62,11 @@ $(document).ready(function() {
     var lastName = $("#last_name").val().trim();
 
     $.ajax({
-      url: "/api/users",
+      url: "/api/profileName",
       method: "POST",
       data: {
         firstName: firstName,
-        lastName: lastName,
+        lastName: lastName
       }
     }).then(function() {
       location.reload();
@@ -80,7 +80,7 @@ $(document).ready(function() {
     var desc = $("#description").val().trim();
 
     $.ajax({
-      url: "/api/users",
+      url: "/api/project",
       method: "POST",
       data: {
         inst_Name: inst_Name,
@@ -98,7 +98,7 @@ $(document).ready(function() {
     var degree = $("#degree").val().trim();
 
     $.ajax({
-      url: "/api/users",
+      url: "/api/education",
       method: "POST",
       data: {
         institute: institute,
@@ -111,10 +111,10 @@ $(document).ready(function() {
 
   $("#licertSubmit").on("click", function(event) {
     event.preventDefault();
-    var licert_Name = $("#ice-cert-name").val().trim();
+    var licert_Name = $("#lice-cert-name").val().trim();
 
     $.ajax({
-      url: "/api/users",
+      url: "/api/certifications",
       method: "POST",
       data: {
         licert_Name: licert_Name
@@ -129,7 +129,7 @@ $(document).ready(function() {
     var skaccom = $("#skill-accom-name").val().trim();
 
     $.ajax({
-      url: "/api/users",
+      url: "/api/skills",
       method: "POST",
       data: {
         skaccom: skaccom
@@ -147,7 +147,7 @@ $(document).ready(function() {
     var instagram = $("#instagram").val().trim();
 
     $.ajax({
-      url: "/api/users",
+      url: "/api/contact",
       method: "POST",
       data: {
         facebook: facebook,

@@ -26,7 +26,7 @@ module.exports = function(app) {
       "&remoteip=" +
       req.connection.remoteAddress;
     // Hitting GET request to the URL, Google will respond with success or error scenario.
-    request(verificationUrl, function (_error, _response, body) {
+    request(verificationUrl, function(_error, _response, body) {
       body = JSON.parse(body);
       // Success will be true or false depending upon captcha validation.
       if (body.success !== undefined && !body.success) {
@@ -51,51 +51,113 @@ module.exports = function(app) {
       password: password,
       email: email
     }).then(function(result) {
+      console.log("this is the user result:" + result);
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });
-
-    app.post("/api/certifications", function(req, res) {
-      var nameOfCert = req.body.nameOfCert;
-  
-      db.Certifications.create({
-        nameOfCert: nameOfCert,
-      }).then(function(result) {
-        // We have access to the new todo as an argument inside of the callback function
-        res.json(result);
-      });
-
-    app.post("/api/contact", function(req, res) {
-      var facebook = req.body.facebook;
-      var linkedin = req.body.linkedin;
-      var github = req.body.github;
-      var instagram = req.body.instagram;
-  
-      db.ContactLinks.create({
-        facebook: facebook,
-        linkedin: linkedin,
-        github: github,
-        instagram: instagram
-      }).then(function(result) {
-        // We have access to the new todo as an argument inside of the callback function
-        res.json(result);
-      });
-
-      app.post("/api/education", function(req, res) {
-        var institution = req.body.institution;
-        var degree = req.body.degree;
-    
-        db.Education.create({
-          institution: institution,
-          degree: degree
-        }).then(function(result) {
-          // We have access to the new todo as an argument inside of the callback function
-          res.json(result);
-        });
-
   });
 
-  
+  app.post("/api/profileName", function(req, res) {
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName;
+
+    db.ProfileName.create({
+      profileFirstName: firstName,
+      profileLastName: lastName
+    }).then(function(result) {
+      console.log("************************************")
+      console.log("this is the profile name result:" + result);
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  app.post("/api/project", function(req, res) {
+    var projectName = req.body.inst_Name;
+    var role = req.body.title_role;
+    var description = req.body.desc;
+
+    db.Project.create({
+      projectName: projectName,
+      role: role,
+      description: description
+    }).then(function(result) {
+      console.log("this is the Project result:" + result);
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  app.post("/api/skills", function(req, res) {
+    var nameOfCert = req.body.skaccom;
+
+    db.Skills.create({
+      nameOfCert: nameOfCert
+    }).then(function(result) {
+      console.log("this is the skill result:" + result);
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  app.post("/api/certifications", function(req, res) {
+    var nameOfCert = req.body.licert_Name;
+
+    db.Certifications.create({
+      nameOfCert: nameOfCert
+    }).then(function(result) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  app.post("/api/contact", function(req, res) {
+    var facebook = req.body.facebook;
+    var linkedin = req.body.linkedin;
+    var github = req.body.github;
+    var instagram = req.body.instagram;
+
+    db.ContactLinks.create({
+      facebook: facebook,
+      linkedin: linkedin,
+      github: github,
+      instagram: instagram
+    }).then(function(result) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  app.post("/api/education", function(req, res) {
+    var institution = req.body.institution;
+    var degree = req.body.degree;
+
+    db.Education.create({
+      institution: institution,
+      degree: degree
+    }).then(function(result) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  app.get("/api/users", function(req, res) {
+    // Here we add an "include" property to our options in our findAll query
+    // We set the value to an array of the models we want to include in a left outer join
+    db.User.findAll({
+      include: [
+        db.ProfileName,
+        db.Project,
+        db.Skills,
+        db.Certifications,
+        db.ContactLinks,
+        db.Education
+      ]
+    }).then(function(result) {
+      console.log(result);
+      res.json(result);
+    });
+  });
 
   // // Get all examples
   // app.get("/api/examples", function(req, res) {
