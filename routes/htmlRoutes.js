@@ -8,7 +8,7 @@ module.exports = function(app) {
     });
     // db.Example.findAll({}).then(function(dbExamples) {
       // res.render("index", {
-      //   title: "Home | Portfolio Creator",
+    //   title: "Home | Portfolio Creator",
       //   msg: "Welcome!",
       //   examples: dbExamples
       // });
@@ -54,6 +54,13 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/option3", function(req, res) {
+    res.render("additionalTemplate", {
+      layout: "templates",
+      title: "Additional Template | Portfolio Creator"
+    });
+  });
+
   app.get("/dark", function(req, res) {
     db.User.findAll({
       include: [
@@ -65,7 +72,7 @@ module.exports = function(app) {
         db.Education
       ]
     }).then(function(result) {
-      console.log(result[0].dataValues)
+      console.log(result[0].dataValues);
       console.log(result[0].dataValues.firstName);
       res.render("dark", {
         layout: "templates",

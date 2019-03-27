@@ -65,7 +65,7 @@ module.exports = function(app) {
       profileFirstName: firstName,
       profileLastName: lastName
     }).then(function(result) {
-      console.log("************************************")
+      console.log("************************************");
       console.log("this is the profile name result:" + result);
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
