@@ -55,7 +55,17 @@ module.exports = function(app) {
   });
 
   app.get("/dark", function(req, res) {
-    db.User.findAll({}).then(function(result) {
+    db.User.findAll({
+      include: [
+        db.ProfileName,
+        db.Project,
+        db.Skills,
+        db.Certifications,
+        db.ContactLinks,
+        db.Education
+      ]
+    }).then(function(result) {
+      console.log(result[0].dataValues)
       console.log(result[0].dataValues.firstName);
       res.render("dark", {
         layout: "templates",
