@@ -1,7 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  //reCaptcha feature
+  //reCaptcha feature configuration
   app.post("/submit", function(req, res) {
     // g-recaptcha-response is the key that browser will generate upon form submit.
     // if its blank or null means user has not selected the captcha, so return the error.
@@ -26,7 +26,7 @@ module.exports = function(app) {
       "&remoteip=" +
       req.connection.remoteAddress;
     // Hitting GET request to the URL, Google will respond with success or error scenario.
-    request(verificationUrl, function (_error, _response, body) {
+    request(verificationUrl, function(_error, _response, body) {
       body = JSON.parse(body);
       // Success will be true or false depending upon captcha validation.
       if (body.success !== undefined && !body.success) {
@@ -39,92 +39,124 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/users", function(req, res) {
-    var firstName = req.body.firstName;
-    var lastName = req.body.lastName;
+  //When the user submit sign up form, his data will be captured here to process them into the authintication method
+  app.post("/api/dashboard", function(req, res) {
+    var userName = req.body.userName;
     var password = req.body.password;
     var email = req.body.email;
 
     db.User.create({
-      firstName: firstName,
-      lastName: lastName,
+      userName: userName,
       password: password,
       email: email
+    }).then(function(results) {
+      res.json(results);
+    });
+
+    // res.render("dashboard", { username: userName });
+  });
+
+  //add profile info (names coming from the account page) to the DB
+  app.post("/api/profileName", function(req, res) {
+    var profileFirstName = req.body.firstName;
+    var profileLastName = req.body.lastName;
+
+    db.ProfileName.create({
+      profileFirstName: profileFirstName,
+      profileLastName: profileLastName
+    }).then(function(results) {
+      res.json(results);
+    });
+  });
+
+  //add profile info (experiences coming from the account page) to the DB
+  app.post("/api/experiences", function(req, res) {
+    var comJectName = req.body.comJectName;
+    var titleRole = req.body.titleRole;
+    var description = req.body.desc;
+
+    db.Experience.create({
+      comJectName: comJectName,
+      titleRole: titleRole,
+      description: description
     }).then(function(result) {
+      console.log("this is the Project result:" + result);
       res.json(result);
     });
   });
 
-    app.post("/api/certifications", function(req, res) {
-      var nameOfCert = req.body.licert_Name;
-  
-      db.Certifications.create({
-        nameOfCert: nameOfCert,
-      }).then(function(result) {
-        // We have access to the new todo as an argument inside of the callback function
-        res.json(result);
-      });
+  //add profile info (education coming from the account page) to the DB
+  app.post("/api/education", function(req, res) {
+    var institution = req.body.institution;
+    var degree = req.body.degree;
+
+    db.Education.create({
+      institution: institution,
+      degree: degree
+    }).then(function(result) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
     });
-
-    app.post("/api/contact", function(req, res) {
-      var facebook = req.body.facebook;
-      var linkedin = req.body.linkedin;
-      var github = req.body.github;
-      var instagram = req.body.instagram;
-  
-      db.ContactLinks.create({
-        facebook: facebook,
-        linkedin: linkedin,
-        github: github,
-        instagram: instagram
-      }).then(function(result) {
-        // We have access to the new todo as an argument inside of the callback function
-        res.json(result);
-      });
-    });
-
-      app.post("/api/education", function(req, res) {
-        var institution = req.body.institution;
-        var degree = req.body.degree;
-    
-        db.Education.create({
-          institution: institution,
-          degree: degree
-        }).then(function(result) {
-          // We have access to the new todo as an argument inside of the callback function
-          res.json(result);
-        });
-
   });
 
-  
+  //add user account inputs (license/certifications) to the DB
+  app.post("/api/licert", function(req, res) {
+    var licertName = req.body.licert_Name;
 
-  // // Get all examples
-  // app.get("/api/examples", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.json(dbExamples);
-  //   });
-  // });
+    db.Licert.create({
+      licertName: licertName
+    }).then(function(result) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
 
-  // app.get("/api/keys", function(req, res) {
-  //   console.log(process.env.RECAPTCHA_SITE_KEY);
-  //   var keys = {
-  //     reCaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY
-  //   };
-  //   res.json(keys);
-  // });
+  //add user account inputs (skills and accomplishments) to the DB
+  app.post("/api/skaccom", function(req, res) {
+    var skaccomName = req.body.skaccomName;
 
-  // // Create a new example
-  // app.post("/api/examples", function(req, res) {
-  //   db.Example.create(req.body).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
+    db.Skaccom.create({
+      skaccomName: skaccomName
+    }).then(function(result) {
+      console.log("this is the skill result:" + result);
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
 
-  // // Delete an example by id
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-  //     res.json(dbExample);
+  //add user account inputs (connection info) to the DB
+  app.post("/api/connectLinks", function(req, res) {
+    var facebook = req.body.facebook;
+    var linkedin = req.body.linkedin;
+    var github = req.body.github;
+    var instagram = req.body.instagram;
+
+    db.ConnectLinks.create({
+      facebook: facebook,
+      linkedin: linkedin,
+      github: github,
+      instagram: instagram
+    }).then(function(result) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(result);
+    });
+  });
+
+  // app.get("/api/users", function(req, res) {
+  //   // Here we add an "include" property to our options in our findAll query
+  //   // We set the value to an array of the models we want to include in a left outer join
+  //   db.User.findAll({
+  //     include: [
+  //       db.ProfileName,
+  //       db.Experience,
+  //       db.Skaccom,
+  //       db.Licert,
+  //       db.ConnectLinks,
+  //       db.Education
+  //     ]
+  //   }).then(function(result) {
+  //     console.log(result);
+  //     res.json(result);
   //   });
   // });
 };
