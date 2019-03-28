@@ -1,16 +1,16 @@
 module.exports = function (sequelize, DataTypes) {
-    var Certifications = sequelize.define("Certifications", {
-      nameOfCert: {
+    var Licert = sequelize.define("Licert", {
+      licertName: {
           type: DataTypes.STRING,
       }
   });
 
-  Certifications.associate = function(models) {
+  Licert.associate = function(models) {
     // We're saying that a Certifications should belong to an Author
     // A Certifications can't be created without an Author due to the foreign key constraint
-    Certifications.belongsTo(models.User);
+    Licert.belongsTo(models.User);
   };
   
-    return Certifications;
+    return Licert;
   };
   

@@ -285,3 +285,19 @@ form {
 ul li {
     margin: 10px;
 }
+
+.menuItems {
+    border: 2px solid #f5c2aa;
+    color: black;
+    text-align: center;
+}
+
+.menuItems a {
+    color: black;
+}
+
+.temps img {
+    padding: 10px;
+    background: white;
+    border: solid 1px black;
+}

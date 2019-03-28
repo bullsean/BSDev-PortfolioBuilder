@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var ContactLinks = sequelize.define("ContactLinks", {
+    var ConnectLinks = sequelize.define("ConnectLinks", {
         facebook: {
             type: DataTypes.STRING,
         },
@@ -14,11 +14,11 @@ module.exports = function (sequelize, DataTypes) {
         },
     });
 
-    ContactLinks.associate = function(models) {
+    ConnectLinks.associate = function(models) {
         // We're saying that a ContactLinks should belong to an Author
         // A ContactLinks can't be created without an Author due to the foreign key constraint
-        ContactLinks.belongsTo(models.User);
+        ConnectLinks.belongsTo(models.User);
       };
 
-    return ContactLinks;
+    return ConnectLinks;
 };

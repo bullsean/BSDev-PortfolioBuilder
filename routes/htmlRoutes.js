@@ -29,24 +29,20 @@ module.exports = function(app) {
   //   res.render("404");
   });
 
-  app.get("/signup", function(req, res) {
-    res.render("signup", {
-      title: "Sign Up | Portfolio Creator"
-    });
-  });
-
+  //When user click on login at the navbar he will be directed to the login page
   app.get("/login", function(req, res) {
     res.render("login", {
       title: "Log In | Portfolio Creator"
     });
   });
-
-  app.get("/account", function(req, res) {
-    res.render("account", {
-      title: "Account | Portfolio Creator"
+  //When user click on dark template image in the main page he will be directed to the dark template page
+  app.get("/dark", function(req, res) {
+    res.render("dark", {
+      layout: "templates",
+      title: "Dark Template | Portfolio Creator"
     });
   });
-
+  //When user click on light template image in the main page he will be directed to the light template page
   app.get("/light", function(req, res) {
     res.render("light", {
       layout: "templates",
@@ -54,24 +50,62 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/dark", function(req, res) {
-    db.User.findAll({
-      include: [
-        db.ProfileName,
-        db.Project,
-        db.Skills,
-        db.Certifications,
-        db.ContactLinks,
-        db.Education
-      ]
-    }).then(function(result) {
-      console.log(result[0].dataValues)
-      console.log(result[0].dataValues.firstName);
-      res.render("dark", {
-        layout: "templates",
-        title: "Dark Template | Portfolio Creator",
-        data: result[0].dataValues
-      });
+///////////////////////////////////////////////////////////////////////////////////////////////////////   
+//Html routes are for displaying only --- all the logic should be done in the api-routes
+    // db.User.findAll({
+    //   include: [
+    //     db.ProfileName,
+    //     db.Experience,
+    //     db.Skaccom,
+    //     db.Licert,
+    //     db.ConnectLinks,
+    //     db.Education
+    //   ]
+    // }).then(function(result) {
+    //   console.log(result);
+    //   // console.log(result[0].dataValues);
+    //   // console.log(result[0].dataValues.firstName);
+    //   res.render("dark", {
+    //     layout: "templates",
+    //     title: "Dark Template | Portfolio Creator",
+    //     //data: result[0].dataValues
+    //   });
+    // });
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  app.get("/dashboard/:id", function(req, res) {
+
+    db.User.findOne({ where: { id: req.params.id } }).then(function(results) {
+          res.render("dashboard", {
+            title: "Dashboard | Portfolio Creator",
+            data: results
+          });
+        });
+  });
+    
+    
+    
+  //   db.User.findOne({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   }).then(function(result) {
+  //       console.log(result);
+  //       // console.log(result[0].dataValues);
+  //       // console.log(result[0].dataValues.firstName);
+  //       res.render("dashboard", {
+  //         title: "Dashboard | Portfolio Creator",
+  //         data: result.dataValues
+  //       });
+  //     });
+  //   res.render("dashboard", {
+  //     title: "Dashboard | Portfolio Creator"
+  //   });
+  // });
+
+  app.get("/account", function(req, res) {
+    res.render("account", {
+      title: "Account | Portfolio Creator"
     });
   });
 };

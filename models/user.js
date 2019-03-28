@@ -1,38 +1,22 @@
+const bcrypt = require('bcrypt');
+
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
-    firstName: {
+    userName: {
         type: DataTypes.STRING,
-        // validate: {
-        //     isNull: false,
-        //     len: [1]
-        // }
-    },
-    lastName: {
-        type: DataTypes.STRING,
-        // validate: {
-        //     isNull: false,
-        //     len: [1]
-        // }
     },
     password: {
         type: DataTypes.STRING,
-        // validate: {
-        //     isNull: false,
-        //     len: [8]
-        // }
     },
     email: {
         type: DataTypes.STRING,
-        // validate: {
-        //     isEmail: true
-        // }
     },
 });
 
 User.associate = function (models) {
     // Associating Author with Posts
     // When an Author is deleted, also delete any associated Posts
-    User.hasMany(models.Project, {
+    User.hasMany(models.Experience, {
         onDelete: "cascade"
     });
 
@@ -40,11 +24,11 @@ User.associate = function (models) {
         onDelete: "cascade"
     });
 
-    User.hasMany(models.Certifications, {
+    User.hasMany(models.Licert, {
         onDelete: "cascade"
     });
 
-    User.hasOne(models.ContactLinks, {
+    User.hasOne(models.ConnectLinks, {
         onDelete: "cascade"
     });
 
@@ -52,10 +36,11 @@ User.associate = function (models) {
         onDelete: "cascade"
     });
 
-    User.hasMany(models.Skills, {
+    User.hasMany(models.Skaccom, {
         onDelete: "cascade"
     });
+
 };
 
-  return User;
+    return User;
 };
