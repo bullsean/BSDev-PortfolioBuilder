@@ -57,20 +57,24 @@ module.exports = function(app) {
   });
 
   //add profile info (names coming from the account page) to the DB
-  app.post("/api/profileName", function(req, res) {
+  app.post("/api/profileName/:UserId", function(req, res) {
     var profileFirstName = req.body.firstName;
     var profileLastName = req.body.lastName;
+    var title = req.body.title;
+    // console.log(req.params.UserId);
 
     db.ProfileName.create({
       profileFirstName: profileFirstName,
-      profileLastName: profileLastName
+      profileLastName: profileLastName,
+      title: title,
+      UserId: parseInt(req.params.UserId)
     }).then(function(results) {
       res.json(results);
     });
   });
 
   //add profile info (experiences coming from the account page) to the DB
-  app.post("/api/experiences", function(req, res) {
+  app.post("/api/experiences/:UserId", function(req, res) {
     var comJectName = req.body.comJectName;
     var titleRole = req.body.titleRole;
     var description = req.body.desc;
@@ -78,21 +82,22 @@ module.exports = function(app) {
     db.Experience.create({
       comJectName: comJectName,
       titleRole: titleRole,
-      description: description
+      description: description,
+      UserId: parseInt(req.params.UserId)
     }).then(function(result) {
-      console.log("this is the Project result:" + result);
       res.json(result);
     });
   });
 
   //add profile info (education coming from the account page) to the DB
-  app.post("/api/education", function(req, res) {
+  app.post("/api/education/:UserId", function(req, res) {
     var institution = req.body.institution;
     var degree = req.body.degree;
 
     db.Education.create({
       institution: institution,
-      degree: degree
+      degree: degree,
+      UserId: parseInt(req.params.UserId)
     }).then(function(result) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
@@ -100,11 +105,12 @@ module.exports = function(app) {
   });
 
   //add user account inputs (license/certifications) to the DB
-  app.post("/api/licert", function(req, res) {
-    var licertName = req.body.licert_Name;
+  app.post("/api/licert/:UserId", function(req, res) {
+    var licertName = req.body.licertName;
 
     db.Licert.create({
-      licertName: licertName
+      licertName: licertName,
+      UserId: parseInt(req.params.UserId)
     }).then(function(result) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
@@ -112,11 +118,12 @@ module.exports = function(app) {
   });
 
   //add user account inputs (skills and accomplishments) to the DB
-  app.post("/api/skaccom", function(req, res) {
+  app.post("/api/skaccom/:UserId", function(req, res) {
     var skaccomName = req.body.skaccomName;
 
     db.Skaccom.create({
-      skaccomName: skaccomName
+      skaccomName: skaccomName,
+      UserId: parseInt(req.params.UserId)
     }).then(function(result) {
       console.log("this is the skill result:" + result);
       // We have access to the new todo as an argument inside of the callback function
@@ -125,7 +132,7 @@ module.exports = function(app) {
   });
 
   //add user account inputs (connection info) to the DB
-  app.post("/api/connectLinks", function(req, res) {
+  app.post("/api/connectLinks/:UserId", function(req, res) {
     var facebook = req.body.facebook;
     var linkedin = req.body.linkedin;
     var github = req.body.github;
@@ -135,7 +142,8 @@ module.exports = function(app) {
       facebook: facebook,
       linkedin: linkedin,
       github: github,
-      instagram: instagram
+      instagram: instagram,
+      UserId: parseInt(req.params.UserId)
     }).then(function(result) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
