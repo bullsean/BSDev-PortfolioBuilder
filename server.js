@@ -25,13 +25,6 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-var hbs = exphbs.create({
-  helpers: {
-    linkTo: function(value){
-      return ""
-    }
-  }
-});
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
