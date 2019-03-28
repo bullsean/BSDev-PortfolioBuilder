@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <div class="parallax"><img src="images/parallax4.jpg"></div>
+    <div class="parallax"><img src="/images/parallax4.jpg"></div>
 </div>
 <!--End bottom parallax-->
 <!--Start first section -->
@@ -33,6 +33,10 @@
                                         <input placeholder="" id="last_name" type="text" class="validate">
                                         <label class="accountFieldLabel" for="last_name">Last Name</label>
                                     </div>
+                                     <div class="input-field col s12">
+                                        <input placeholder="" id="title" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="title">Title</label>
+                                    </div> 
                                 </div>
                                 <button id="nameSubmit" class="collapsible btn sendBtn waves-effect waves-light right" type="submit" name="action">Submit
                                     <i class="material-icons right">send</i>
@@ -184,8 +188,9 @@
                     </li>
                 </ul>
                 <div class="card-action">
-                    <a class="btn" id="readyToGo">Ready to Go</a>
+                    <a class="btn" href="/dark/{{data.id}}" id="readyToGo" data-id=>Ready to Go</a>
                 </div>
+                <div id="data" data-id={{data.id}} style="display: none"></div>
             </div>
         </div>
 

@@ -57,20 +57,24 @@ module.exports = function(app) {
   });
 
   //add profile info (names coming from the account page) to the DB
-  app.post("/api/profileName", function(req, res) {
+  app.post("/api/profileName/:UserId", function(req, res) {
     var profileFirstName = req.body.firstName;
     var profileLastName = req.body.lastName;
+    var title = req.body.title;
+    console.log(req.params.UserId)
 
     db.ProfileName.create({
       profileFirstName: profileFirstName,
-      profileLastName: profileLastName
+      profileLastName: profileLastName,
+      title: title,
+      UserId: parseInt(req.params.UserId)
     }).then(function(results) {
       res.json(results);
     });
   });
 
   //add profile info (experiences coming from the account page) to the DB
-  app.post("/api/experiences", function(req, res) {
+  app.post("/api/experiences/:UserId", function(req, res) {
     var comJectName = req.body.comJectName;
     var titleRole = req.body.titleRole;
     var description = req.body.desc;
@@ -78,8 +82,10 @@ module.exports = function(app) {
     db.Experience.create({
       comJectName: comJectName,
       titleRole: titleRole,
-      description: description
+      description: description,
+      UserId: parseInt(req.params.UserId)
     }).then(function(result) {
+      console.log(result.dataValues.Experiences)
       console.log("this is the Project result:" + result);
       res.json(result);
     });

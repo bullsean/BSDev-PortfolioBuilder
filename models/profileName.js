@@ -5,6 +5,9 @@ module.exports = function (sequelize, DataTypes) {
         },
         profileLastName: {
             type: DataTypes.STRING,
+        },
+        title: {
+            type: DataTypes.STRING,
         }
     });
 

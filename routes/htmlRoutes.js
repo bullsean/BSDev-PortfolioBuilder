@@ -36,11 +36,32 @@ module.exports = function (app) {
     });
   });
   //When user click on dark template image in the main page he will be directed to the dark template page
-  app.get("/dark", function (req, res) {
-    res.render("dark", {
-      layout: "templates",
-      title: "Dark Template | Portfolio Creator"
+  app.get("/dark/:id", function (req, res) {
+    db.User.findOne({
+      include: [
+        db.ProfileName,
+        db.Experience,
+        db.Skaccom,
+        db.Licert,
+        db.ConnectLinks,
+        db.Education
+      ],
+      where: { id: req.params.id }
+    }).then(function(results) {
+      console.log(results);
+      var fullName = results.dataValues.ProfileName.dataValues.profileFirstName + " " + results.dataValues.ProfileName.dataValues.profileLastName;
+      console.log(fullName);
+      res.render("dark", {
+        layout: "templates",
+        title: "Dark Template | Portfolio Creator",
+        data: fullName
+      });
     });
+
+    // res.render("dark", {
+    //   layout: "templates",
+    //   title: "Dark Template | Portfolio Creator"
+    // });
   });
   //When user click on light template image in the main page he will be directed to the light template page
   app.get("/light", function (req, res) {
@@ -51,28 +72,36 @@ module.exports = function (app) {
   });
 
 
-  db.User.findAll({
-    include: [
-      db.ProfileName,
-      db.Experience,
-      db.Skaccom,
-      db.Licert,
-      db.ConnectLinks,
-      db.Education
-    ]
-  }).then(function (result) {
-    console.log(result);
-    console.log(result[0].dataValues);
-    console.log(result[0].dataValues.profileFirstName);
-    res.render("dark", {
-      layout: "templates",
-      title: "Dark Template | Portfolio Creator",
-      data: result[0].dataValues
+  // db.User.findAll({
+  //   include: [
+  //     db.ProfileName,
+  //     db.Experience,
+  //     db.Skaccom,
+  //     db.Licert,
+  //     db.ConnectLinks,
+  //     db.Education
+  //   ]
+  // }).then(function (result) {
+  //   console.log(result);
+  //   console.log(result[0].dataValues);
+  //   console.log(result[0].dataValues.profileFirstName);
+  //   res.render("dark", {
+  //     layout: "templates",
+  //     title: "Dark Template | Portfolio Creator",
+  //     data: result[0].dataValues
+  //   });
+  // });
+
+  app.get("/account/:id", function (req, res) {
+    res.render("account", {
+      title: "Account | Portfolio Creator",
+      data: {
+        id: req.params.id
+      }
     });
   });
 
   app.get("/dashboard/:id", function (req, res) {
-
     db.User.findOne({ where: { id: req.params.id } }).then(function (results) {
       res.render("dashboard", {
         title: "Dashboard | Portfolio Creator",
@@ -81,7 +110,15 @@ module.exports = function (app) {
     });
   });
 
-
+  app.get("/api/profileName/:UserId", function (req, res) {
+    db.User.findOne({ where: { id: req.params.UserId } }).then(function (results) {
+      var fullName = results.profileFirstName + " " + results.profileLastName;
+      res.render("dark", {
+        title: fullName + " | Portfolio Creator",
+        data: results
+      });
+    });
+  });
 
   //   db.User.findOne({
   //     where: {
@@ -101,9 +138,4 @@ module.exports = function (app) {
   //   });
   // });
 
-  app.get("/account", function (req, res) {
-    res.render("account", {
-      title: "Account | Portfolio Creator"
-    });
-  });
 };

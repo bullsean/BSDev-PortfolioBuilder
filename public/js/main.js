@@ -85,7 +85,7 @@ $(document).ready(function() {
   //   //   window.location = "/";
   //   // });
   // });
-
+  var userId = $("#data").data("id");
   //When user submit his name, these info will be sent to the server -- check api-routes file
   $("#nameSubmit").on("click", function(event) {
     event.preventDefault();
@@ -95,13 +95,20 @@ $(document).ready(function() {
     var lastName = $("#last_name")
       .val()
       .trim();
+    var title = $("#title")
+      .val()
+      .trim();
+
+      
+      console.log(userId);
 
     $.ajax({
-      url: "/api/profileName",
+      url: "/api/profileName/" + userId,
       method: "POST",
       data: {
         firstName: firstName,
-        lastName: lastName
+        lastName: lastName,
+        title: title
       }
     }).then(function() {
       location.reload();
@@ -122,7 +129,7 @@ $(document).ready(function() {
       .trim();
 
     $.ajax({
-      url: "/api/experiences",
+      url: "/api/experiences/" + userId,
       method: "POST",
       data: {
         comJectName: comJectName,
@@ -228,17 +235,17 @@ $(document).ready(function() {
   //   //to be done later
   // });
 
-  // //On readyToGo load the selected template
-  // $("#readyToGo").on("click", function(event) {
-  //   event.preventDefault();
+  //On readyToGo load the selected template
+  $("#readyToGo").on("click", function(event) {
+    // event.preventDefault();
 
-  //   // $.ajax({
-  //   //   url: "/readyToGo",
-  //   //   method: "POST"
-  //   // }).then(function() {
-  //   //   window.location = "/"; //should be changed to load the selected template
-  //   // });
-  // });
+    // // $.ajax({
+    // //   url: "/api/dark" + data.id,
+    // //   method: "GET"
+    // // }).then(function(data) {
+    // window.location = "/dark" + "/" + $(this).data("id");
+    // });
+  });
 
   // //Validation functions
   function signupValidation(uname, pass, email) {
