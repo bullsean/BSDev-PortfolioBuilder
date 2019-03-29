@@ -40,7 +40,7 @@ module.exports = function(app) {
   });
 
   //When the user submit sign up form, his data will be captured here to process them into the authintication method
-  app.post("/api/dashboard", function(req, res) {
+  app.post("/api/account", function(req, res) {
     var userName = req.body.userName;
     var password = req.body.password;
     var email = req.body.email;
@@ -150,20 +150,42 @@ module.exports = function(app) {
     });
   });
 
-  // app.get("/api/users", function(req, res) {
-  //   // Here we add an "include" property to our options in our findAll query
-  //   // We set the value to an array of the models we want to include in a left outer join
-  //   db.User.findAll({
-  //     include: [
-  //       db.ProfileName,
-  //       db.Experience,
-  //       db.Skaccom,
-  //       db.Licert,
-  //       db.ConnectLinks,
-  //       db.Education
-  //     ]
+  // app.post("/upload", function(req, res) {
+  //   upload(req, res, function(err) {
+  //     if (err) {
+  //       throw err;
+  //     } else {
+  //       if (req.file === undefined) {
+  //         console.log("Error: no file selected");
+  //       } else {
+  //         console.log(req.file);
+  //         console.log("File uploaded");
+  //         res.render("the temp page", {
+  //           file: `uploads/${req.file.filename}`
+  //         })
+  //       }
+  //     }
+  //   });
+  // });
+
+  //Updating data record
+  // app.put("/api/update/:UserId", function(req, res) {
+
+  //   var comJectName = req.body.comJectName;
+  //   var titleRole = req.body.titleRole;
+  //   var description = req.body.desc;
+  //   var UserId = parseInt(req.params.UserId);
+  //   // Update takes in an object describing the properties we want to update, and
+  //   // we use where to describe which objects we want to update
+  //   db.Experience.update({
+  //     comJectName: req.body.comJectName,
+  //     titleRole: req.body.titleRole,
+  //     description: req.body.desc
+  //   }, {
+  //     where: {
+  //       id: req.body.UserId
+  //     }
   //   }).then(function(result) {
-  //     console.log(result);
   //     res.json(result);
   //   });
   // });

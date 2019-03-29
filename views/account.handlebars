@@ -1,23 +1,12 @@
 {{>account-header}}
-<!--Start bottom parallax-->
-<div class="parallax-container center valign-wrapper other-pages-parallax">
-    <div class="container">
-        <div class="row parallax03">
-            <div class="col s12 white-text">
-				<h3>Thank you for choosing BSD</h3>
-                <h1>Please fill in the form below with your information</h1>
-            </div>
-        </div>
-    </div>
-    <div class="parallax"><img src="/images/parallax4.jpg"></div>
-</div>
-<!--End bottom parallax-->
+<br><br>
 <!--Start first section -->
 <div class="section white content-container">
    <div class="row">
        <div class="col s12 card-wrap">
-            <div class="card profile-form">
-                <h1>Profile Information</h1>
+            <div class="card profile-form"><br>
+                <h4 class="content-headers">You are sign in as: {{data.userName}}</h4>
+                <p class="content-headers">Please update the forms below with your information</p><br>
                 <div class="divider"></div>
                 <ul class="collapsible">
                     <li>
@@ -70,6 +59,27 @@
                                 </button>
                                 <div class="clear"></div>
                             </form>
+                            <div class="divider"></div>
+                                <table id="tableBody" class="responsive-table">
+                                    <tbody>
+                                        <th>
+                                            <td>Company/Project</td>
+                                            <td>Title/Role</td>
+                                            <td>Description</td>
+                                            <td>Update</td>
+                                            <td>Delete</td>
+                                        </th>
+                                        <tr>
+                                            {{#each data.dataValues.Experiences}}
+                                                <td>{{dataValues.comJectName}}</td>
+                                                <td>{{dataValues.titleRole}}</td>
+                                                <td>{{dataValues.description}}</td>
+                                                <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
+                                                <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                            {{/each}}
+                                        </tr>
+                                    </tbody>
+                                </table>
                         </div>
                     </li>
                     <li>
@@ -165,12 +175,12 @@
                     <li>
                         <div class="collapsible-header"><i class="material-icons">filter_drama</i>Profile Photo</div>
                         <div class="collapsible-body">
-                            <form class = "col s12">
+                            <form class="col s12" action="/upload" metho="POST" enctype="multipart/form-data">
                                 <div class = "row">
                                 <div class = "file-field input-field">
                                     <div class = "btn">
                                         <span>Browse</span>
-                                        <input type = "file" />
+                                        <input name="myImage" type="file"/>
                                     </div>
                                     
                                     <div class = "file-path-wrapper">
@@ -179,10 +189,10 @@
                                     </div>
                                 </div>
                                 </div>
-                            </form> 
-                            <button id="profileImgSubmit" class="collapsible btn sendBtn waves-effect waves-light right" type="submit" name="action">Submit
-                                <i class="material-icons right">send</i>
-                            </button>
+                                <button class="collapsible btn sendBtn waves-effect waves-light right" type="submit">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </form>
                             <div class="clear"></div>
                         </div>
                     </li>

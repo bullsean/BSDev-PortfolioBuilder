@@ -10,7 +10,7 @@ $(document).ready(function() {
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
     if (scroll > 550) {
-      $("#header").css("background", "#f5c2aa");
+      $("#header").css("background", "#1e5250");
     } else {
       $("#header").css("background", "transparent");
     }
@@ -35,7 +35,7 @@ $(document).ready(function() {
       //check the api-routes file --- we do not need any html route for "/signup" rather we will render "/dashboard"
       //if authintication success .. redirect the user to his dashboard where his username will be displayed
       $.ajax({
-        url: "/api/dashboard",
+        url: "/api/account",
         method: "POST",
         data: {
           userName: userName,
@@ -43,7 +43,7 @@ $(document).ready(function() {
           email: email
         }
       }).then(function(data) {
-        window.location = "/dashboard" + "/" + data.id;
+        window.location = "/account" + "/" + data.id;
       });
     } else {
       return false;
@@ -232,17 +232,19 @@ $(document).ready(function() {
   //   //to be done later
   // });
 
-  //On readyToGo load the selected template
-  $("#readyToGo").on("click", function(event) {
-    // event.preventDefault();
+  //Update button
+  // $("#update").on("click", function(event){
+  //   event.preventDefault();
+  //   var updatedItem = $(this).val().trim();
 
-    // // $.ajax({
-    // //   url: "/api/dark" + data.id,
-    // //   method: "GET"
-    // // }).then(function(data) {
-    // window.location = "/dark" + "/" + $(this).data("id");
-    // });
-  });
+  //     $.ajax({
+  //       method: "PUT",
+  //       url: "/api/update" + userId,
+  //       data: updatedItem
+  //     }).then(function() {
+  //       location.reload();
+  //     });
+  // });
 
   // //Validation functions
   function signupValidation(uname, pass, email) {

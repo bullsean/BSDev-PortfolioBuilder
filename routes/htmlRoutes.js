@@ -6,27 +6,6 @@ module.exports = function (app) {
     res.render("index", {
       title: "Home | Portfolio Creator"
     });
-    // db.Example.findAll({}).then(function(dbExamples) {
-    // res.render("index", {
-    //   title: "Home | Portfolio Creator",
-    //   msg: "Welcome!",
-    //   examples: dbExamples
-    // });
-    // });
-    // });
-
-    // Load example page and pass in an example by id
-    // app.get("/example/:id", function(req, res) {
-    //   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-    //     res.render("example", {
-    //       example: dbExample
-    //     });
-    //   });
-    // });
-
-    // // Render 404 page for any unmatched routes
-    // app.get("*", function(req, res) {
-    //   res.render("404");
   });
 
   //When user click on login at the navbar he will be directed to the login page
@@ -59,10 +38,6 @@ module.exports = function (app) {
       });
     });
 
-    // res.render("dark", {
-    //   layout: "templates",
-    //   title: "Dark Template | Portfolio Creator"
-    // });
   });
   //When user click on light template image in the main page he will be directed to the light template page
   app.get("/light", function (req, res) {
@@ -72,40 +47,19 @@ module.exports = function (app) {
     });
   });
 
-
-  // db.User.findAll({
-  //   include: [
-  //     db.ProfileName,
-  //     db.Experience,
-  //     db.Skaccom,
-  //     db.Licert,
-  //     db.ConnectLinks,
-  //     db.Education
-  //   ]
-  // }).then(function (result) {
-  //   console.log(result);
-  //   console.log(result[0].dataValues);
-  //   console.log(result[0].dataValues.profileFirstName);
-  //   res.render("dark", {
-  //     layout: "templates",
-  //     title: "Dark Template | Portfolio Creator",
-  //     data: result[0].dataValues
+  // app.get("/account/:id", function (req, res) {
+  //   res.render("account", {
+  //     title: "Account | Portfolio Creator",
+  //     data: {
+  //       id: req.params.id
+  //     }
   //   });
   // });
 
   app.get("/account/:id", function (req, res) {
-    res.render("account", {
-      title: "Account | Portfolio Creator",
-      data: {
-        id: req.params.id
-      }
-    });
-  });
-
-  app.get("/dashboard/:id", function (req, res) {
     db.User.findOne({ where: { id: req.params.id } }).then(function (results) {
-      res.render("dashboard", {
-        title: "Dashboard | Portfolio Creator",
+      res.render("account", {
+        title: results.userName + " | Portfolio Creator",
         data: results
       });
     });

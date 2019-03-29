@@ -37,8 +37,6 @@ User.associate = function (models) {
     User.hasMany(models.Skaccom, {
         onDelete: "cascade"
     });
-
-};
-
+}
     return User;
 };
