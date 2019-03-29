@@ -27,10 +27,6 @@ module.exports = function (app) {
       ],
       where: { id: req.params.id }
     }).then(function(results) {
-      for(var i = 0 ; i < results.Education.length ; i++) {
-        console.log(results.Education[i]);
-      }
-
       res.render("dark", {
         layout: "templates",
         title: "Dark Template | Portfolio Creator",
@@ -64,6 +60,8 @@ module.exports = function (app) {
     //   });
     // });
 
+    var userId = req.params.id;
+
     db.User.findOne({
       include: [
         db.ProfileName,
@@ -73,11 +71,8 @@ module.exports = function (app) {
         db.ConnectLinks,
         db.Education
       ],
-      where: { id: req.params.id }
+      where: { id: userId }
     }).then(function(results) {
-      for(var i = 0 ; i < results.Education.length ; i++) {
-        console.log(results.Education[i]);
-      }
       res.render("account", {
         title: results.userName + " | Portfolio Creator",
         data: results

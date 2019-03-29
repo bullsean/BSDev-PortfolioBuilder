@@ -89,6 +89,27 @@ module.exports = function(app) {
     });
   });
 
+  // // update experiences
+  // app.put("/updateExp/:UserId", function(req, res) {
+  //   var id = parseInt(req.params.id);
+  //   var comJectName = req.body.comJectName;
+  //   var titleRole = req.body.titleRole;
+  //   var description = req.body.desc;
+
+  //   db.Experience.update({ 
+  //       comJectName: comJectName,
+  //       titleRole: titleRole,
+  //       description: description,
+  //    }, {
+  //     where: {
+  //         UserId: id
+  //     }
+  //   }).then(function(results) {
+  //     res.json(results);
+  //   });
+  // });
+
+
   //add profile info (education coming from the account page) to the DB
   app.post("/api/education/:UserId", function(req, res) {
     var institution = req.body.institution;
@@ -112,7 +133,6 @@ module.exports = function(app) {
       licertName: licertName,
       UserId: parseInt(req.params.UserId)
     }).then(function(result) {
-      // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });
   });
@@ -125,8 +145,6 @@ module.exports = function(app) {
       skaccomName: skaccomName,
       UserId: parseInt(req.params.UserId)
     }).then(function(result) {
-      console.log("this is the skill result:" + result);
-      // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });
   });
@@ -168,22 +186,155 @@ module.exports = function(app) {
   //   });
   // });
 
-  //Updating data record
-  // app.put("/api/update/:UserId", function(req, res) {
+  // Updating data record
+  app.put("/api/updateExp/:idToUpdate", function(req, res) {
 
-  //   var comJectName = req.body.comJectName;
-  //   var titleRole = req.body.titleRole;
-  //   var description = req.body.desc;
-  //   var UserId = parseInt(req.params.UserId);
+    var comJectName = req.body.comJectName;
+    var titleRole = req.body.titleRole;
+    var description = req.body.desc;
+    var UserId = parseInt(req.params.idToUpdate);
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Experience.update({
+      comJectName: comJectName,
+      titleRole: titleRole,
+      description: description
+    }, {
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+  // Updating data record
+  app.put("/api/updateEdu/:idToUpdate", function(req, res) {
+
+    var institution = req.body.institution;
+    var degree = req.body.degree;
+    var UserId = parseInt(req.params.idToUpdate);
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Education.update({
+      institution: institution,
+      degree: degree
+    }, {
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  // Updating data record
+  app.put("/api/updateLicert/:idToUpdate", function(req, res) {
+
+    var licertName = req.body.licertName;
+    var UserId = parseInt(req.params.idToUpdate);
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Licert.update({
+      licertName: licertName
+    }, {
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  // Updating data record
+  app.put("/api/updateSkaccom/:idToUpdate", function(req, res) {
+
+    var skaccomName = req.body.skaccomName;
+    var UserId = parseInt(req.params.idToUpdate);
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Skaccom.update({
+      skaccomName: skaccomName
+    }, {
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  // // Updating data record
+  // app.put("/api/updateConnect/:idToUpdate", function(req, res) {
+
+  //   var facebook = req.body.facebook;
+  //   var UserId = parseInt(req.params.idToUpdate);
   //   // Update takes in an object describing the properties we want to update, and
   //   // we use where to describe which objects we want to update
-  //   db.Experience.update({
-  //     comJectName: req.body.comJectName,
-  //     titleRole: req.body.titleRole,
-  //     description: req.body.desc
+  //   db.ConnectLinks.update({
+  //     facebook: facebook
   //   }, {
   //     where: {
-  //       id: req.body.UserId
+  //       id: UserId
+  //     }
+  //   }).then(function(result) {
+  //     res.json(result);
+  //   });
+  // });
+
+  //Deleting record
+  app.delete("/api/deleteExp/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Experience.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //Deleting record
+  app.delete("/api/deleteEdu/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Education.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //Deleting record
+  app.delete("/api/deleteLicert/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Licert.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //Deleting record
+  app.delete("/api/deleteSkaccom/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Skaccom.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //  //Deleting record
+  //  app.delete("/api/deleteConnect/:idToDelete", function(req, res) {
+  //   var UserId = parseInt(req.params.idToDelete);
+  //   db.ConnectLinks.destroy({
+  //     where: {
+  //       id: UserId
   //     }
   //   }).then(function(result) {
   //     res.json(result);

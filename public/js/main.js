@@ -227,6 +227,179 @@ $(document).ready(function() {
     });
   });
 
+  //When updateExp button clicked update the record in DB
+  $(".updateExp").on("click", function() {
+    var idToUpdate = $(this).data("updateid");
+    event.preventDefault();
+    var comJectName = $("#company-project")
+      .val()
+      .trim();
+    var titleRole = $("#title-role")
+      .val()
+      .trim();
+    var desc = $("#description")
+      .val()
+      .trim();
+
+    // Send the PUT request.
+    $.ajax("/api/updateExp/" + idToUpdate, {
+      type: "PUT",
+      data: {
+        comJectName: comJectName,
+        titleRole: titleRole,
+        desc: desc
+      }
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  //When updateEdu button clicked update the record in DB
+  $(".updateEdu").on("click", function() {
+    var idToUpdate = $(this).data("updateid");
+    event.preventDefault();
+    var institution = $("#institute")
+      .val()
+      .trim();
+    var degree = $("#degree")
+      .val()
+      .trim();
+
+    // Send the PUT request.
+    $.ajax("/api/updateEdu/" + idToUpdate, {
+      type: "PUT",
+      data: {
+        institution: institution,
+        degree: degree
+      }
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+   //When updateLicert button clicked update the record in DB
+   $(".updateLicert").on("click", function() {
+    var idToUpdate = $(this).data("updateid");
+    event.preventDefault();
+    var licertName = $("#lice-cert-name")
+      .val()
+      .trim();
+
+    // Send the PUT request.
+    $.ajax("/api/updateLicert/" + idToUpdate, {
+      type: "PUT",
+      data: {
+        licertName: licertName
+      }
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  //When updateSkaccom button clicked update the record in DB
+  $(".updateSkaccom").on("click", function() {
+    var idToUpdate = $(this).data("updateid");
+    event.preventDefault();
+    var skaccomName = $("#skill-accom-name")
+      .val()
+      .trim();
+
+    // Send the PUT request.
+    $.ajax("/api/updateSkaccom/" + idToUpdate, {
+      type: "PUT",
+      data: {
+        skaccomName: skaccomName
+      }
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  // //When updateConnect button clicked update the record in DB
+  // $(".updateConnect").on("click", function() {
+  //   var idToUpdate = $(this).data("updateid");
+  //   console.log(idToUpdate);
+  //   event.preventDefault();
+  //   var facebook = $("#facebook")
+  //     .val()
+  //     .trim();
+
+  //   // Send the PUT request.
+  //   $.ajax("/api/updateConnect/" + idToUpdate, {
+  //     type: "PUT",
+  //     data: {
+  //       facebook: facebook
+  //     }
+  //   }).then(function() {
+  //     // Reload the page to get the updated list
+  //     location.reload();
+  //   });
+  // });
+
+  //When DeleteExp button clicked delete the record from DB
+  $(".deleteExp").on("click", function() {
+    var idToDelete = $(this).data("deleteid");
+
+    $.ajax("/api/deleteExp/" + idToDelete, {
+      method: "DELETE"
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  //When DeleteEdu button clicked delete the record from DB
+  $(".deleteEdu").on("click", function() {
+    var idToDelete = $(this).data("deleteid");
+
+    $.ajax("/api/deleteEdu/" + idToDelete, {
+      method: "DELETE"
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  //When DeleteLicert button clicked delete the record from DB
+  $(".deleteLicert").on("click", function() {
+    var idToDelete = $(this).data("deleteid");
+
+    $.ajax("/api/deleteLicert/" + idToDelete, {
+      method: "DELETE"
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  //When DeleteSkaccom button clicked delete the record from DB
+  $(".deleteSkaccom").on("click", function() {
+    var idToDelete = $(this).data("deleteid");
+
+    $.ajax("/api/deleteSkaccom/" + idToDelete, {
+      method: "DELETE"
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+   //When DeleteConnect button clicked delete the record from DB
+   $(".deleteConnect").on("click", function() {
+    var idToDelete = $(this).data("deleteid");
+
+    $.ajax("/api/deleteConnect/" + idToDelete, {
+      method: "DELETE"
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
   // //On submiting profile image through account page
   // $("#profileImgSubmit").on("click", function(event){
   //   //to be done later

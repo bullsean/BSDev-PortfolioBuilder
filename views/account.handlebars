@@ -70,13 +70,13 @@
                                         <td>Delete</td>
                                     </tr>
                                     {{#each data.dataValues.Experiences}}
-                                    <tr class="incoming-data">
-                                        <td>{{dataValues.comJectName}}</td>
-                                        <td>{{dataValues.titleRole}}</td>
-                                        <td>{{dataValues.description}}</td>
-                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
-                                    </tr>
+                                        <tr class="incoming-data todo-action">
+                                            <td>{{dataValues.comJectName}}</td>
+                                            <td>{{dataValues.titleRole}}</td>
+                                            <td>{{dataValues.description}}</td>
+                                            <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateExp"><i class="material-icons">system_update_alt</i></a></td>
+                                            <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteExp"><i class="material-icons">delete</i></a></td>
+                                        </tr>
                                     {{/each}}
                                 </tbody>
                             </table>
@@ -111,12 +111,12 @@
                                         <td>Delete</td>
                                     </tr>
                                     {{#each data.dataValues.Education}}
-                                    <tr class="incoming-data">
-                                        <td>{{dataValues.institution}}</td>
-                                        <td>{{dataValues.degree}}</td>
-                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
-                                    </tr>
+                                        <tr class="incoming-data">
+                                            <td>{{dataValues.institution}}</td>
+                                            <td>{{dataValues.degree}}</td>
+                                            <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateEdu"><i class="material-icons">system_update_alt</i></a></td>
+                                            <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteEdu"><i class="material-icons">delete</i></a></td>
+                                        </tr>
                                     {{/each}}
                                 </tbody>
                             </table>
@@ -144,11 +144,11 @@
                                         <td>Name of License/Certificate</td>
                                     </tr>
                                     {{#each data.dataValues.Licerts}}
-                                    <tr class="incoming-data">
-                                        <td>{{dataValues.licertName}}</td>
-                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
-                                    </tr>
+                                        <tr class="incoming-data">
+                                            <td>{{dataValues.licertName}}</td>
+                                            <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateLicert"><i class="material-icons">system_update_alt</i></a></td>
+                                            <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteLicert"><i class="material-icons">delete</i></a></td>
+                                        </tr>
                                     {{/each}}
                                 </tbody>
                             </table>
@@ -176,11 +176,11 @@
                                         <td>Name of Skill/Accomplishment</td>
                                     </tr>
                                     {{#each data.dataValues.Skaccoms}}
-                                    <tr class="incoming-data">
-                                        <td>{{dataValues.skaccomName}}</td>
-                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
-                                    </tr>
+                                        <tr class="incoming-data">
+                                            <td>{{dataValues.skaccomName}}</td>
+                                            <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateSkaccom"><i class="material-icons">system_update_alt</i></a></td>
+                                            <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteSkaccom"><i class="material-icons">delete</i></a></td>
+                                        </tr>
                                     {{/each}}
                                 </tbody>
                             </table>
@@ -225,26 +225,26 @@
                                     <tr class="incoming-data">
                                         <td>Facebook</td>
                                         <td>{{data.dataValues.ConnectLink.dataValues.facebook}}</td>
-                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                        <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateFacebbok"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteFacebook"><i class="material-icons">delete</i></a></td>
                                     </tr>
                                     <tr class="incoming-data">
                                         <td>Linkedin</td>
                                         <td>{{data.dataValues.ConnectLink.dataValues.linkedin}}</td>
-                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                        <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateRecord"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteRecord"><i class="material-icons">delete</i></a></td>
                                     </tr>
                                     <tr class="incoming-data">
                                         <td>GitHub</td>
                                         <td>{{data.dataValues.ConnectLink.dataValues.github}}</td>
-                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                        <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateRecord"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteRecord"><i class="material-icons">delete</i></a></td>
                                     </tr>
                                     <tr class="incoming-data">
                                         <td>Instagram</td>
                                         <td>{{data.dataValues.ConnectLink.dataValues.instagram}}</td>
-                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                        <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateRecord"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteRecord"><i class="material-icons">delete</i></a></td>
                                     </tr>
                                 </tbody>
                             </table>
