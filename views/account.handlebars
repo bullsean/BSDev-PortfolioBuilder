@@ -60,26 +60,26 @@
                                 <div class="clear"></div>
                             </form>
                             <div class="divider"></div>
-                                <table id="tableBody" class="responsive-table">
-                                    <tbody>
-                                        <th>
-                                            <td>Company/Project</td>
-                                            <td>Title/Role</td>
-                                            <td>Description</td>
-                                            <td>Update</td>
-                                            <td>Delete</td>
-                                        </th>
-                                        <tr>
-                                            {{#each data.dataValues.Experiences}}
-                                                <td>{{dataValues.comJectName}}</td>
-                                                <td>{{dataValues.titleRole}}</td>
-                                                <td>{{dataValues.description}}</td>
-                                                <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
-                                                <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
-                                            {{/each}}
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <table id="tableBody" class="responsive-table">
+                                <tbody>
+                                    <tr class="incoming-data">
+                                        <td>Company/Project</td>
+                                        <td>Title/Role</td>
+                                        <td>Description</td>
+                                        <td>Update</td>
+                                        <td>Delete</td>
+                                    </tr>
+                                    {{#each data.dataValues.Experiences}}
+                                    <tr class="incoming-data">
+                                        <td>{{dataValues.comJectName}}</td>
+                                        <td>{{dataValues.titleRole}}</td>
+                                        <td>{{dataValues.description}}</td>
+                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
                         </div>
                     </li>
                     <li>
@@ -89,7 +89,7 @@
                                 <div class="row">
                                     <div class="input-field col s6">
                                         <input placeholder="" id="institute" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="institute">Institute</label>
+                                        <label class="accountFieldLabel" for="institute">Institution</label>
                                     </div>
                                     <div class="input-field col s6">
                                         <input placeholder="" id="degree" type="text" class="validate">
@@ -101,6 +101,25 @@
                                 </button>
                                 <div class="clear"></div>
                             </form>
+                            <div class="divider"></div>
+                            <table id="tableBody" class="responsive-table">
+                                <tbody>
+                                    <tr class="incoming-data">
+                                        <td>Institution</td>
+                                        <td>Degree</td>
+                                        <td>Update</td>
+                                        <td>Delete</td>
+                                    </tr>
+                                    {{#each data.dataValues.Education}}
+                                    <tr class="incoming-data">
+                                        <td>{{dataValues.institution}}</td>
+                                        <td>{{dataValues.degree}}</td>
+                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
                         </div>
                     </li>
                     <li>
@@ -118,6 +137,21 @@
                                 </button>
                                 <div class="clear"></div>
                             </form>
+                            <div class="divider"></div>
+                            <table id="tableBody" class="responsive-table">
+                                <tbody>
+                                    <tr class="incoming-data">
+                                        <td>Name of License/Certificate</td>
+                                    </tr>
+                                    {{#each data.dataValues.Licerts}}
+                                    <tr class="incoming-data">
+                                        <td>{{dataValues.licertName}}</td>
+                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
                         </div>
                     </li>
                     <li>
@@ -135,6 +169,21 @@
                                 </button>
                                 <div class="clear"></div>
                             </form>
+                            <div class="divider"></div>
+                            <table id="tableBody" class="responsive-table">
+                                <tbody>
+                                    <tr class="incoming-data">
+                                        <td>Name of Skill/Accomplishment</td>
+                                    </tr>
+                                    {{#each data.dataValues.Skaccoms}}
+                                    <tr class="incoming-data">
+                                        <td>{{dataValues.skaccomName}}</td>
+                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
                         </div>
                     </li>
                     <li>
@@ -170,6 +219,35 @@
                                 </button>
                                 <div class="clear"></div>
                             </form>
+                            <div class="divider"></div>
+                            <table id="tableBody" class="responsive-table">
+                                <tbody>
+                                    <tr class="incoming-data">
+                                        <td>Facebook</td>
+                                        <td>{{data.dataValues.ConnectLink.dataValues.facebook}}</td>
+                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                    </tr>
+                                    <tr class="incoming-data">
+                                        <td>Linkedin</td>
+                                        <td>{{data.dataValues.ConnectLink.dataValues.linkedin}}</td>
+                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                    </tr>
+                                    <tr class="incoming-data">
+                                        <td>GitHub</td>
+                                        <td>{{data.dataValues.ConnectLink.dataValues.github}}</td>
+                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                    </tr>
+                                    <tr class="incoming-data">
+                                        <td>Instagram</td>
+                                        <td>{{data.dataValues.ConnectLink.dataValues.instagram}}</td>
+                                        <td><a id="update" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" class="btn-floating btn-large waves-effect waves-light"><i class="material-icons">delete</i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </li>
                     <li>
@@ -194,6 +272,7 @@
                                 </button>
                             </form>
                             <div class="clear"></div>
+                            <div class="divider"></div>
                         </div>
                     </li>
                 </ul>

@@ -57,7 +57,27 @@ module.exports = function (app) {
   // });
 
   app.get("/account/:id", function (req, res) {
-    db.User.findOne({ where: { id: req.params.id } }).then(function (results) {
+    // db.User.findOne({ where: { id: req.params.id } }).then(function (results) {
+    //   res.render("account", {
+    //     title: results.userName + " | Portfolio Creator",
+    //     data: results
+    //   });
+    // });
+
+    db.User.findOne({
+      include: [
+        db.ProfileName,
+        db.Experience,
+        db.Skaccom,
+        db.Licert,
+        db.ConnectLinks,
+        db.Education
+      ],
+      where: { id: req.params.id }
+    }).then(function(results) {
+      for(var i = 0 ; i < results.Education.length ; i++) {
+        console.log(results.Education[i]);
+      }
       res.render("account", {
         title: results.userName + " | Portfolio Creator",
         data: results
@@ -66,6 +86,7 @@ module.exports = function (app) {
   });
 
   app.get("/api/profileName/:UserId", function (req, res) {
+    //Selecting user signup/data to display in account page
     db.User.findOne({ where: { id: req.params.UserId } }).then(function (results) {
       var fullName = results.profileFirstName + " " + results.profileLastName;
       res.render("dark", {
