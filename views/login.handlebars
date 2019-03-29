@@ -53,3 +53,20 @@
 </div>
 <!-- End first section -->
 {{>footer}}
+
+
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBAGcltZ0G-f6pXMNRwN3gWuQzYsABujiA",
+    authDomain: "portfolio-builder-2f761.firebaseapp.com",
+    databaseURL: "https://portfolio-builder-2f761.firebaseio.com",
+    projectId: "portfolio-builder-2f761",
+    storageBucket: "portfolio-builder-2f761.appspot.com",
+    messagingSenderId: "249863693220"
+  };
+  firebase.initializeApp(config);
+
+  var auth = firebase.auth();
+</script>
