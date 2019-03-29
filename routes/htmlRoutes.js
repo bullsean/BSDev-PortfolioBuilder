@@ -48,13 +48,14 @@ module.exports = function (app) {
       ],
       where: { id: req.params.id }
     }).then(function(results) {
-      console.log(results);
-      var fullName = results.dataValues.ProfileName.dataValues.profileFirstName + " " + results.dataValues.ProfileName.dataValues.profileLastName;
-      console.log(fullName);
+      for(var i = 0 ; i < results.Education.length ; i++) {
+        console.log(results.Education[i]);
+      }
+
       res.render("dark", {
         layout: "templates",
         title: "Dark Template | Portfolio Creator",
-        data: fullName
+        data: results
       });
     });
 
@@ -137,5 +138,4 @@ module.exports = function (app) {
   //     title: "Dashboard | Portfolio Creator"
   //   });
   // });
-
 };

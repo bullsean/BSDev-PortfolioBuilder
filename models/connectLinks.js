@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
         instagram: {
             type: DataTypes.STRING,
         },
-        linkedIn: {
+        linkedin: {
             type: DataTypes.STRING,
         },
         github: {

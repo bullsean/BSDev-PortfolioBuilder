@@ -99,9 +99,6 @@ $(document).ready(function() {
       .val()
       .trim();
 
-      
-      console.log(userId);
-
     $.ajax({
       url: "/api/profileName/" + userId,
       method: "POST",
@@ -152,7 +149,7 @@ $(document).ready(function() {
       .trim();
 
     $.ajax({
-      url: "/api/education",
+      url: "/api/education/" + userId,
       method: "POST",
       data: {
         institution: institution,
@@ -172,7 +169,7 @@ $(document).ready(function() {
       .trim();
 
     $.ajax({
-      url: "/api/licert",
+      url: "/api/licert/" + userId,
       method: "POST",
       data: {
         licertName: licertName
@@ -190,7 +187,7 @@ $(document).ready(function() {
       .trim();
 
     $.ajax({
-      url: "/api/skaccom",
+      url: "/api/skaccom/" + userId,
       method: "POST",
       data: {
         skaccomName: skaccomName
@@ -217,7 +214,7 @@ $(document).ready(function() {
       .trim();
 
     $.ajax({
-      url: "/api/connectLinks",
+      url: "/api/connectLinks/" + userId,
       method: "POST",
       data: {
         facebook: facebook,
