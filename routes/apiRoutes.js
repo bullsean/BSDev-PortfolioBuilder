@@ -263,5 +263,81 @@ module.exports = function(app) {
     });
   });
 
-};
+  // // Updating data record
+  // app.put("/api/updateConnect/:idToUpdate", function(req, res) {
 
+  //   var facebook = req.body.facebook;
+  //   var UserId = parseInt(req.params.idToUpdate);
+  //   // Update takes in an object describing the properties we want to update, and
+  //   // we use where to describe which objects we want to update
+  //   db.ConnectLinks.update({
+  //     facebook: facebook
+  //   }, {
+  //     where: {
+  //       id: UserId
+  //     }
+  //   }).then(function(result) {
+  //     res.json(result);
+  //   });
+  // });
+
+  //Deleting record
+  app.delete("/api/deleteExp/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Experience.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //Deleting record
+  app.delete("/api/deleteEdu/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Education.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //Deleting record
+  app.delete("/api/deleteLicert/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Licert.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //Deleting record
+  app.delete("/api/deleteSkaccom/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Skaccom.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //  //Deleting record
+  //  app.delete("/api/deleteConnect/:idToDelete", function(req, res) {
+  //   var UserId = parseInt(req.params.idToDelete);
+  //   db.ConnectLinks.destroy({
+  //     where: {
+  //       id: UserId
+  //     }
+  //   }).then(function(result) {
+  //     res.json(result);
+  //   });
+  // });
+};

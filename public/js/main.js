@@ -319,6 +319,87 @@ $(document).ready(function() {
     });
   });
 
+  // //When updateConnect button clicked update the record in DB
+  // $(".updateConnect").on("click", function() {
+  //   var idToUpdate = $(this).data("updateid");
+  //   console.log(idToUpdate);
+  //   event.preventDefault();
+  //   var facebook = $("#facebook")
+  //     .val()
+  //     .trim();
+
+  //   // Send the PUT request.
+  //   $.ajax("/api/updateConnect/" + idToUpdate, {
+  //     type: "PUT",
+  //     data: {
+  //       facebook: facebook
+  //     }
+  //   }).then(function() {
+  //     // Reload the page to get the updated list
+  //     location.reload();
+  //   });
+  // });
+
+  //When DeleteExp button clicked delete the record from DB
+  $(".deleteExp").on("click", function() {
+    var idToDelete = $(this).data("deleteid");
+
+    $.ajax("/api/deleteExp/" + idToDelete, {
+      method: "DELETE"
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  //When DeleteEdu button clicked delete the record from DB
+  $(".deleteEdu").on("click", function() {
+    var idToDelete = $(this).data("deleteid");
+
+    $.ajax("/api/deleteEdu/" + idToDelete, {
+      method: "DELETE"
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  //When DeleteLicert button clicked delete the record from DB
+  $(".deleteLicert").on("click", function() {
+    var idToDelete = $(this).data("deleteid");
+
+    $.ajax("/api/deleteLicert/" + idToDelete, {
+      method: "DELETE"
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  //When DeleteSkaccom button clicked delete the record from DB
+  $(".deleteSkaccom").on("click", function() {
+    var idToDelete = $(this).data("deleteid");
+
+    $.ajax("/api/deleteSkaccom/" + idToDelete, {
+      method: "DELETE"
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+   //When DeleteConnect button clicked delete the record from DB
+   $(".deleteConnect").on("click", function() {
+    var idToDelete = $(this).data("deleteid");
+
+    $.ajax("/api/deleteConnect/" + idToDelete, {
+      method: "DELETE"
+    }).then(function() {
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
   // //On submiting profile image through account page
   // $("#profileImgSubmit").on("click", function(event){
   //   //to be done later
