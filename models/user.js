@@ -1,4 +1,3 @@
-
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
     userName: {
@@ -38,8 +37,6 @@ User.associate = function (models) {
     User.hasMany(models.Skaccom, {
         onDelete: "cascade"
     });
-
-};
-
+}
     return User;
 };

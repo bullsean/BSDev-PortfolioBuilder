@@ -40,7 +40,7 @@ module.exports = function(app) {
   });
 
   //When the user submit sign up form, his data will be captured here to process them into the authintication method
-  app.post("/api/dashboard", function(req, res) {
+  app.post("/api/account", function(req, res) {
     var userName = req.body.userName;
     var password = req.body.password;
     var email = req.body.email;
@@ -61,7 +61,7 @@ module.exports = function(app) {
     var profileFirstName = req.body.firstName;
     var profileLastName = req.body.lastName;
     var title = req.body.title;
-    console.log(req.params.UserId)
+    // console.log(req.params.UserId);
 
     db.ProfileName.create({
       profileFirstName: profileFirstName,
@@ -85,20 +85,40 @@ module.exports = function(app) {
       description: description,
       UserId: parseInt(req.params.UserId)
     }).then(function(result) {
-      console.log(result.dataValues.Experiences)
-      console.log("this is the Project result:" + result);
       res.json(result);
     });
   });
 
+  // // update experiences
+  // app.put("/updateExp/:UserId", function(req, res) {
+  //   var id = parseInt(req.params.id);
+  //   var comJectName = req.body.comJectName;
+  //   var titleRole = req.body.titleRole;
+  //   var description = req.body.desc;
+
+  //   db.Experience.update({ 
+  //       comJectName: comJectName,
+  //       titleRole: titleRole,
+  //       description: description,
+  //    }, {
+  //     where: {
+  //         UserId: id
+  //     }
+  //   }).then(function(results) {
+  //     res.json(results);
+  //   });
+  // });
+
+
   //add profile info (education coming from the account page) to the DB
-  app.post("/api/education", function(req, res) {
+  app.post("/api/education/:UserId", function(req, res) {
     var institution = req.body.institution;
     var degree = req.body.degree;
 
     db.Education.create({
       institution: institution,
-      degree: degree
+      degree: degree,
+      UserId: parseInt(req.params.UserId)
     }).then(function(result) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
@@ -106,32 +126,31 @@ module.exports = function(app) {
   });
 
   //add user account inputs (license/certifications) to the DB
-  app.post("/api/licert", function(req, res) {
-    var licertName = req.body.licert_Name;
+  app.post("/api/licert/:UserId", function(req, res) {
+    var licertName = req.body.licertName;
 
     db.Licert.create({
-      licertName: licertName
+      licertName: licertName,
+      UserId: parseInt(req.params.UserId)
     }).then(function(result) {
-      // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });
   });
 
   //add user account inputs (skills and accomplishments) to the DB
-  app.post("/api/skaccom", function(req, res) {
+  app.post("/api/skaccom/:UserId", function(req, res) {
     var skaccomName = req.body.skaccomName;
 
     db.Skaccom.create({
-      skaccomName: skaccomName
+      skaccomName: skaccomName,
+      UserId: parseInt(req.params.UserId)
     }).then(function(result) {
-      console.log("this is the skill result:" + result);
-      // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });
   });
 
   //add user account inputs (connection info) to the DB
-  app.post("/api/connectLinks", function(req, res) {
+  app.post("/api/connectLinks/:UserId", function(req, res) {
     var facebook = req.body.facebook;
     var linkedin = req.body.linkedin;
     var github = req.body.github;
@@ -141,27 +160,183 @@ module.exports = function(app) {
       facebook: facebook,
       linkedin: linkedin,
       github: github,
-      instagram: instagram
+      instagram: instagram,
+      UserId: parseInt(req.params.UserId)
     }).then(function(result) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });
   });
 
-  // app.get("/api/users", function(req, res) {
-  //   // Here we add an "include" property to our options in our findAll query
-  //   // We set the value to an array of the models we want to include in a left outer join
-  //   db.User.findAll({
-  //     include: [
-  //       db.ProfileName,
-  //       db.Experience,
-  //       db.Skaccom,
-  //       db.Licert,
-  //       db.ConnectLinks,
-  //       db.Education
-  //     ]
+  // app.post("/upload", function(req, res) {
+  //   upload(req, res, function(err) {
+  //     if (err) {
+  //       throw err;
+  //     } else {
+  //       if (req.file === undefined) {
+  //         console.log("Error: no file selected");
+  //       } else {
+  //         console.log(req.file);
+  //         console.log("File uploaded");
+  //         res.render("the temp page", {
+  //           file: `uploads/${req.file.filename}`
+  //         })
+  //       }
+  //     }
+  //   });
+  // });
+
+  // Updating data record
+  app.put("/api/updateExp/:idToUpdate", function(req, res) {
+
+    var comJectName = req.body.comJectName;
+    var titleRole = req.body.titleRole;
+    var description = req.body.desc;
+    var UserId = parseInt(req.params.idToUpdate);
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Experience.update({
+      comJectName: comJectName,
+      titleRole: titleRole,
+      description: description
+    }, {
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+  // Updating data record
+  app.put("/api/updateEdu/:idToUpdate", function(req, res) {
+
+    var institution = req.body.institution;
+    var degree = req.body.degree;
+    var UserId = parseInt(req.params.idToUpdate);
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Education.update({
+      institution: institution,
+      degree: degree
+    }, {
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  // Updating data record
+  app.put("/api/updateLicert/:idToUpdate", function(req, res) {
+
+    var licertName = req.body.licertName;
+    var UserId = parseInt(req.params.idToUpdate);
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Licert.update({
+      licertName: licertName
+    }, {
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  // Updating data record
+  app.put("/api/updateSkaccom/:idToUpdate", function(req, res) {
+
+    var skaccomName = req.body.skaccomName;
+    var UserId = parseInt(req.params.idToUpdate);
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Skaccom.update({
+      skaccomName: skaccomName
+    }, {
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  // // Updating data record
+  // app.put("/api/updateConnect/:idToUpdate", function(req, res) {
+
+  //   var facebook = req.body.facebook;
+  //   var UserId = parseInt(req.params.idToUpdate);
+  //   // Update takes in an object describing the properties we want to update, and
+  //   // we use where to describe which objects we want to update
+  //   db.ConnectLinks.update({
+  //     facebook: facebook
+  //   }, {
+  //     where: {
+  //       id: UserId
+  //     }
   //   }).then(function(result) {
-  //     console.log(result);
+  //     res.json(result);
+  //   });
+  // });
+
+  //Deleting record
+  app.delete("/api/deleteExp/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Experience.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //Deleting record
+  app.delete("/api/deleteEdu/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Education.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //Deleting record
+  app.delete("/api/deleteLicert/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Licert.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //Deleting record
+  app.delete("/api/deleteSkaccom/:idToDelete", function(req, res) {
+    var UserId = parseInt(req.params.idToDelete);
+    db.Skaccom.destroy({
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
+  //  //Deleting record
+  //  app.delete("/api/deleteConnect/:idToDelete", function(req, res) {
+  //   var UserId = parseInt(req.params.idToDelete);
+  //   db.ConnectLinks.destroy({
+  //     where: {
+  //       id: UserId
+  //     }
+  //   }).then(function(result) {
   //     res.json(result);
   //   });
   // });

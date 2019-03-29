@@ -3,9 +3,9 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <br><br>
-                <h1 class="header center white-text">Liz Graham {{data}}</h1>
+                <h1 class="header center white-text">Liz Graham {{data.dataValues.ProfileName.dataValues.profileFirstName}} {{data.dataValues.ProfileName.dataValues.profileLastName}}</h1>
                 <div class="row center">
-                    <h5 class="header col s12 white-text">Technical Writer {{data.title}}</h5>
+                    <h5 class="header col s12 white-text">Technical Writer {{data.dataValues.ProfileName.dataValues.title}}</h5>
                 </div>
                 <!-- <div class="row center">
           <img src="/images/ramy-kabalan-796973-unsplash.jpg" class="responsive-img valign" alt=""
@@ -178,7 +178,35 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row">
-                    <div class="col s12 center">
+                     <div class="col s12">
+                        <h2 class="white-text">Experiences</h2>
+                        {{#each data.dataValues.Experiences}}
+                            <p>- Company/Project Name: {{dataValues.comJectName}}</p>
+                            <p>- Title/Role: {{dataValues.titleRole}}</p>
+                            <p>- Description: {{dataValues.description}}</p>
+                        {{/each}}
+                    </div>
+                     <div class="col s12">
+                        <h2 class="white-text">Education</h2>
+                        {{#each data.dataValues.Education}}
+                            <p>- Institution: {{dataValues.institution}}</p>
+                            <p>- Degree: {{dataValues.degree}}</p>
+                        {{/each}}
+                    </div>
+                    <div class="col s12">
+                        <h2 class="white-text">Licenses and Certificates</h2>
+                        {{#each data.dataValues.Licerts}}
+                            <p>- {{dataValues.licertName}}</p>
+                        {{/each}}
+                    </div>
+                    <div class="col s12">
+                        <h2 class="white-text">Skills and Accomplishments</h2>
+                        {{#each data.dataValues.Skaccoms}}
+                            <p>- {{dataValues.skaccomName}}</p>
+                        {{/each}}
+                    </div>
+                    
+                    {{!-- <div class="col s12 center">
                         <h3><i class="mdi-content-send brown-text"></i></h3>
                         <h2 class="white-text">My Skills</h2>
                         <h2 class="white-text">Certificates</h2>
@@ -186,7 +214,7 @@
                         <h2 class="white-text">Education</h2>
                         <h2 class="white-text">Licenses</h2>
                         <h2 class="white-text">Accomplishments</h2>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -200,14 +228,17 @@
             <div class="row">
                 <div class="col s12 center">
                     <h2>Connect</h2>
-                    <h1><i class="fab fa-facebook-square"></i><i class="fab fa-instagram"></i><i
-                            class="fab fa-linkedin"></i><i class="fab fa-github-square"></i></h1>
+                    <h1>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.facebook}}"><i class="fab fa-facebook-square"></i></a>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.instagram}}"><i class="fab fa-instagram"></i></a>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.linkedin}}"><i class="fab fa-linkedin"></i></a>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.github}}"><i class="fab fa-github-square"></i></a>
+                    </h1>
                 </div>
             </div>
 
         </div>
     </div>
-
     <footer class="page-footer grey">
         <div class="container">
             <div class="row">
