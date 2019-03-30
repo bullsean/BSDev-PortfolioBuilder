@@ -37,6 +37,10 @@ User.associate = function (models) {
     User.hasMany(models.Skaccom, {
         onDelete: "cascade"
     });
+
+    User.hasOne(models.ProfileImage, {
+        onDelete: "cascade"
+    });
 }
     return User;
 };

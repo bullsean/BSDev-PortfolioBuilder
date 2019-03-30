@@ -253,21 +253,21 @@
                     <li>
                         <div class="collapsible-header"><i class="material-icons">filter_drama</i>Profile Photo</div>
                         <div class="collapsible-body">
-                            <form class="col s12" action="/upload" metho="POST" enctype="multipart/form-data">
+                            <form class="col s12" action="/upload" method="POST" enctype="multipart/form-data">
                                 <div class = "row">
                                 <div class = "file-field input-field">
                                     <div class = "btn">
                                         <span>Browse</span>
-                                        <input name="myImage" type="file"/>
+                                        <input name="filename" type="file"/>
                                     </div>
                                     
                                     <div class = "file-path-wrapper">
-                                        <input class = "file-path validate" type = "text"
+                                        <input id="filename" class = "file-path validate" type = "text"
                                             placeholder = "Upload file" />
                                     </div>
                                 </div>
                                 </div>
-                                <button class="collapsible btn sendBtn waves-effect waves-light right" type="submit">Submit
+                                <button class="collapsible btn uploadImage waves-effect waves-light right" type="submit">Submit
                                     <i class="material-icons right">send</i>
                                 </button>
                             </form>
