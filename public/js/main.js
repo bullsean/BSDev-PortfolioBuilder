@@ -1,5 +1,9 @@
 $(document).ready(function() {
   //Start of Document Ready function
+
+  //Modal initialization
+  var modals = $(".modal");
+  M.Modal.init(modals);
   //Parallax initialization
   $(".parallax").parallax();
   //Collapsible initialization
@@ -20,15 +24,13 @@ $(document).ready(function() {
   $("#signUp").on("click", function(event) {
     event.preventDefault();
     //1. get user input
-    var userName = $("#username")
-      .val()
-      .trim();
     var password = $("#password")
       .val()
       .trim();
     var email = $("#email")
       .val()
       .trim();
+    var uid = $("data").data("uid")
     //validate user input
     if (signupValidation(userName, password, email)) {
       //if user input is valid .. send data to the (authintication methods - post action below --
@@ -38,9 +40,9 @@ $(document).ready(function() {
         url: "/api/account",
         method: "POST",
         data: {
-          userName: userName,
+          email: email,
           password: password,
-          email: email
+          uid: uid
         }
       }).then(function(data) {
         window.location = "/account" + "/" + data.id;
