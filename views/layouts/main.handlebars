@@ -34,6 +34,25 @@
 
 <body>
 {{{body}}}
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-firestore.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBAGcltZ0G-f6pXMNRwN3gWuQzYsABujiA",
+    authDomain: "portfolio-builder-2f761.firebaseapp.com",
+    databaseURL: "https://portfolio-builder-2f761.firebaseio.com",
+    projectId: "portfolio-builder-2f761",
+    storageBucket: "portfolio-builder-2f761.appspot.com",
+    messagingSenderId: "249863693220"
+  };
+  firebase.initializeApp(config);
+  
+  const auth = firebase.auth();
+  const firebasedb = firebase.firestore();
+
+</script>
 <!-- fullPage.js JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.4/fullpage.js"></script>
 <!-- materialize JavaScript -->
@@ -41,6 +60,7 @@
 <!-- JQuery.form library -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
 <!--Main Javascript File-->
+<script src="/js/auth.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/login-navbar.js"></script>
 </body>

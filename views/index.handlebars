@@ -17,23 +17,24 @@
 <div class="section white content-container">
     <div class="row">
         <div class="row">
-                <div class="col s6">
-                    <img class="img-portfolio responsive-img" src="images/img_01.jpg" alt="img_01">
-                </div>
-                <div class="col s6">
-                    <h4 class="content-headers">Build a portfolio in minutes, not days!</h4>
-                    <p>
-                        Creating a website can be a frustrating process for those who do not have any technical knowledge. 
-                        That’s why we created a Portfolio Builder (CMS) that lets you create your own website. Get online, choose one of our templates
-                        and take control of your online presence.
-                    </p>
-                    <h4 class="content-headers">Why CMS?</h4>
-                    <p>
-                        A CMS or a 'Content Management System' allows you to control and manage the content within your 
-                        website without having any technical background. Using this uncomplicated system you can very easily 
-                        add, delete images and edit text in your website on the fly.
-                    </p>
-                </div>
+            <div class="col s6">
+                <img class="img-portfolio responsive-img" src="images/img_01.jpg" alt="img_01">
+            </div>
+            <div class="col s6">
+                <h4 class="content-headers">Build a portfolio in minutes, not days!</h4>
+                <p>
+                    Creating a website can be a frustrating process for those who do not have any technical knowledge.
+                    That’s why we created a Portfolio Builder (CMS) that lets you create your own website. Get online,
+                    choose one of our templates
+                    and take control of your online presence.
+                </p>
+                <h4 class="content-headers">Why CMS?</h4>
+                <p>
+                    A CMS or a 'Content Management System' allows you to control and manage the content within your
+                    website without having any technical background. Using this uncomplicated system you can very easily
+                    add, delete images and edit text in your website on the fly.
+                </p>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -43,17 +44,72 @@
                 <h6>1. Sign up</h6>
                 <p class="text-darken-3 lighten-3">Create an account and enter all of your infromation.</p>
                 <h6>2. Choose a template</h6>
-                <p class="text-darken-3 lighten-3">Pick one of our desined templates. We have more than 100 templates.</p>
+                <p class="text-darken-3 lighten-3">Pick one of our desined templates. We have more than 100 templates.
+                </p>
                 <h6>3. Customize your portfolio</h6>
-                <p class="text-darken-3 lighten-3">Make a professional website that will represent you best! Find all the tools that will make your portfolio entries shine!</p>
+                <p class="text-darken-3 lighten-3">Make a professional website that will represent you best! Find all
+                    the tools that will make your portfolio entries shine!</p>
                 <h6>4. Publish</h6>
-                <p class="text-darken-3 lighten-3">Creating a portfolio is just the start! Check our services to learn more.</p>
+                <p class="text-darken-3 lighten-3">Creating a portfolio is just the start! Check our services to learn
+                    more.</p>
             </div>
             <div class="col s6">
                 <img id="img-02-div" class="img-portfolio responsive-img" src="images/img_02.jpg" alt="img_02">
             </div>
         </div>
     </div><br>
+
+
+    {{!-- Start section for modals --}}
+<div class="section white content-container" id="signup">
+    <div class="row">
+        <div class="col s10 card-wrap offset-s1">
+            <div class="card">
+                <div class="card-action">
+                    <a class="btn modal-trigger" id="sign-up" data-target="modal-signup">Sign Up!</a>
+                </div>
+
+                <div class="card-action">
+                    <a class="btn modal-trigger" id="login" data-target="modal-login">Login</a>
+                </div>
+
+                <div id="modal-signup" class="modal">
+                    <div class="modal-content">
+                        <h4>Sign up</h4><br />
+                        <form id="signup-form">
+                            <div class="input-field">
+                                <input type="email" id="signup-email" required />
+                                <label for="signup-email">Email address</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="password" id="signup-password" required />
+                                <label for="signup-password">Choose password</label>
+                            </div>
+                            <button class="btn z-depth-0">Sign up</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- LOGIN MODAL -->
+                <div id="modal-login" class="modal">
+                    <div class="modal-content">
+                        <h4>Login</h4><br />
+                        <form id="login-form">
+                            <div class="input-field">
+                                <input type="email" id="login-email" required />
+                                <label for="login-email">Email address</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="password" id="login-password" required />
+                                <label for="login-password">Your password</label>
+                            </div>
+                            <button class="btn z-depth-0">Login</button>
+                        </form>
+                    </div>
+                </div>
+    </div><br><br>
+
+
+
 
     <div class="row">
         <div class="col s12">
@@ -74,7 +130,7 @@
                             <label for="email">Email</label>
                         </div>
                     </div>
-                     <div class="row">
+                    <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock_outline</i>
                             <input placeholder="" id="password" type="password" class="validate">
@@ -99,13 +155,16 @@
                         </div>
                         <div class="col s12">
                             <div class="col s4">
-                                <a id="first-child" href=""><img class="img-cms" id="img-cms-02" src="images/temp_02.jpg" alt="img_01"></a>
+                                <a id="first-child" href=""><img class="img-cms" id="img-cms-02"
+                                        src="images/temp_02.jpg" alt="img_01"></a>
                             </div>
                             <div class="col s4">
-                                <a id="first-child" href="/dark"><img class="img-cms" id="img-cms-03" src="images/temp_01.jpg" alt="img_01"></a>
+                                <a id="first-child" href="/dark"><img class="img-cms" id="img-cms-03"
+                                        src="images/temp_01.jpg" alt="img_01"></a>
                             </div>
                             <div class="col s4">
-                                <a id="first-child" href="/light"><img class="img-cms" id="img-cms-04" src="images/temp_03.jpg" alt="img_01"></a>
+                                <a id="first-child" href="/light"><img class="img-cms" id="img-cms-04"
+                                        src="images/temp_03.jpg" alt="img_01"></a>
                             </div>
                         </div>
                     </div>
@@ -160,7 +219,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
+<div id="data" data-uid="" style="display: none"></div>
 <!-- End of first section -->
 {{>footer}}
-    
