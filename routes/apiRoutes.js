@@ -41,19 +41,26 @@ module.exports = function(app) {
 
   //When the user submit sign up form, his data will be captured here to process them into the authintication method
   app.post("/api/account", function(req, res) {
-    var userName = req.body.userName;
+    var uid = req.body.uid;
     var password = req.body.password;
     var email = req.body.email;
 
     db.User.create({
-      userName: userName,
       password: password,
-      email: email
+      email: email,
+      uid: uid
     }).then(function(results) {
       res.json(results);
     });
 
     // res.render("dashboard", { username: userName });
+  });
+
+  //app.get for the account page
+  app.get("/api/account", function(req, res) {
+    db.User.findAll({}).then(function(results) {
+      res.json(results);
+    });
   });
 
   //add profile info (names coming from the account page) to the DB

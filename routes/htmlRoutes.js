@@ -69,7 +69,7 @@ module.exports = function (app) {
       where: { id: userId }
     }).then(function(results) {
       res.render("account", {
-        title: results.userName + " | Portfolio Creator",
+        title: results.email + " | Portfolio Creator",
         data: results
       });
     });
