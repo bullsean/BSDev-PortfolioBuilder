@@ -352,7 +352,7 @@ module.exports = function(app) {
       // console.log(req.files);
       var file = req.files.filename;
       var filename = file.name;
-      file.mv("public/uploads" + filename, function(error){
+      file.mv("public/uploads/" + filename, function(error){
         if (error) {
           console.log(error);
         } else {
