@@ -3,9 +3,12 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <br><br>
-                <h1 class="header center white-text">Liz Graham {{data.dataValues.ProfileName.dataValues.profileFirstName}} {{data.dataValues.ProfileName.dataValues.profileLastName}}</h1>
+                <h1 class="header center white-text">Liz Graham
+                    {{data.dataValues.ProfileName.dataValues.profileFirstName}}
+                    {{data.dataValues.ProfileName.dataValues.profileLastName}}</h1>
                 <div class="row center">
-                    <h5 class="header col s12 white-text">Technical Writer {{data.dataValues.ProfileName.dataValues.title}}</h5>
+                    <h5 class="header col s12 white-text">Technical Writer
+                        {{data.dataValues.ProfileName.dataValues.title}}</h5>
                 </div>
                 <!-- <div class="row center">
           <img src="/images/ramy-kabalan-796973-unsplash.jpg" class="responsive-img valign" alt=""
@@ -94,8 +97,7 @@
         <br><br>
         <div class="row">
             <div class="col s5">
-                <img src="/images/fancycrave-277756-unsplash.jpg" class="responsive-img projectImg"
-                    alt="First Project">
+                <img src="/images/fancycrave-277756-unsplash.jpg" class="responsive-img projectImg" alt="First Project">
             </div>
             <div class="col s6">
                 <h4 class="center-align projectTitle">Additional Project Title</h4>
@@ -178,34 +180,93 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row">
-                     <div class="col s12">
+                    <div class="col s12 center">
+
+                        <h2 class="white-text">My Skills & Accomplishments</h2>
+                        <div class="row white black-text" style="border-radius: 25px;">
+                            <div class="col s3">
+                                <p class="">Skill 1</p>
+                            </div>
+                            <div class="col s3">
+                                <p>Skill 2</p>
+                            </div>
+                            <div class="col s3">
+                                <p>Skill 3</p>
+                            </div>
+                            <div class="col s3">
+                                <p>Skill 4</p>
+                            </div>
+                        </div>
+                        <h2 class="white-text">Certificates & Licenses</h2>
+                        <div class="row white black-text" style="border-radius: 25px;">
+                            <div class="col s4">
+                                <p>Certificate/License 1</p>
+                            </div>
+                            <div class="col s4">
+                                <p>Certificate/License 2</p>
+                            </div>
+                            <div class="col s4">
+                                <p>Certificate/License 3</p>
+                            </div>
+                        </div>
+                        <h2 class="white-text">Education</h2>
+                        <div class="row white black-text" style="border-radius: 25px;">
+                            <div class="col s6">
+                                <p>Institution 1</p>
+                            </div>
+                            <div class="col s6">
+                                <p>Degree</p>
+                            </div>
+                        </div>
+                        <div class="row white black-text" style="border-radius: 25px;">
+                            <div class="col s6">
+                                <p>Institution 2</p>
+                            </div>
+                            <div class="col s6">
+                                <p>Degree</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="/images/tim-navis-78745-unsplash.jpg"
+                alt="Unsplashed background img 2">
+        </div>
+    </div>
+
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
                         <h2 class="white-text">Experiences</h2>
                         {{#each data.dataValues.Experiences}}
-                            <p>- Company/Project Name: {{dataValues.comJectName}}</p>
-                            <p>- Title/Role: {{dataValues.titleRole}}</p>
-                            <p>- Description: {{dataValues.description}}</p>
+                        <p>- Company/Project Name: {{dataValues.comJectName}}</p>
+                        <p>- Title/Role: {{dataValues.titleRole}}</p>
+                        <p>- Description: {{dataValues.description}}</p>
                         {{/each}}
                     </div>
-                     <div class="col s12">
+                    <div class="col s12">
                         <h2 class="white-text">Education</h2>
                         {{#each data.dataValues.Education}}
-                            <p>- Institution: {{dataValues.institution}}</p>
-                            <p>- Degree: {{dataValues.degree}}</p>
+                        <p>- Institution: {{dataValues.institution}}</p>
+                        <p>- Degree: {{dataValues.degree}}</p>
                         {{/each}}
                     </div>
                     <div class="col s12">
                         <h2 class="white-text">Licenses and Certificates</h2>
                         {{#each data.dataValues.Licerts}}
-                            <p>- {{dataValues.licertName}}</p>
+                        <p>- {{dataValues.licertName}}</p>
                         {{/each}}
                     </div>
                     <div class="col s12">
                         <h2 class="white-text">Skills and Accomplishments</h2>
                         {{#each data.dataValues.Skaccoms}}
-                            <p>- {{dataValues.skaccomName}}</p>
+                        <p>- {{dataValues.skaccomName}}</p>
                         {{/each}}
                     </div>
-                    
+
                     {{!-- <div class="col s12 center">
                         <h3><i class="mdi-content-send brown-text"></i></h3>
                         <h2 class="white-text">My Skills</h2>
@@ -229,10 +290,14 @@
                 <div class="col s12 center">
                     <h2>Connect</h2>
                     <h1>
-                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.facebook}}"><i class="fab fa-facebook-square"></i></a>
-                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.instagram}}"><i class="fab fa-instagram"></i></a>
-                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.linkedin}}"><i class="fab fa-linkedin"></i></a>
-                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.github}}"><i class="fab fa-github-square"></i></a>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.facebook}}"><i
+                                class="fab fa-facebook-square"></i></a>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.instagram}}"><i
+                                class="fab fa-instagram"></i></a>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.linkedin}}"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.github}}"><i
+                                class="fab fa-github-square"></i></a>
                     </h1>
                 </div>
             </div>
