@@ -61,17 +61,34 @@ module.exports = function(app) {
     var profileFirstName = req.body.firstName;
     var profileLastName = req.body.lastName;
     var title = req.body.title;
-    // console.log(req.params.UserId);
+    var UserId = parseInt(req.params.UserId);
 
-    db.ProfileName.create({
-      profileFirstName: profileFirstName,
-      profileLastName: profileLastName,
-      title: title,
-      UserId: parseInt(req.params.UserId)
-    }).then(function(results) {
-      res.json(results);
+    isUnique(UserId).then(function(results) {
+      // console.log(results);
+      if (results === null) {
+        console.log("123")
+        db.ProfileName.create({
+          profileFirstName: profileFirstName,
+          profileLastName: profileLastName,
+          title: title,
+          UserId: UserId
+        }).then(function(results) {
+          res.json(results);
+        });
+      } else {
+        return;
+      }
     });
   });
+
+  function isUnique(id) {
+    return db.ProfileName.findOne({
+      where: { UserId: id }
+    });/*.then(function(results) {
+      console.log(results);
+      res.json(results);
+    });*/
+  }
 
   //add profile info (experiences coming from the account page) to the DB
   app.post("/api/experiences/:UserId", function(req, res) {
@@ -330,9 +347,9 @@ module.exports = function(app) {
   });
 
   //uploading images
-  app.post("/upload", function(req, res){
+  app.post("/upload/:id", function(req, res){
     if (req.files) {
-      console.log(req.files);
+      // console.log(req.files);
       var file = req.files.filename;
       var filename = file.name;
       file.mv("public/uploads" + filename, function(error){
@@ -341,9 +358,11 @@ module.exports = function(app) {
         } else {
           console.log("Image uploaded");
           db.ProfileImage.create({
-            imageName: filename
+            imageName: filename,
+            UserId: parseInt(req.params.id)
           }).then(function(results) {
-            res.json(results);
+            console.log(results.dataValues.imageName);
+            res.redirect(`/account/${req.params.id}`);
           });
         }
       });

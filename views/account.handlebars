@@ -26,6 +26,7 @@
                                         <input placeholder="" id="title" type="text" class="validate">
                                         <label class="accountFieldLabel" for="title">Title</label>
                                     </div> 
+                                    <div>{{data.msg}}</div>
                                 </div>
                                 <button id="nameSubmit" class="collapsible btn sendBtn waves-effect waves-light right" type="submit" name="action">Submit
                                     <i class="material-icons right">send</i>
@@ -253,7 +254,7 @@
                     <li>
                         <div class="collapsible-header"><i class="material-icons">filter_drama</i>Profile Photo</div>
                         <div class="collapsible-body">
-                            <form class="col s12" action="/upload" method="POST" enctype="multipart/form-data">
+                            <form class="col s12" action="/upload/{{data.id}}" method="POST" enctype="multipart/form-data">
                                 <div class = "row">
                                 <div class = "file-field input-field">
                                     <div class = "btn">
