@@ -55,10 +55,6 @@ module.exports = function (app) {
   // });
 
   app.get("/account/:id", function(req, res) {
-<<<<<<< HEAD
-
-=======
->>>>>>> 41dee518effc158ffeac9e12af45a7c93cf6bcb8
     var userId = req.params.id;
 
     db.User.findOne({
