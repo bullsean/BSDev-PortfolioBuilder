@@ -5,7 +5,7 @@ $(document).ready(function() {
   //Collapsible initialization
   $(".collapsible").collapsible();
 
-  //Navbar background to change to other color when scroll down to the page --- 
+  //Navbar background to change to other color when scroll down to the page ---
   //done to overcome the change of page body color
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
@@ -50,41 +50,6 @@ $(document).ready(function() {
     }
   });
 
-  // //On submiting user login info
-  // $("#login").on("click", function(event) {
-  //   event.preventDefault();
-  //   var userName = $("#username")
-  //     .val()
-  //     .trim();
-  //   var password = $("#password")
-  //     .val()
-  //     .trim();
-
-  //   //loginValidation(userName, password);
-
-  //   // $.ajax({
-  //   //   url: "/login",
-  //   //   method: "POST",
-  //   //   data: {
-  //   //     userName: userName,
-  //   //     password: password
-  //   //   }
-  //   // }).then(function() {
-  //   //   window.location = "/account"; //should be modified to redirect to user profile or his template
-  //   // });
-  // });
-
-  // //On logout user login info
-  // $("#logout").on("click", function(event) {
-  //   event.preventDefault();
-
-  //   // $.ajax({
-  //   //   url: "/logout",
-  //   //   method: "POST"
-  //   // }).then(function() {
-  //   //   window.location = "/";
-  //   // });
-  // });
   var userId = $("#data").data("id");
   //When user submit his name, these info will be sent to the server -- check api-routes file
   $("#nameSubmit").on("click", function(event) {
@@ -99,17 +64,21 @@ $(document).ready(function() {
       .val()
       .trim();
 
-    $.ajax({
-      url: "/api/profileName/" + userId,
-      method: "POST",
-      data: {
-        firstName: firstName,
-        lastName: lastName,
-        title: title
-      }
-    }).then(function() {
-      location.reload();
-    });
+    if (validateName(firstName, lastName, title)) {
+      $.ajax({
+        url: "/api/profileName/" + userId,
+        method: "POST",
+        data: {
+          firstName: firstName,
+          lastName: lastName,
+          title: title
+        }
+      }).then(function() {
+        location.reload();
+      });
+    } else {
+      return;
+    }
   });
 
   //When user submit his experiences, these info will be sent to the server -- check api-routes file
@@ -125,17 +94,19 @@ $(document).ready(function() {
       .val()
       .trim();
 
-    $.ajax({
-      url: "/api/experiences/" + userId,
-      method: "POST",
-      data: {
-        comJectName: comJectName,
-        titleRole: titleRole,
-        desc: desc
-      }
-    }).then(function() {
-      location.reload();
-    });
+    if (validateExperiences(comJectName, titleRole, desc)) {
+      $.ajax({
+        url: "/api/experiences/" + userId,
+        method: "POST",
+        data: {
+          comJectName: comJectName,
+          titleRole: titleRole,
+          desc: desc
+        }
+      }).then(function() {
+        location.reload();
+      });
+    }
   });
 
   //When user submit his education, these info will be sent to the server -- check api-routes file
@@ -148,16 +119,18 @@ $(document).ready(function() {
       .val()
       .trim();
 
-    $.ajax({
-      url: "/api/education/" + userId,
-      method: "POST",
-      data: {
-        institution: institution,
-        degree: degree
-      }
-    }).then(function() {
-      location.reload();
-    });
+    if (validateEducation(institution, degree)) {
+      $.ajax({
+        url: "/api/education/" + userId,
+        method: "POST",
+        data: {
+          institution: institution,
+          degree: degree
+        }
+      }).then(function() {
+        location.reload();
+      });
+    }
   });
 
   //When user submit his licenses or certificates, these info will be sent to the server --
@@ -168,15 +141,17 @@ $(document).ready(function() {
       .val()
       .trim();
 
-    $.ajax({
-      url: "/api/licert/" + userId,
-      method: "POST",
-      data: {
-        licertName: licertName
-      }
-    }).then(function() {
-      location.reload();
-    });
+    if (validateLicert(licertName)) {
+      $.ajax({
+        url: "/api/licert/" + userId,
+        method: "POST",
+        data: {
+          licertName: licertName
+        }
+      }).then(function() {
+        location.reload();
+      });
+    }
   });
 
   //When user submit his skills and accomplishments, these info will be sent to the server -- check api-routes file
@@ -186,15 +161,17 @@ $(document).ready(function() {
       .val()
       .trim();
 
-    $.ajax({
-      url: "/api/skaccom/" + userId,
-      method: "POST",
-      data: {
-        skaccomName: skaccomName
-      }
-    }).then(function() {
-      location.reload();
-    });
+    if (validateSkaccom(skaccomName)) {
+      $.ajax({
+        url: "/api/skaccom/" + userId,
+        method: "POST",
+        data: {
+          skaccomName: skaccomName
+        }
+      }).then(function() {
+        location.reload();
+      });
+    }
   });
 
   //When user submit his coonections, these info will be sent to the server -- check api-routes file
@@ -213,18 +190,20 @@ $(document).ready(function() {
       .val()
       .trim();
 
-    $.ajax({
-      url: "/api/connectLinks/" + userId,
-      method: "POST",
-      data: {
-        facebook: facebook,
-        linkedin: linkedin,
-        github: github,
-        instagram: instagram
-      }
-    }).then(function() {
-      location.reload();
-    });
+    if (validateConnect(facebook, linkedin, github, instagram)) {
+      $.ajax({
+        url: "/api/connectLinks/" + userId,
+        method: "POST",
+        data: {
+          facebook: facebook,
+          linkedin: linkedin,
+          github: github,
+          instagram: instagram
+        }
+      }).then(function() {
+        location.reload();
+      });
+    }
   });
 
   //When updateExp button clicked update the record in DB
@@ -279,8 +258,8 @@ $(document).ready(function() {
     });
   });
 
-   //When updateLicert button clicked update the record in DB
-   $(".updateLicert").on("click", function() {
+  //When updateLicert button clicked update the record in DB
+  $(".updateLicert").on("click", function() {
     var idToUpdate = $(this).data("updateid");
     event.preventDefault();
     var licertName = $("#lice-cert-name")
@@ -420,8 +399,8 @@ $(document).ready(function() {
   // });
 
   // //Validation functions
-  function signupValidation(uname, pass, email) {
-    if (uname.length < 1) {
+  function signupValidation(un, pass, email) {
+    if (un.length < 1) {
       $("#username").css("border", "1px solid red");
     } else {
       $("#username").css("border", "");
@@ -439,8 +418,142 @@ $(document).ready(function() {
       $("#email").css("border", "");
     }
 
-    if (uname.length > 1 && pass.length > 8 && email.length > 0) {
+    if (un.length > 1 && pass.length > 8 && email.length > 0) {
       return true;
+    }
+  }
+
+  //Validate profile info
+  function validateName(fn, ln, title) {
+    if (fn.length < 1) {
+      $("#first_name").css("border", "1px solid red");
+    } else {
+      $("#first_name").css("border", "");
+    }
+
+    if (ln.length < 1) {
+      $("#last_name").css("border", "1px solid red");
+    } else {
+      $("#last_name").css("border", "");
+    }
+
+    if (title.length < 1) {
+      $("#title").css("border", "1px solid red");
+    } else {
+      $("#title").css("border", "");
+    }
+
+    if (fn.length > 1 && ln.length > 1 && title.length > 1) {
+      return true;
+    }
+  }
+
+  function validateExperiences(cjn, tr, des) {
+    if (cjn.length < 1) {
+      $("#company-project").css("border", "1px solid red");
+    } else {
+      $("#company-project").css("border", "");
+    }
+
+    if (tr.length < 1) {
+      $("#title-role").css("border", "1px solid red");
+    } else {
+      $("#title-role").css("border", "");
+    }
+
+    if (des.length < 1) {
+      $("#description").css("border", "1px solid red");
+    } else {
+      $("#description").css("border", "");
+    }
+
+    if (cjn.length > 1 && tr.length > 1 && des.length > 1) {
+      return true;
+    }
+  }
+
+  function validateEducation(inst, deg) {
+    if (inst.length < 1) {
+      $("#institute").css("border", "1px solid red");
+    } else {
+      $("#institute").css("border", "");
+    }
+
+    if (deg.length < 1) {
+      $("#degree").css("border", "1px solid red");
+    } else {
+      $("#degree").css("border", "");
+    }
+
+    if (inst.length > 1 && deg.length > 1) {
+      return true;
+    }
+  }
+
+  function validateLicert(lcn) {
+    if (lcn.length < 1) {
+      $("#lice-cert-name").css("border", "1px solid red");
+    } else {
+      $("#lice-cert-name").css("border", "");
+    }
+
+    if (lcn.length > 1) {
+      return true;
+    }
+  }
+
+  function validateSkaccom(san) {
+    if (san.length < 1) {
+      $("#skill-accom-name").css("border", "1px solid red");
+    } else {
+      $("#skill-accom-name").css("border", "");
+    }
+
+    if (san.length > 1) {
+      return true;
+    }
+  }
+
+  function validateConnect(fb, li, gh, i) {
+    var validfb = false;
+    var validli = false;
+    var validgh = false;
+    var validi = false;
+
+    // Check if links begin with "http://" or "https://"
+    if (fb.charAt(4) !== ":" && fb.charAt(5) !== ":") {
+      $("#facebook").css("border", "1px solid red");
+    } else {
+      validfb = true;
+      $("#facebook").css("border", "");
+    }
+
+    if (li.charAt(4) !== ":" && li.charAt(5) !== ":") {
+      $("#linkedin").css("border", "1px solid red");
+    } else {
+      validli = true;
+      $("#linkedin").css("border", "");
+    }
+
+    if (gh.charAt(4) !== ":" && gh.charAt(5) !== ":") {
+      $("#github").css("border", "1px solid red");
+    } else {
+      validgh = true;
+      $("#github").css("border", "");
+    }
+
+    if (i.charAt(4) !== ":" && i.charAt(5) !== ":") {
+      $("#instagram").css("border", "1px solid red");
+    } else {
+      validi = true;
+      $("#instagram").css("border", "");
+    }
+
+    if (validfb && validli && validgh && validi) {
+      {
+        console.log(true);
+        return true;
+      }
     }
   }
 }); //End of Document Ready Function

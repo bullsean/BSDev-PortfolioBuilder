@@ -2,7 +2,8 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 //var multer = require("multer");
-//var path = require("path");
+// var path = require("path");
+var upload = require("express-fileupload");
 
 // //Set storage engine
 // var storage = multer.diskStorage({
@@ -58,6 +59,7 @@ var PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(upload());
 
 // Handlebars
 app.engine(

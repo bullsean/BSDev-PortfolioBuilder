@@ -329,6 +329,27 @@ module.exports = function(app) {
     });
   });
 
+  //uploading images
+  app.post("/upload", function(req, res){
+    if (req.files) {
+      console.log(req.files);
+      var file = req.files.filename;
+      var filename = file.name;
+      file.mv("public/uploads" + filename, function(error){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Image uploaded");
+          db.ProfileImage.create({
+            imageName: filename
+          }).then(function(results) {
+            res.json(results);
+          });
+        }
+      });
+    }
+  });
+
   //  //Deleting record
   //  app.delete("/api/deleteConnect/:idToDelete", function(req, res) {
   //   var UserId = parseInt(req.params.idToDelete);
