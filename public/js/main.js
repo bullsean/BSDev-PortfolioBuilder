@@ -208,6 +208,21 @@ $(document).ready(function() {
     }
   });
 
+  // $(".uploadImage").on("click", function(event) {
+  //   event.preventDefault();
+  //     $.ajax({
+  //       url: "/api/upload/" + userId,
+  //       method: "POST",
+  //       data: {
+  //         userId: userId
+  //       }
+  //     }).then(function() {
+  //       location.reload();
+  //     });
+  // });
+
+
+
   //When updateExp button clicked update the record in DB
   $(".updateExp").on("click", function() {
     var idToUpdate = $(this).data("updateid");

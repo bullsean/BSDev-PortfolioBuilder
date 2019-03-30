@@ -23,10 +23,12 @@ module.exports = function (app) {
         db.Skaccom,
         db.Licert,
         db.ConnectLinks,
-        db.Education
+        db.Education,
+        db.ProfileImage
       ],
       where: { id: req.params.id }
     }).then(function(results) {
+      console.log("Image Name: ", results.dataValues.ProfileImage.dataValues.imageName);
       res.render("dark", {
         layout: "templates",
         title: "Dark Template | Portfolio Creator",
@@ -53,7 +55,10 @@ module.exports = function (app) {
   // });
 
   app.get("/account/:id", function(req, res) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 41dee518effc158ffeac9e12af45a7c93cf6bcb8
     var userId = req.params.id;
 
     db.User.findOne({
@@ -63,7 +68,8 @@ module.exports = function (app) {
         db.Skaccom,
         db.Licert,
         db.ConnectLinks,
-        db.Education
+        db.Education,
+        db.ProfileImage
       ],
       where: { id: userId }
     }).then(function(results) {
