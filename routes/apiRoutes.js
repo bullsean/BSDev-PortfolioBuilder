@@ -56,6 +56,13 @@ module.exports = function(app) {
     // res.render("dashboard", { username: userName });
   });
 
+  //app.get for the account page
+  app.get("/api/account", function(req, res) {
+    db.User.findAll({}).then(function(results) {
+      res.json(results);
+    });
+  });
+
   //add profile info (names coming from the account page) to the DB
   app.post("/api/profileName/:UserId", function(req, res) {
     var profileFirstName = req.body.firstName;

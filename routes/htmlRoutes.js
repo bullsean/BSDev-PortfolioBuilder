@@ -52,13 +52,7 @@ module.exports = function (app) {
   //   });
   // });
 
-  app.get("/account/:id", function (req, res) {
-    // db.User.findOne({ where: { id: req.params.id } }).then(function (results) {
-    //   res.render("account", {
-    //     title: results.userName + " | Portfolio Creator",
-    //     data: results
-    //   });
-    // });
+  app.get("/account/:id", function(req, res) {
 
     var userId = req.params.id;
 
@@ -74,7 +68,7 @@ module.exports = function (app) {
       where: { id: userId }
     }).then(function(results) {
       res.render("account", {
-        title: results.userName + " | Portfolio Creator",
+        title: results.email + " | Portfolio Creator",
         data: results
       });
     });

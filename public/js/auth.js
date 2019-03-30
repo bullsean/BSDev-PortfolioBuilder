@@ -71,5 +71,24 @@ loginForm.on("submit", function (event) {
         const modal = $("#modal-login");
         M.Modal.getInstance(modal).close();
         loginForm[0].reset();
+        $.ajax({
+            url: "/api/account",
+            method: "GET"
+        }).then(function (data) {
+            console.log(data);
+            for (i = 0; i < data.length; i++) {
+                for (key in data[i]) {
+                    if (data[i][key] === cred.user.uid) {
+                        // console.log("You've found the user! Their SQL id is: ", data[i].id);
+                        window.location = "/account" + "/" + data[i].id;
+                    } else {
+                        console.log("Looks like you're new! Sign up!")
+                    }
+                };
+            };
+        });
+
+        //call to SQLdb user table to find user where uid = data.uid, then in that callback put the window location...
+        // window.location = "/account" + "/" + data.id;
     });
 });
