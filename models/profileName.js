@@ -5,17 +5,16 @@ module.exports = function (sequelize, DataTypes) {
         },
         profileLastName: {
             type: DataTypes.STRING,
+        },
+        title: {
+            type: DataTypes.STRING,
         }
     });
 
     ProfileName.associate = function(models) {
         // We're saying that a ProfileName should belong to an Author
         // A ProfileName can't be created without an Author due to the foreign key constraint
-        ProfileName.belongsTo(models.User, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
+        ProfileName.belongsTo(models.User);
       };
 
     return ProfileName;
