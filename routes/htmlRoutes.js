@@ -28,7 +28,6 @@ module.exports = function (app) {
       ],
       where: { id: req.params.id }
     }).then(function(results) {
-      console.log("Image Name: ", results.dataValues.ProfileImage.dataValues.imageName);
       res.render("dark", {
         layout: "templates",
         title: "Dark Template | Portfolio Creator",
