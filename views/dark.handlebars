@@ -3,11 +3,11 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <br><br>
-                <h1 class="header center white-text">Liz Graham
+                <h1 class="header center white-text">
                     {{data.dataValues.ProfileName.dataValues.profileFirstName}}
                     {{data.dataValues.ProfileName.dataValues.profileLastName}}</h1>
                 <div class="row center">
-                    <h5 class="header col s12 white-text">Technical Writer
+                    <h5 class="header col s12 white-text">
                         {{data.dataValues.ProfileName.dataValues.title}}</h5>
                 </div>
                 <!-- <div class="row center">
@@ -48,17 +48,12 @@
             <div class="col s6">
                 <h4 class="center-align projectTitle">Project 1 Title</h4>
                 <h5>Description</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed ex eu odio feugiat laoreet.
-                    Pellentesque
-                    venenatis nisl sit amet augue tincidunt, vitae congue lectus porta. Sed sodales semper purus, vitae
-                    posuere
-                    nulla semper eget. Integer blandit velit viverra, tristique eros tincidunt, fermentum tortor. Fusce
-                    sodales
-                    nisl vitae dui ultrices laoreet. Etiam at consequat nisi. Nunc ut ligula mi. Nulla in lacus vitae
-                    eros
-                    pharetra mollis a id mauris. Maecenas ultricies mattis lacinia. Nullam dolor sapien, consequat in
-                    nisi eu,
-                    volutpat.</p>
+                {{debug data.dataValues.Experiences}}
+                {{#each data.dataValues.Experiences}}
+                <p>- Company/Project Name: {{dataValues.comJectName}}</p>
+                <p>- Title/Role: {{dataValues.titleRole}}</p>
+                <p>- Description: {{dataValues.description}}</p>
+                {{/each}}
                 <div class="center">
                     <a class="waves-effect waves-light btn-large grey">Link</a>
                 </div>
@@ -184,98 +179,33 @@
 
                         <h2 class="white-text">My Skills & Accomplishments</h2>
                         <div class="row white black-text" style="border-radius: 25px;">
+                            {{#each data.dataValues.Skaccoms}}
                             <div class="col s3">
-                                <p class="">Skill 1</p>
+                                <p>{{dataValues.skaccomName}}</p>
                             </div>
-                            <div class="col s3">
-                                <p>Skill 2</p>
-                            </div>
-                            <div class="col s3">
-                                <p>Skill 3</p>
-                            </div>
-                            <div class="col s3">
-                                <p>Skill 4</p>
-                            </div>
+                            {{/each}}
                         </div>
                         <h2 class="white-text">Certificates & Licenses</h2>
                         <div class="row white black-text" style="border-radius: 25px;">
+                            {{#each data.dataValues.Licerts}}
                             <div class="col s4">
-                                <p>Certificate/License 1</p>
+                                <p>{{dataValues.licertName}}</p>
                             </div>
-                            <div class="col s4">
-                                <p>Certificate/License 2</p>
-                            </div>
-                            <div class="col s4">
-                                <p>Certificate/License 3</p>
-                            </div>
+                            {{/each}}
                         </div>
                         <h2 class="white-text">Education</h2>
                         <div class="row white black-text" style="border-radius: 25px;">
+                            {{#each data.dataValues.Education}}
                             <div class="col s6">
-                                <p>Institution 1</p>
+                                <p>{{dataValues.institution}}</p>
                             </div>
                             <div class="col s6">
-                                <p>Degree</p>
+                                <p>{{dataValues.degree}}</p>
                             </div>
-                        </div>
-                        <div class="row white black-text" style="border-radius: 25px;">
-                            <div class="col s6">
-                                <p>Institution 2</p>
-                            </div>
-                            <div class="col s6">
-                                <p>Degree</p>
-                            </div>
+                            {{/each}}
+
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="parallax"><img src="/images/tim-navis-78745-unsplash.jpg"
-                alt="Unsplashed background img 2">
-        </div>
-    </div>
-
-    <div class="parallax-container valign-wrapper">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <div class="row">
-                    <div class="col s12">
-                        <h2 class="white-text">Experiences</h2>
-                        {{#each data.dataValues.Experiences}}
-                        <p>- Company/Project Name: {{dataValues.comJectName}}</p>
-                        <p>- Title/Role: {{dataValues.titleRole}}</p>
-                        <p>- Description: {{dataValues.description}}</p>
-                        {{/each}}
-                    </div>
-                    <div class="col s12">
-                        <h2 class="white-text">Education</h2>
-                        {{#each data.dataValues.Education}}
-                        <p>- Institution: {{dataValues.institution}}</p>
-                        <p>- Degree: {{dataValues.degree}}</p>
-                        {{/each}}
-                    </div>
-                    <div class="col s12">
-                        <h2 class="white-text">Licenses and Certificates</h2>
-                        {{#each data.dataValues.Licerts}}
-                        <p>- {{dataValues.licertName}}</p>
-                        {{/each}}
-                    </div>
-                    <div class="col s12">
-                        <h2 class="white-text">Skills and Accomplishments</h2>
-                        {{#each data.dataValues.Skaccoms}}
-                        <p>- {{dataValues.skaccomName}}</p>
-                        {{/each}}
-                    </div>
-
-                    {{!-- <div class="col s12 center">
-                        <h3><i class="mdi-content-send brown-text"></i></h3>
-                        <h2 class="white-text">My Skills</h2>
-                        <h2 class="white-text">Certificates</h2>
-                        <h2 class="white-text">Awards</h2>
-                        <h2 class="white-text">Education</h2>
-                        <h2 class="white-text">Licenses</h2>
-                        <h2 class="white-text">Accomplishments</h2>
-                    </div> --}}
                 </div>
             </div>
         </div>

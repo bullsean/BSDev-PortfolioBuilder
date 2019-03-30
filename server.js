@@ -61,11 +61,16 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(upload());
 
+var hbHelpers = require("./views/helpers/hbHelpers.js");
+
 // Handlebars
 app.engine(
   "handlebars",
   exphbs({
-    defaultLayout: "main"
+    defaultLayout: "main",
+    helpers: {
+      debug: hbHelpers.debug
+    }
   })
 );
 app.set("view engine", "handlebars");
