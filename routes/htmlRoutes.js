@@ -8,12 +8,6 @@ module.exports = function(app) {
     });
   });
 
-  //When user click on login at the navbar he will be directed to the login page
-  app.get("/login", function(req, res) {
-    res.render("login", {
-      title: "Log In | Portfolio Creator"
-    });
-  });
   //When user click on dark template image in the main page he will be directed to the dark template page
   app.get("/dark/:id", function(req, res) {
     db.User.findOne({
@@ -22,7 +16,7 @@ module.exports = function(app) {
         db.Experience,
         db.Skaccom,
         db.Licert,
-        db.ConnectLinks,
+        db.ConnectLink,
         db.Education,
         db.ProfileImage
       ],
@@ -34,8 +28,8 @@ module.exports = function(app) {
         data: results
       });
     });
-
   });
+
   //When user click on light template image in the main page he will be directed to the light template page
   app.get("/lightTemplateView", function(req, res) {
     res.render("lightTemplateView", {
@@ -51,6 +45,7 @@ module.exports = function(app) {
     });
   });
 
+  //When user click on additionalTemplate template image in the main page he will be directed to this template page
   app.get("/additionalTemplate", function(req, res) {
     res.render("additionalTemplate", {
       layout: "templates",
@@ -58,6 +53,7 @@ module.exports = function(app) {
     });
   });
 
+  //When user sign up or login he will be directed to the account page
   app.get("/account/:id", function(req, res) {
     var userId = req.params.id;
 
@@ -67,9 +63,9 @@ module.exports = function(app) {
         db.Experience,
         db.Skaccom,
         db.Licert,
-        db.ConnectLinks,
         db.Education,
-        db.ProfileImage
+        db.ProfileImage,
+        db.ConnectLink
       ],
       where: { id: userId }
     }).then(function(results) {

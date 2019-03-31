@@ -1,3 +1,5 @@
+/* Defining body styles
+* --------------------------------------- */
 body {
     width: 100%;
     font-Family: 'Raleway', Sans-Serif;
@@ -20,6 +22,7 @@ body {
     width: 100%;
     margin: 0 auto;
 }
+/* Defining other pages nav bar styles -- done to reverse colors when user scroll down into the page */
 #masthead, #masthead-login {
     position: fixed ;
     z-index: 99;
@@ -29,6 +32,8 @@ body {
     color: #ffffff;
     background: #ffffff;
 }
+/* Continue defining nav bar styles
+* --------------------------------------- */
 a {
     display: inline-block;
     padding-left: 15px;
@@ -93,27 +98,14 @@ h5 {
     border: 2px solid #1e5250;
     border-radius: 20px;
 }
-/* Sign-up form styling
-* --------------------------------------- */
-.loginPage-redirect a {
-    color: #1e5250;
-}
-/* Centering reCaptcha
-* --------------------------------------- */
-.text-center {
-    text-align: center;
-}
-.g-recaptcha {
-    display: inline-block;
-}
-/* templatess div styling
+
+/* Templates images styling
 * --------------------------------------- */
 .img-cms {
     height: 85%;
     width: 85%;
     margin: 0;
 }
-
 .photos img:hover {
     -webkit-transform: scale(2);
     -moz-transform: scale(2);
@@ -121,7 +113,6 @@ h5 {
     transform: scale(2);
     z-index: 10;
 }
-
 .photos img {
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease-out;
@@ -130,7 +121,6 @@ h5 {
     padding: 10px 10px 10px 10px;
     background: white;
     border-radius: 15px;
-    /* border: solid 1px black; */
 }
 /* Developers div styling
 * --------------------------------------- */
@@ -170,12 +160,9 @@ h5 {
 .clear {
     clear: both;
 }
-
-
 /* Footer styling
 * --------------------------------------- */
 footer {
     background-color: #1e5250;
     color: white;
-    /* min-height: 50vh; */
 }

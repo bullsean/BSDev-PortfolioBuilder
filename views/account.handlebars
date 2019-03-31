@@ -2,16 +2,23 @@
 <br><br>
 <!--Start first section -->
 <div class="section white content-container">
-   <div class="row">
-       <div class="col s12 card-wrap">
+    <!-- Start of first row -->
+    <div class="row">
+        <!-- Start of card -->
+        <div class="col s12 card-wrap">
             <div class="card profile-form"><br>
+                <!-- Start of card header -->
                 <h4 class="content-headers">You are signed in as: {{data.email}}</h4>
                 <h6 class="content-headers">Please update the forms below with your information</h6><br>
                 <div class="divider"></div>
+                <!-- End of card header -->
+                <!-- Start of card body -->
                 <ul class="collapsible">
+                    <!-- Start of profile name section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">account_box</i>Full Name</div>
                         <div class="collapsible-body">
+                            <!-- User can have only one name linked to his profile -->
                             {{#unless data.dataValues.ProfileName.dataValues}}
                                 <form class="account_form accountForm">
                                     <div class="row">
@@ -60,6 +67,8 @@
                             {{/unless}}
                         </div>
                     </li>
+                    <!-- End of profile name section -->
+                    <!-- Start of experience section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">business_center</i>Experiences</div>
                         <div class="collapsible-body">
@@ -109,6 +118,8 @@
                             {{/if}}
                         </div>
                     </li>
+                    <!-- End of experience section -->
+                    <!-- Start of education section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">school</i>Education</div>
                         <div class="collapsible-body">
@@ -150,6 +161,8 @@
                             {{/if}}
                         </div>
                     </li>
+                    <!-- End of education section -->
+                    <!-- Start of license section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">assignment</i>Licenses/Certifications</div>
                         <div class="collapsible-body">
@@ -183,6 +196,8 @@
                             {{/if}}
                         </div>
                     </li>
+                    <!-- End of license section -->
+                    <!-- Start of skills section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">format_list_bulleted</i>Skills/Accomplishments</div>
                         <div class="collapsible-body">
@@ -217,66 +232,72 @@
                             
                         </div>
                     </li>
+                    <!-- End of skills section -->
+                    <!-- Start of contact links section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">contact_mail</i>Contact Information</div>
                         <div class="collapsible-body">
-                            <form class="account_form accountForm">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input placeholder="" id="facebook" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="facebook">Link to Facebook</label>
+                            <!-- User must have 4 connect links only linked to his profile -->
+                             {{#unless data.dataValues.ConnectLink.dataValues}}
+                                <form class="account_form accountForm">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="facebook" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="facebook">Facebook</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="linkedin" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="linkedin">Linkedin</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="github" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="github">Github</label>
+                                        </div> 
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="instagram" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="instagram">Instagram</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input placeholder="" id="linkedin" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="linkedin">Link to Linkedin</label>
+                                    <button id="connectSubmit" class="collapsible btn sendBtn waves-effect waves-light right" type="submit" name="action">Submit
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                    <div class="clear"></div>
+                                </form>
+                            {{else}}
+                                <h6>You have already entered the following information, 
+                                    if you want to change please fill all of the forms and click on the update button.</h6>
+                                <h6 class="profile-alert">Facebook: {{data.dataValues.ConnectLink.dataValues.facebook}}</h6>
+                                <h6 class="profile-alert">Linkedin: {{data.dataValues.ConnectLink.dataValues.linkedin}}</h6>
+                                <h6 class="profile-alert">Github: {{data.dataValues.ConnectLink.dataValues.github}}</h6>
+                                <h6 class="profile-alert">Instagram: {{data.dataValues.ConnectLink.dataValues.instagram}}</h6><br>
+                                <div class="divider"></div>
+                                <form class="account_form accountForm">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="facebook" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="facebook">Facebook</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="linkedin" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="linkedin">Linkedin</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="github" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="github">Github</label>
+                                        </div> 
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="instagram" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="instagram">Instagram</label>
+                                        </div> 
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input placeholder="" id="github" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="github">Link to GitHub</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input placeholder="" id="instagram" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="instagram">Link to Instagram</label>
-                                    </div>
-                                </div>
-                                <button id="connectSubmit" class="collapsible btn waves-effect waves-light right" type="submit" name="action">Submit
-                                    <i class="material-icons right">send</i>
-                                </button>
-                                <div class="clear"></div>
-                            </form>
-                            <div class="divider"></div>
-                            <table id="tableBody" class="responsive-table">
-                                <tbody>
-                                    <tr class="incoming-data">
-                                        <td>Facebook</td>
-                                        <td>{{data.dataValues.ConnectLink.dataValues.facebook}}</td>
-                                    </tr>
-                                    <tr class="incoming-data">
-                                        <td>Linkedin</td>
-                                        <td>{{data.dataValues.ConnectLink.dataValues.linkedin}}</td>                                       
-                                    </tr>
-                                    <tr class="incoming-data">
-                                        <td>GitHub</td>
-                                        <td>{{data.dataValues.ConnectLink.dataValues.github}}</td> 
-                                    </tr>
-                                    <tr class="incoming-data">
-                                        <td>Instagram</td>
-                                        <td>{{data.dataValues.ConnectLink.dataValues.instagram}}</td> 
-                                    </tr>
-                                    <tr class="incoming-data">
-                                        <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateRecord"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteRecord"><i class="material-icons">delete</i></a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                    <a id="update" data-updateid="{{data.dataValues.ConnectLink.dataValues.id}}" class="btn-floating btn-large waves-effect waves-light right updateConnect"><i class="material-icons">system_update_alt</i></a>
+                                    <div class="clear"></div>
+                                </form>
+                            {{/unless}}    
                         </div>
                     </li>
+                    <!-- End of contact links section -->
+                    <!-- Start of profile photo section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">photo</i>Profile Photo</div>
                         <div class="collapsible-body">
@@ -302,15 +323,18 @@
                             <div class="divider"></div>
                         </div>
                     </li>
+                    <!-- End of profile photo section -->
                 </ul>
+                <!-- End of card body -->
                 <div class="card-action">
                     <a class="btn" href="/dark/{{data.id}}" id="readyToGo" data-id=>Ready to Go</a>
                 </div>
                 <div id="data" data-id={{data.id}} style="display: none"></div>
             </div>
         </div>
-
+        <!-- End of card -->
     </div>
+    <!-- End of first row -->
 </div>
 <!-- End of first section -->
 {{>footer}}

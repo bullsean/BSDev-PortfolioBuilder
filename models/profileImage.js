@@ -6,8 +6,8 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     ProfileImage.associate = function(models) {
-        // We're saying that a ProfileName should belong to an Author
-        // A ProfileName can't be created without an Author due to the foreign key constraint
+        // We're saying that a ProfileName should belong to a User
+        // A ProfileName can't be created without a User due to the foreign key constraint
         ProfileImage.belongsTo(models.User);
       };
 
