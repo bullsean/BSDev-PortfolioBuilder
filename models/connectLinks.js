@@ -1,17 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
     var ConnectLinks = sequelize.define("ConnectLinks", {
-        facebook: {
+        website: {
             type: DataTypes.STRING,
         },
-        instagram: {
+        link: {
             type: DataTypes.STRING,
-        },
-        linkedin: {
-            type: DataTypes.STRING,
-        },
-        github: {
-            type: DataTypes.STRING,
-        },
+        }
     });
 
     ConnectLinks.associate = function(models) {

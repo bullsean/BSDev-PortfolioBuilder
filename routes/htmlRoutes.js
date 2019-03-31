@@ -53,12 +53,13 @@ module.exports = function (app) {
         db.Experience,
         db.Skaccom,
         db.Licert,
-        db.ConnectLinks,
+        db.ConnectLink,
         db.Education,
         db.ProfileImage
       ],
       where: { id: userId }
     }).then(function(results) {
+      console.log(results.dataValues.ConnectLink.dataValues);
       res.render("account", {
         title: results.email + " | Portfolio Creator",
         data: results

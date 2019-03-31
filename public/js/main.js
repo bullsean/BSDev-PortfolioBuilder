@@ -144,31 +144,23 @@ $(document).ready(function() {
     }
   });
 
-  //When user submit his coonections, these info will be sent to the server -- check api-routes file
+  //When user submit his connectLinks, these info will be sent to the server -- check api-routes file
   $("#connectSubmit").on("click", function(event) {
     event.preventDefault();
-    var facebook = $("#facebook")
+    var website = $("#website")
       .val()
       .trim();
-    var linkedin = $("#linkedin")
-      .val()
-      .trim();
-    var github = $("#github")
-      .val()
-      .trim();
-    var instagram = $("#instagram")
+    var link = $("#link")
       .val()
       .trim();
 
-    if (validateConnect(facebook, linkedin, github, instagram)) {
+    if (validateConnect(website, link)) {
       $.ajax({
         url: "/api/connectLinks/" + userId,
         method: "POST",
         data: {
-          facebook: facebook,
-          linkedin: linkedin,
-          github: github,
-          instagram: instagram
+          website: website,
+          link: link
         }
       }).then(function() {
         location.reload();
@@ -305,6 +297,33 @@ $(document).ready(function() {
     }
   });
 
+  //When updateConnect button clicked update the record in DB
+  $(".updateConnect").on("click", function() {
+    var idToUpdate = $(this).data("updateid");
+    event.preventDefault();
+    var website = $("#website")
+      .val()
+      .trim();
+    var link = $("#link")
+      .val()
+      .trim();
+
+    if (validateConnect(website, link)) {
+      console.log("hi");
+      // Send the PUT request.
+      $.ajax("/api/updateConnect/" + idToUpdate, {
+        type: "PUT",
+        data: {
+          website: website,
+          link: link
+        }
+      }).then(function() {
+        // Reload the page to get the updated list
+        location.reload();
+      });
+    }
+  });
+
   //When DeleteExp button clicked delete the record from DB
   $(".deleteExp").on("click", function() {
     var idToDelete = $(this).data("deleteid");
@@ -353,8 +372,8 @@ $(document).ready(function() {
     });
   });
 
-   //When DeleteConnect button clicked delete the record from DB
-   $(".deleteConnect").on("click", function() {
+  //When DeleteConnect button clicked delete the record from DB
+  $(".deleteConnect").on("click", function() {
     var idToDelete = $(this).data("deleteid");
 
     $.ajax("/api/deleteConnect/" + idToDelete, {
@@ -456,44 +475,27 @@ $(document).ready(function() {
     }
   }
 
-  function validateConnect(fb, li, gh, i) {
-    var validfb = false;
-    var validli = false;
-    var validgh = false;
-    var validi = false;
+  function validateConnect(ws, l) {
+    var validws = false;
+    var validlink = false;
+
+    if (ws.length < 1) {
+      $("#website").css("border", "1px solid red");
+    } else {
+      validws = true;
+      $("#website").css("border", "");
+    }
 
     // Check if links begin with "http://" or "https://"
-    if (fb.charAt(4) !== ":" && fb.charAt(5) !== ":") {
-      $("#facebook").css("border", "1px solid red");
+    if (l.charAt(4) !== ":" && l.charAt(5) !== ":") {
+      $("#link").css("border", "1px solid red");
     } else {
-      validfb = true;
-      $("#facebook").css("border", "");
+      validlink = true;
+      $("#link").css("border", "");
     }
 
-    if (li.charAt(4) !== ":" && li.charAt(5) !== ":") {
-      $("#linkedin").css("border", "1px solid red");
-    } else {
-      validli = true;
-      $("#linkedin").css("border", "");
-    }
-
-    if (gh.charAt(4) !== ":" && gh.charAt(5) !== ":") {
-      $("#github").css("border", "1px solid red");
-    } else {
-      validgh = true;
-      $("#github").css("border", "");
-    }
-
-    if (i.charAt(4) !== ":" && i.charAt(5) !== ":") {
-      $("#instagram").css("border", "1px solid red");
-    } else {
-      validi = true;
-      $("#instagram").css("border", "");
-    }
-
-    if (validfb && validli && validgh && validi) {
+    if (validws && validlink) {
       {
-        console.log(true);
         return true;
       }
     }
