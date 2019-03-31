@@ -4,7 +4,7 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     res.render("index", {
-      title: "Home | Portfolio Creator"
+      title: "Home | Portfolio Builder"
     });
   });
 
@@ -30,7 +30,7 @@ module.exports = function(app) {
     }).then(function(results) {
       res.render("dark", {
         layout: "templates",
-        title: "Portfolio Creator | Dark Template",
+        title: "Dark Template | Portfolio Creator",
         data: results
       });
     });
@@ -51,7 +51,7 @@ module.exports = function(app) {
     }).then(function(results) {
       res.render("light", {
         layout: "templates",
-        title: "Portfolio Creator | Light Template",
+        title: "Light Template | Portfolio Creator",
         data: results
       });
     });
@@ -72,7 +72,7 @@ module.exports = function(app) {
     }).then(function(results) {
       res.render("additional", {
         layout: "templates",
-        title: "Portfolio Creator | Additional Template",
+        title: "Additional Template | Portfolio Creator",
         data: results
       });
     });
@@ -83,7 +83,7 @@ module.exports = function(app) {
   app.get("/lightTemplateView", function(req, res) {
     res.render("lightTemplateView", {
       layout: "templates",
-      title: "Portfolio Creator | Light Template"
+      title: "Light Template | Portfolio Builder"
     });
   });
 
@@ -91,7 +91,7 @@ module.exports = function(app) {
   app.get("/darkTemplateView", function(req, res) {
     res.render("darkTemplateView", {
       layout: "templates",
-      title: "Portfolio Creator | Dark Template"
+      title: "Dark Template | Portfolio Builder"
     });
   });
 
@@ -99,7 +99,14 @@ module.exports = function(app) {
   app.get("/additionalTemplateView", function(req, res) {
     res.render("additionalTemplateView", {
       layout: "templates",
-      title: "Portfolio Creator | Additional Template"
+      title: "Additional Template | Portfolio Builder"
+    });
+  });
+
+  //When user click on improvements in the main page he will be directed to this page
+  app.get("/improvements", function(req, res) {
+    res.render("improvements", {
+      title: "Portfolio Builder | Improvements"
     });
   });
 
@@ -120,7 +127,7 @@ module.exports = function(app) {
       where: { id: userId }
     }).then(function(results) {
       res.render("account", {
-        title: results.email + " | Portfolio Creator",
+        title: "Account | Portfolio Creator",
         data: results
       });
     });

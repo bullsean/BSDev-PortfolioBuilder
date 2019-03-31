@@ -160,6 +160,11 @@ h5 {
 .clear {
     clear: both;
 }
+/* Improvement page styling
+* --------------------------------------- */
+.improv {
+    text-align: left;
+}
 /* Footer styling
 * --------------------------------------- */
 footer {
