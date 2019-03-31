@@ -39,31 +39,7 @@ module.exports = function(app) {
     }).then(function(results) {
       res.json(results);
     });
-    
-    // isUnique(UserId).then(function(results) {
-    //   if (results === null) {
-    //     db.ProfileName.create({
-    //       profileFirstName: profileFirstName,
-    //       profileLastName: profileLastName,
-    //       title: title,
-    //       UserId: UserId
-    //     }).then(function(results) {
-    //       res.json(results);
-    //     });
-    //   } else {
-    //     return;
-    //   }
-    // });
   });
-
-  // function isUnique(id) {
-  //   return db.ProfileName.findOne({
-  //     where: { UserId: id }
-  //   });/*.then(function(results) {
-  //     console.log(results);
-  //     res.json(results);
-  //   });*/
-  // }
 
   //add profile info (experiences coming from the account page) to the DB
   app.post("/api/experiences/:UserId", function(req, res) {
@@ -91,7 +67,6 @@ module.exports = function(app) {
       degree: degree,
       UserId: parseInt(req.params.UserId)
     }).then(function(result) {
-      // We have access to the new todo as an argument inside of the callback function
       res.json(result);
     });
   });
@@ -120,22 +95,23 @@ module.exports = function(app) {
     });
   });
 
-  //add user account inputs (connection info) to the DB
-  app.post("/api/connectLinks/:UserId", function(req, res) {
+   //add connect info (names coming from the account page) to the DB
+   app.post("/api/connectLinks/:UserId", function(req, res) {
     var facebook = req.body.facebook;
     var linkedin = req.body.linkedin;
     var github = req.body.github;
     var instagram = req.body.instagram;
 
-    db.ConnectLinks.create({
+    var UserId = parseInt(req.params.UserId);
+
+    db.ConnectLink.create({
       facebook: facebook,
       linkedin: linkedin,
       github: github,
       instagram: instagram,
-      UserId: parseInt(req.params.UserId)
-    }).then(function(result) {
-      // We have access to the new todo as an argument inside of the callback function
-      res.json(result);
+      UserId: UserId
+    }).then(function(results) {
+      res.json(results);
     });
   });
 
@@ -159,6 +135,7 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+
   // Updating data record
   app.put("/api/updateExp/:idToUpdate", function(req, res) {
 
@@ -179,6 +156,7 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+
   // Updating data record
   app.put("/api/updateEdu/:idToUpdate", function(req, res) {
 
@@ -232,6 +210,29 @@ module.exports = function(app) {
     });
   });
 
+  // Updating data record
+  app.put("/api/updateConnectLinks/:idToUpdate", function(req, res) {
+
+    var facebook = req.body.facebook;
+    var linkedin = req.body.linkedin;
+    var github = req.body.github;
+    var instagram = req.body.instagram;
+    var UserId = parseInt(req.params.idToUpdate);
+
+    db.ProfileName.update({
+      facebook: facebook,
+      linkedin: linkedin,
+      github: github,
+      instagram: instagram,
+    }, {
+      where: {
+        id: UserId
+      }
+    }).then(function(result) {
+      res.json(result);
+    });
+  });
+
   //Deleting record
   app.delete("/api/deleteExp/:idToDelete", function(req, res) {
     var UserId = parseInt(req.params.idToDelete);
@@ -267,7 +268,7 @@ module.exports = function(app) {
       res.json(result);
     });
   });
-
+  
   //Deleting record
   app.delete("/api/deleteSkaccom/:idToDelete", function(req, res) {
     var UserId = parseInt(req.params.idToDelete);

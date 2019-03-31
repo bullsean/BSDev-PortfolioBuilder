@@ -22,7 +22,7 @@ module.exports = function(app) {
         db.Experience,
         db.Skaccom,
         db.Licert,
-        db.ConnectLinks,
+        db.ConnectLink,
         db.Education,
         db.ProfileImage
       ],
@@ -76,6 +76,7 @@ module.exports = function(app) {
         data: results
       });
     });
+
   });
 
   //When user click on light template image in the main page he will be directed to the light template page
@@ -102,6 +103,7 @@ module.exports = function(app) {
     });
   });
 
+  //When user sign up or login he will be directed to the account page
   app.get("/account/:id", function(req, res) {
     var userId = req.params.id;
 
@@ -111,9 +113,9 @@ module.exports = function(app) {
         db.Experience,
         db.Skaccom,
         db.Licert,
-        db.ConnectLinks,
         db.Education,
-        db.ProfileImage
+        db.ProfileImage,
+        db.ConnectLink
       ],
       where: { id: userId }
     }).then(function(results) {
