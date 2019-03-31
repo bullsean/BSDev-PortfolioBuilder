@@ -12,8 +12,8 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Experience.associate = function(models) {
-    // We're saying that a Project should belong to an Author
-    // A Project can't be created without an Author due to the foreign key constraint
+    // We're saying that a Project should belong to a User
+    // A Project can't be created without a User due to the foreign key constraint
     Experience.belongsTo(models.User);
   };
   

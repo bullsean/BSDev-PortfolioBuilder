@@ -2,16 +2,23 @@
 <br><br>
 <!--Start first section -->
 <div class="section white content-container">
-   <div class="row">
-       <div class="col s12 card-wrap">
+    <!-- Start of first row -->
+    <div class="row">
+        <!-- Start of card -->
+        <div class="col s12 card-wrap">
             <div class="card profile-form"><br>
+                <!-- Start of card header -->
                 <h4 class="content-headers">You are signed in as: {{data.email}}</h4>
                 <h6 class="content-headers">Please update the forms below with your information</h6><br>
                 <div class="divider"></div>
+                <!-- End of card header -->
+                <!-- Start of card body -->
                 <ul class="collapsible">
+                    <!-- Start of profile name section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">account_box</i>Full Name</div>
                         <div class="collapsible-body">
+                            <!-- User can have only one name linked to his profile -->
                             {{#unless data.dataValues.ProfileName.dataValues}}
                                 <form class="account_form accountForm">
                                     <div class="row">
@@ -60,6 +67,8 @@
                             {{/unless}}
                         </div>
                     </li>
+                    <!-- End of profile name section -->
+                    <!-- Start of experience section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">business_center</i>Experiences</div>
                         <div class="collapsible-body">
@@ -109,6 +118,8 @@
                             {{/if}}
                         </div>
                     </li>
+                    <!-- End of experience section -->
+                    <!-- Start of education section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">school</i>Education</div>
                         <div class="collapsible-body">
@@ -150,6 +161,8 @@
                             {{/if}}
                         </div>
                     </li>
+                    <!-- End of education section -->
+                    <!-- Start of license section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">assignment</i>Licenses/Certifications</div>
                         <div class="collapsible-body">
@@ -183,6 +196,8 @@
                             {{/if}}
                         </div>
                     </li>
+                    <!-- End of license section -->
+                    <!-- Start of skills section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">format_list_bulleted</i>Skills/Accomplishments</div>
                         <div class="collapsible-body">
@@ -217,9 +232,12 @@
                             
                         </div>
                     </li>
+                    <!-- End of skills section -->
+                    <!-- Start of contact links section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">contact_mail</i>Contact Information</div>
                         <div class="collapsible-body">
+                            <!-- User must have 4 connect links only linked to his profile -->
                              {{#unless data.dataValues.ConnectLink.dataValues}}
                                 <form class="account_form accountForm">
                                     <div class="row">
@@ -278,6 +296,8 @@
                             {{/unless}}    
                         </div>
                     </li>
+                    <!-- End of contact links section -->
+                    <!-- Start of profile photo section -->
                     <li>
                         <div class="collapsible-header"><i class="material-icons">photo</i>Profile Photo</div>
                         <div class="collapsible-body">
@@ -303,15 +323,18 @@
                             <div class="divider"></div>
                         </div>
                     </li>
+                    <!-- End of profile photo section -->
                 </ul>
+                <!-- End of card body -->
                 <div class="card-action">
                     <a class="btn" href="/dark/{{data.id}}" id="readyToGo" data-id=>Ready to Go</a>
                 </div>
                 <div id="data" data-id={{data.id}} style="display: none"></div>
             </div>
         </div>
-
+        <!-- End of card -->
     </div>
+    <!-- End of first row -->
 </div>
 <!-- End of first section -->
 {{>footer}}

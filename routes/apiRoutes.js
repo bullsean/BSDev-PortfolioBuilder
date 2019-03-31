@@ -39,31 +39,7 @@ module.exports = function(app) {
     }).then(function(results) {
       res.json(results);
     });
-    
-    // isUnique(UserId).then(function(results) {
-    //   if (results === null) {
-    //     db.ProfileName.create({
-    //       profileFirstName: profileFirstName,
-    //       profileLastName: profileLastName,
-    //       title: title,
-    //       UserId: UserId
-    //     }).then(function(results) {
-    //       res.json(results);
-    //     });
-    //   } else {
-    //     return;
-    //   }
-    // });
   });
-
-  // function isUnique(id) {
-  //   return db.ProfileName.findOne({
-  //     where: { UserId: id }
-  //   });/*.then(function(results) {
-  //     console.log(results);
-  //     res.json(results);
-  //   });*/
-  // }
 
   //add profile info (experiences coming from the account page) to the DB
   app.post("/api/experiences/:UserId", function(req, res) {
@@ -138,6 +114,7 @@ module.exports = function(app) {
       res.json(results);
     });
   });
+
   // Updating data record
   app.put("/api/updateName/:idToUpdate", function(req, res) {
 
@@ -158,6 +135,7 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+
   // Updating data record
   app.put("/api/updateExp/:idToUpdate", function(req, res) {
 
@@ -178,6 +156,7 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+
   // Updating data record
   app.put("/api/updateEdu/:idToUpdate", function(req, res) {
 
@@ -196,6 +175,7 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+
   // Updating data record
   app.put("/api/updateLicert/:idToUpdate", function(req, res) {
 
@@ -212,6 +192,7 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+
   // Updating data record
   app.put("/api/updateSkaccom/:idToUpdate", function(req, res) {
 
@@ -228,6 +209,7 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+
   // Updating data record
   app.put("/api/updateConnectLinks/:idToUpdate", function(req, res) {
 
@@ -262,6 +244,7 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+
   //Deleting record
   app.delete("/api/deleteEdu/:idToDelete", function(req, res) {
     var UserId = parseInt(req.params.idToDelete);
@@ -273,6 +256,7 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+
   //Deleting record
   app.delete("/api/deleteLicert/:idToDelete", function(req, res) {
     var UserId = parseInt(req.params.idToDelete);
@@ -284,6 +268,7 @@ module.exports = function(app) {
       res.json(result);
     });
   });
+  
   //Deleting record
   app.delete("/api/deleteSkaccom/:idToDelete", function(req, res) {
     var UserId = parseInt(req.params.idToDelete);

@@ -1,13 +1,8 @@
 //listen for auth status changes
 auth.onAuthStateChanged(function (user) {
-    // console.log(user);
     if (user) {
         console.log("User logged in: ", user)
         console.log("UID: ", user.uid)
-        // $("#data").data("uid", user.uid);
-        // var setId = $("#data").data("uid");
-        // // $("#data").data("uid",user.uid);        
-        // console.log(setId);
 
     } else {
         console.log("User logged out");
@@ -25,8 +20,8 @@ signupForm.on("submit", function (event) {
     var email = $("#signup-email")
         .val()
         .trim();
-    // var uid = $("data").data("uid")
-    //sign up user
+
+    //2. sign up user
     auth.createUserWithEmailAndPassword(email, password).then(function (cred) {
         console.log("This is the cred: ", cred.user.uid);
         var modal = $("#modal-signup");

@@ -15,8 +15,8 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     ConnectLink.associate = function(models) {
-        // We're saying that a ContactLinks should belong to an Author
-        // A ContactLinks can't be created without an Author due to the foreign key constraint
+        // We're saying that a ContactLink should belong to a User
+        // A ContactLink can't be created without a User due to the foreign key constraint
         ConnectLink.belongsTo(models.User);
       };
 

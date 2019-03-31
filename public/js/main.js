@@ -1,6 +1,5 @@
+//Start of Document Ready function
 $(document).ready(function() {
-  //Start of Document Ready function
-
   //Modal initialization
   var modals = $(".modal");
   M.Modal.init(modals);
@@ -9,8 +8,8 @@ $(document).ready(function() {
   //Collapsible initialization
   $(".collapsible").collapsible();
 
-  //Navbar background to change to other color when scroll down to the page ---
-  //done to overcome the change of page body color
+  //Navbar background to change to other color when scroll down into the page
+  //this is done to overcome the change of page body color
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
     if (scroll > 550) {
@@ -21,6 +20,7 @@ $(document).ready(function() {
   });
 
   var userId = $("#data").data("id");
+
   //When user submit his name, these info will be sent to the server -- check api-routes file
   $("#nameSubmit").on("click", function(event) {
     event.preventDefault();
@@ -103,8 +103,7 @@ $(document).ready(function() {
     }
   });
 
-  //When user submit his licenses or certificates, these info will be sent to the server --
-  //check api-routes file
+  //When user submit his licenses or certificates, these info will be sent to the server -- check api-routes file
   $("#licertSubmit").on("click", function(event) {
     event.preventDefault();
     var licertName = $("#lice-cert-name")
@@ -160,8 +159,6 @@ $(document).ready(function() {
       .val()
       .trim();
 
-      console.log("hi");
-
     if (validateConnect(facebook, linkedin, github, instagram)) {
       $.ajax({
         url: "/api/connectLinks/" + userId,
@@ -192,8 +189,7 @@ $(document).ready(function() {
       .val()
       .trim();
 
-    if (validateName(firstName, lastName, title)){
-      // Send the PUT request.
+    if (validateName(firstName, lastName, title)) {
       $.ajax("/api/updateName/" + idToUpdate, {
         type: "PUT",
         data: {
@@ -202,7 +198,6 @@ $(document).ready(function() {
           title: title
         }
       }).then(function() {
-        // Reload the page to get the updated list
         location.reload();
       });
     }
@@ -223,7 +218,6 @@ $(document).ready(function() {
       .trim();
 
     if (validateExperiences(comJectName, titleRole, desc)) {
-      // Send the PUT request.
       $.ajax("/api/updateExp/" + idToUpdate, {
         type: "PUT",
         data: {
@@ -232,7 +226,6 @@ $(document).ready(function() {
           desc: desc
         }
       }).then(function() {
-        // Reload the page to get the updated list
         location.reload();
       });
     }
@@ -250,7 +243,6 @@ $(document).ready(function() {
       .trim();
 
     if (validateEducation(institution, degree)) {
-      // Send the PUT request.
       $.ajax("/api/updateEdu/" + idToUpdate, {
         type: "PUT",
         data: {
@@ -258,7 +250,6 @@ $(document).ready(function() {
           degree: degree
         }
       }).then(function() {
-        // Reload the page to get the updated list
         location.reload();
       });
     }
@@ -273,14 +264,12 @@ $(document).ready(function() {
       .trim();
 
     if (validateLicert(licertName)) {
-      // Send the PUT request.
       $.ajax("/api/updateLicert/" + idToUpdate, {
         type: "PUT",
         data: {
           licertName: licertName
         }
       }).then(function() {
-        // Reload the page to get the updated list
         location.reload();
       });
     }
@@ -295,14 +284,12 @@ $(document).ready(function() {
       .trim();
 
     if (validateSkaccom(skaccomName)) {
-      // Send the PUT request.
       $.ajax("/api/updateSkaccom/" + idToUpdate, {
         type: "PUT",
         data: {
           skaccomName: skaccomName
         }
       }).then(function() {
-        // Reload the page to get the updated list
         location.reload();
       });
     }
@@ -326,7 +313,6 @@ $(document).ready(function() {
       .trim();
 
     if (validateConnect(facebook, linkedin, github, instagram)) {
-      // Send the PUT request.
       $.ajax("/api/updateConnectLinks/" + idToUpdate, {
         type: "PUT",
         data: {
@@ -336,7 +322,6 @@ $(document).ready(function() {
           instagram: instagram
         }
       }).then(function() {
-        // Reload the page to get the updated list
         location.reload();
       });
     }
@@ -349,7 +334,6 @@ $(document).ready(function() {
     $.ajax("/api/deleteExp/" + idToDelete, {
       method: "DELETE"
     }).then(function() {
-      // Reload the page to get the updated list
       location.reload();
     });
   });
@@ -361,7 +345,6 @@ $(document).ready(function() {
     $.ajax("/api/deleteEdu/" + idToDelete, {
       method: "DELETE"
     }).then(function() {
-      // Reload the page to get the updated list
       location.reload();
     });
   });
@@ -373,7 +356,6 @@ $(document).ready(function() {
     $.ajax("/api/deleteLicert/" + idToDelete, {
       method: "DELETE"
     }).then(function() {
-      // Reload the page to get the updated list
       location.reload();
     });
   });
@@ -385,7 +367,6 @@ $(document).ready(function() {
     $.ajax("/api/deleteSkaccom/" + idToDelete, {
       method: "DELETE"
     }).then(function() {
-      // Reload the page to get the updated list
       location.reload();
     });
   });
