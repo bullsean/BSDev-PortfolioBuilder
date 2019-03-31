@@ -109,9 +109,28 @@ h5 {
 /* templatess div styling
 * --------------------------------------- */
 .img-cms {
-    height: 180px;
-    width: 150px;
+    height: 85%;
+    width: 85%;
     margin: 0;
+}
+
+.photos img:hover {
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+    z-index: 10;
+}
+
+.photos img {
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+    padding: 10px 10px 30px 10px;
+    background: white;
+    border-radius: 25px;
+    /* border: solid 1px black; */
 }
 /* Developers div styling
 * --------------------------------------- */
@@ -158,5 +177,5 @@ h5 {
 footer {
     background-color: #1e5250;
     color: white;
-    min-height: 50vh;
+    /* min-height: 50vh; */
 }
