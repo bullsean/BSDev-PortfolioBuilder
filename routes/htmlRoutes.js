@@ -37,10 +37,24 @@ module.exports = function(app) {
 
   });
   //When user click on light template image in the main page he will be directed to the light template page
-  app.get("/light", function(req, res) {
-    res.render("light", {
+  app.get("/lightTemplateView", function(req, res) {
+    res.render("lightTemplateView", {
       layout: "templates",
-      title: "Light Template | Portfolio Creator"
+      title: "Portfolio Creator | Light Template"
+    });
+  });
+
+  app.get("/darkTemplateView", function(req, res) {
+    res.render("darkTemplateView", {
+      layout: "templates",
+      title: "Portfolio Creator | Dark Template"
+    });
+  });
+
+  app.get("/additionalTemplate", function(req, res) {
+    res.render("additionalTemplate", {
+      layout: "templates",
+      title: "Portfolio Creator | Additional Template"
     });
   });
 
