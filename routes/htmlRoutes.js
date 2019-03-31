@@ -44,15 +44,6 @@ module.exports = function (app) {
     });
   });
 
-  // app.get("/account/:id", function (req, res) {
-  //   res.render("account", {
-  //     title: "Account | Portfolio Creator",
-  //     data: {
-  //       id: req.params.id
-  //     }
-  //   });
-  // });
-
   app.get("/account/:id", function(req, res) {
     var userId = req.params.id;
 
@@ -85,22 +76,4 @@ module.exports = function (app) {
       });
     });
   });
-
-  //   db.User.findOne({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function(result) {
-  //       console.log(result);
-  //       // console.log(result[0].dataValues);
-  //       // console.log(result[0].dataValues.firstName);
-  //       res.render("dashboard", {
-  //         title: "Dashboard | Portfolio Creator",
-  //         data: result.dataValues
-  //       });
-  //     });
-  //   res.render("dashboard", {
-  //     title: "Dashboard | Portfolio Creator"
-  //   });
-  // });
 };

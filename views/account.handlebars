@@ -6,37 +6,62 @@
        <div class="col s12 card-wrap">
             <div class="card profile-form"><br>
                 <h4 class="content-headers">You are signed in as: {{data.email}}</h4>
-                <p class="content-headers">Please update the forms below with your information</p><br>
+                <h6 class="content-headers">Please update the forms below with your information</h6><br>
                 <div class="divider"></div>
                 <ul class="collapsible">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Full Name</div>
+                        <div class="collapsible-header"><i class="material-icons">account_box</i>Full Name</div>
                         <div class="collapsible-body">
-                            <form class="account_form accountForm">
-                                <div class="row">
-                                    <div class="input-field col s6">
-                                        <input placeholder="" id="first_name" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="first_name">First Name</label>
+                            {{#unless data.dataValues.ProfileName.dataValues}}
+                                <form class="account_form accountForm">
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input placeholder="" id="first_name" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="first_name">First Name</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input placeholder="" id="last_name" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="last_name">Last Name</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="title" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="title">Title</label>
+                                        </div> 
                                     </div>
-                                    <div class="input-field col s6">
-                                        <input placeholder="" id="last_name" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="last_name">Last Name</label>
+                                    <button id="nameSubmit" class="collapsible btn sendBtn waves-effect waves-light right" type="submit" name="action">Submit
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                    <div class="clear"></div>
+                                </form>
+                            {{else}}
+                                <h6>You have already entered the following profile information, 
+                                    if you want to change please fill the forms and click on the update button.</h6>
+                                <h6 class="profile-alert">Full Name: {{data.dataValues.ProfileName.dataValues.profileFirstName}} {{data.dataValues.ProfileName.dataValues.profileLastName}}</h6>
+                                <h6 class="profile-alert">Title: {{data.dataValues.ProfileName.dataValues.title}}</h6><br>
+                                <div class="divider"></div>
+                                <form class="account_form accountForm">
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input placeholder="" id="first_name" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="first_name">First Name</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input placeholder="" id="last_name" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="last_name">Last Name</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="title" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="title">Title</label>
+                                        </div> 
                                     </div>
-                                     <div class="input-field col s12">
-                                        <input placeholder="" id="title" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="title">Title</label>
-                                    </div> 
-                                    <div>{{data.msg}}</div>
-                                </div>
-                                <button id="nameSubmit" class="collapsible btn sendBtn waves-effect waves-light right" type="submit" name="action">Submit
-                                    <i class="material-icons right">send</i>
-                                </button>
-                                <div class="clear"></div>
-                            </form>
+                                    <a id="update" data-updateid="{{data.dataValues.ProfileName.dataValues.id}}" class="btn-floating btn-large waves-effect waves-light right updateName"><i class="material-icons">system_update_alt</i></a>
+                                    <div class="clear"></div>
+                                </form>
+                            {{/unless}}
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">place</i>Experiences</div>
+                        <div class="collapsible-header"><i class="material-icons">business_center</i>Experiences</div>
                         <div class="collapsible-body">
                             <form class="account_form accountForm">
                                 <div class="row">
@@ -60,31 +85,32 @@
                                 </button>
                                 <div class="clear"></div>
                             </form>
-                            <div class="divider"></div>
-                            <table id="tableBody" class="responsive-table">
-                                <tbody>
-                                    <tr class="incoming-data">
-                                        <td>Company/Project</td>
-                                        <td>Title/Role</td>
-                                        <td>Description</td>
-                                        <td>Update</td>
-                                        <td>Delete</td>
-                                    </tr>
-                                    {{#each data.dataValues.Experiences}}
-                                        <tr class="incoming-data todo-action">
-                                            <td>{{dataValues.comJectName}}</td>
-                                            <td>{{dataValues.titleRole}}</td>
-                                            <td>{{dataValues.description}}</td>
-                                            <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateExp"><i class="material-icons">system_update_alt</i></a></td>
-                                            <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteExp"><i class="material-icons">delete</i></a></td>
+                            {{#if data.dataValues.Experiences}}
+                                <table id="tableBody" class="responsive-table">
+                                    <tbody>
+                                        <tr class="incoming-data">
+                                            <td>Company/Project</td>
+                                            <td>Title/Role</td>
+                                            <td>Description</td>
+                                            <td>Update</td>
+                                            <td>Delete</td>
                                         </tr>
-                                    {{/each}}
-                                </tbody>
-                            </table>
+                                        {{#each data.dataValues.Experiences}}
+                                            <tr class="incoming-data todo-action">
+                                                <td>{{dataValues.comJectName}}</td>
+                                                <td>{{dataValues.titleRole}}</td>
+                                                <td>{{dataValues.description}}</td>
+                                                <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateExp"><i class="material-icons">system_update_alt</i></a></td>
+                                                <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteExp"><i class="material-icons">delete</i></a></td>
+                                            </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            {{/if}}
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Education</div>
+                        <div class="collapsible-header"><i class="material-icons">school</i>Education</div>
                         <div class="collapsible-body">
                             <form class="account_form accountForm">
                                 <div class="row">
@@ -102,29 +128,30 @@
                                 </button>
                                 <div class="clear"></div>
                             </form>
-                            <div class="divider"></div>
-                            <table id="tableBody" class="responsive-table">
-                                <tbody>
-                                    <tr class="incoming-data">
-                                        <td>Institution</td>
-                                        <td>Degree</td>
-                                        <td>Update</td>
-                                        <td>Delete</td>
-                                    </tr>
-                                    {{#each data.dataValues.Education}}
+                            {{#if data.dataValues.Education}}
+                                <table id="tableBody" class="responsive-table">
+                                    <tbody>
                                         <tr class="incoming-data">
-                                            <td>{{dataValues.institution}}</td>
-                                            <td>{{dataValues.degree}}</td>
-                                            <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateEdu"><i class="material-icons">system_update_alt</i></a></td>
-                                            <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteEdu"><i class="material-icons">delete</i></a></td>
+                                            <td>Institution</td>
+                                            <td>Degree</td>
+                                            <td>Update</td>
+                                            <td>Delete</td>
                                         </tr>
-                                    {{/each}}
-                                </tbody>
-                            </table>
+                                        {{#each data.dataValues.Education}}
+                                            <tr class="incoming-data">
+                                                <td>{{dataValues.institution}}</td>
+                                                <td>{{dataValues.degree}}</td>
+                                                <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateEdu"><i class="material-icons">system_update_alt</i></a></td>
+                                                <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteEdu"><i class="material-icons">delete</i></a></td>
+                                            </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            {{/if}}
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Licenses/Certifications</div>
+                        <div class="collapsible-header"><i class="material-icons">assignment</i>Licenses/Certifications</div>
                         <div class="collapsible-body">
                             <form class="account_form accountForm">
                                 <div class="row">
@@ -138,25 +165,26 @@
                                 </button>
                                 <div class="clear"></div>
                             </form>
-                            <div class="divider"></div>
-                            <table id="tableBody" class="responsive-table">
-                                <tbody>
-                                    <tr class="incoming-data">
-                                        <td>Name of License/Certificate</td>
-                                    </tr>
-                                    {{#each data.dataValues.Licerts}}
+                            {{#if data.dataValues.Licerts}}
+                                <table id="tableBody" class="responsive-table">
+                                    <tbody>
                                         <tr class="incoming-data">
-                                            <td>{{dataValues.licertName}}</td>
-                                            <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateLicert"><i class="material-icons">system_update_alt</i></a></td>
-                                            <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteLicert"><i class="material-icons">delete</i></a></td>
+                                            <td>Name of License/Certificate</td>
                                         </tr>
-                                    {{/each}}
-                                </tbody>
-                            </table>
+                                        {{#each data.dataValues.Licerts}}
+                                            <tr class="incoming-data">
+                                                <td>{{dataValues.licertName}}</td>
+                                                <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateLicert"><i class="material-icons">system_update_alt</i></a></td>
+                                                <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteLicert"><i class="material-icons">delete</i></a></td>
+                                            </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            {{/if}}
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Skills/Accomplishments</div>
+                        <div class="collapsible-header"><i class="material-icons">format_list_bulleted</i>Skills/Accomplishments</div>
                         <div class="collapsible-body">
                             <form class="account_form accountForm">
                                 <div class="row">
@@ -170,25 +198,27 @@
                                 </button>
                                 <div class="clear"></div>
                             </form>
-                            <div class="divider"></div>
-                            <table id="tableBody" class="responsive-table">
-                                <tbody>
-                                    <tr class="incoming-data">
-                                        <td>Name of Skill/Accomplishment</td>
-                                    </tr>
-                                    {{#each data.dataValues.Skaccoms}}
+                            {{#if data.dataValues.Skaccoms}}
+                                <table id="tableBody" class="responsive-table">
+                                    <tbody>
                                         <tr class="incoming-data">
-                                            <td>{{dataValues.skaccomName}}</td>
-                                            <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateSkaccom"><i class="material-icons">system_update_alt</i></a></td>
-                                            <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteSkaccom"><i class="material-icons">delete</i></a></td>
+                                            <td>Name of Skill/Accomplishment</td>
                                         </tr>
-                                    {{/each}}
-                                </tbody>
-                            </table>
+                                        {{#each data.dataValues.Skaccoms}}
+                                            <tr class="incoming-data">
+                                                <td>{{dataValues.skaccomName}}</td>
+                                                <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateSkaccom"><i class="material-icons">system_update_alt</i></a></td>
+                                                <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteSkaccom"><i class="material-icons">delete</i></a></td>
+                                            </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            {{/if}}
+                            
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Contact Information</div>
+                        <div class="collapsible-header"><i class="material-icons">contact_mail</i>Contact Information</div>
                         <div class="collapsible-body">
                             <form class="account_form accountForm">
                                 <div class="row">
@@ -226,24 +256,20 @@
                                     <tr class="incoming-data">
                                         <td>Facebook</td>
                                         <td>{{data.dataValues.ConnectLink.dataValues.facebook}}</td>
-                                        <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateFacebbok"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteFacebook"><i class="material-icons">delete</i></a></td>
                                     </tr>
                                     <tr class="incoming-data">
                                         <td>Linkedin</td>
-                                        <td>{{data.dataValues.ConnectLink.dataValues.linkedin}}</td>
-                                        <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateRecord"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteRecord"><i class="material-icons">delete</i></a></td>
+                                        <td>{{data.dataValues.ConnectLink.dataValues.linkedin}}</td>                                       
                                     </tr>
                                     <tr class="incoming-data">
                                         <td>GitHub</td>
-                                        <td>{{data.dataValues.ConnectLink.dataValues.github}}</td>
-                                        <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateRecord"><i class="material-icons">system_update_alt</i></a></td>
-                                        <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteRecord"><i class="material-icons">delete</i></a></td>
+                                        <td>{{data.dataValues.ConnectLink.dataValues.github}}</td> 
                                     </tr>
                                     <tr class="incoming-data">
                                         <td>Instagram</td>
-                                        <td>{{data.dataValues.ConnectLink.dataValues.instagram}}</td>
+                                        <td>{{data.dataValues.ConnectLink.dataValues.instagram}}</td> 
+                                    </tr>
+                                    <tr class="incoming-data">
                                         <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateRecord"><i class="material-icons">system_update_alt</i></a></td>
                                         <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteRecord"><i class="material-icons">delete</i></a></td>
                                     </tr>
@@ -252,7 +278,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Profile Photo</div>
+                        <div class="collapsible-header"><i class="material-icons">photo</i>Profile Photo</div>
                         <div class="collapsible-body">
                             <form class="col s12" action="/upload/{{data.id}}" method="POST" enctype="multipart/form-data">
                                 <div class = "row">
