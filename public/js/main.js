@@ -144,23 +144,33 @@ $(document).ready(function() {
     }
   });
 
-  //When user submit his connectLinks, these info will be sent to the server -- check api-routes file
+  //When user submit his coonections, these info will be sent to the server -- check api-routes file
   $("#connectSubmit").on("click", function(event) {
     event.preventDefault();
-    var website = $("#website")
+    var facebook = $("#facebook")
       .val()
       .trim();
-    var link = $("#link")
+    var linkedin = $("#linkedin")
+      .val()
+      .trim();
+    var github = $("#github")
+      .val()
+      .trim();
+    var instagram = $("#instagram")
       .val()
       .trim();
 
-    if (validateConnect(website, link)) {
+      console.log("hi");
+
+    if (validateConnect(facebook, linkedin, github, instagram)) {
       $.ajax({
         url: "/api/connectLinks/" + userId,
         method: "POST",
         data: {
-          website: website,
-          link: link
+          facebook: facebook,
+          linkedin: linkedin,
+          github: github,
+          instagram: instagram
         }
       }).then(function() {
         location.reload();
@@ -197,6 +207,7 @@ $(document).ready(function() {
       });
     }
   });
+
   //When updateExp button clicked update the record in DB
   $(".updateExp").on("click", function() {
     var idToUpdate = $(this).data("updateid");
@@ -297,25 +308,32 @@ $(document).ready(function() {
     }
   });
 
-  //When updateConnect button clicked update the record in DB
+  //When updateExp button clicked update the record in DB
   $(".updateConnect").on("click", function() {
     var idToUpdate = $(this).data("updateid");
     event.preventDefault();
-    var website = $("#website")
+    var facebook = $("#facebook")
       .val()
       .trim();
-    var link = $("#link")
+    var linkedin = $("#linkedin")
+      .val()
+      .trim();
+    var github = $("#github")
+      .val()
+      .trim();
+    var instagram = $("#instagram")
       .val()
       .trim();
 
-    if (validateConnect(website, link)) {
-      console.log("hi");
+    if (validateConnect(facebook, linkedin, github, instagram)) {
       // Send the PUT request.
-      $.ajax("/api/updateConnect/" + idToUpdate, {
+      $.ajax("/api/updateConnectLinks/" + idToUpdate, {
         type: "PUT",
         data: {
-          website: website,
-          link: link
+          facebook: facebook,
+          linkedin: linkedin,
+          github: github,
+          instagram: instagram
         }
       }).then(function() {
         // Reload the page to get the updated list
@@ -365,18 +383,6 @@ $(document).ready(function() {
     var idToDelete = $(this).data("deleteid");
 
     $.ajax("/api/deleteSkaccom/" + idToDelete, {
-      method: "DELETE"
-    }).then(function() {
-      // Reload the page to get the updated list
-      location.reload();
-    });
-  });
-
-  //When DeleteConnect button clicked delete the record from DB
-  $(".deleteConnect").on("click", function() {
-    var idToDelete = $(this).data("deleteid");
-
-    $.ajax("/api/deleteConnect/" + idToDelete, {
       method: "DELETE"
     }).then(function() {
       // Reload the page to get the updated list
@@ -475,27 +481,44 @@ $(document).ready(function() {
     }
   }
 
-  function validateConnect(ws, l) {
-    var validws = false;
-    var validlink = false;
-
-    if (ws.length < 1) {
-      $("#website").css("border", "1px solid red");
-    } else {
-      validws = true;
-      $("#website").css("border", "");
-    }
+  function validateConnect(fb, li, gh, i) {
+    var validfb = false;
+    var validli = false;
+    var validgh = false;
+    var validi = false;
 
     // Check if links begin with "http://" or "https://"
-    if (l.charAt(4) !== ":" && l.charAt(5) !== ":") {
-      $("#link").css("border", "1px solid red");
+    if (fb.charAt(4) !== ":" && fb.charAt(5) !== ":") {
+      $("#facebook").css("border", "1px solid red");
     } else {
-      validlink = true;
-      $("#link").css("border", "");
+      validfb = true;
+      $("#facebook").css("border", "");
     }
 
-    if (validws && validlink) {
+    if (li.charAt(4) !== ":" && li.charAt(5) !== ":") {
+      $("#linkedin").css("border", "1px solid red");
+    } else {
+      validli = true;
+      $("#linkedin").css("border", "");
+    }
+
+    if (gh.charAt(4) !== ":" && gh.charAt(5) !== ":") {
+      $("#github").css("border", "1px solid red");
+    } else {
+      validgh = true;
+      $("#github").css("border", "");
+    }
+
+    if (i.charAt(4) !== ":" && i.charAt(5) !== ":") {
+      $("#instagram").css("border", "1px solid red");
+    } else {
+      validi = true;
+      $("#instagram").css("border", "");
+    }
+
+    if (validfb && validli && validgh && validi) {
       {
+        console.log(true);
         return true;
       }
     }

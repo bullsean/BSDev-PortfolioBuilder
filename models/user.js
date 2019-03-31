@@ -26,10 +26,6 @@ User.associate = function (models) {
         onDelete: "cascade"
     });
 
-    User.hasOne(models.ConnectLinks, {
-        onDelete: "cascade"
-    });
-
     User.hasMany(models.Education, {
         onDelete: "cascade"
     });
@@ -39,6 +35,10 @@ User.associate = function (models) {
     });
 
     User.hasOne(models.ProfileImage, {
+        onDelete: "cascade"
+    });
+
+    User.hasOne(models.ConnectLink, {
         onDelete: "cascade"
     });
 }

@@ -22,7 +22,7 @@ module.exports = function(app) {
         db.Experience,
         db.Skaccom,
         db.Licert,
-        db.ConnectLinks,
+        db.ConnectLink,
         db.Education,
         db.ProfileImage
       ],
@@ -67,13 +67,13 @@ module.exports = function(app) {
         db.Experience,
         db.Skaccom,
         db.Licert,
-        db.ConnectLink,
         db.Education,
-        db.ProfileImage
+        db.ProfileImage,
+        db.ConnectLink
       ],
       where: { id: userId }
     }).then(function(results) {
-      console.log(results.dataValues.ConnectLink.dataValues);
+      console.log(results);
       res.render("account", {
         title: results.email + " | Portfolio Creator",
         data: results

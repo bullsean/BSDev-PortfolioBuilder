@@ -220,40 +220,62 @@
                     <li>
                         <div class="collapsible-header"><i class="material-icons">contact_mail</i>Contact Information</div>
                         <div class="collapsible-body">
-                            <form class="account_form accountForm">
-                                <div class="row">
-                                    <div class="input-field col s4">
-                                        <input placeholder="" id="website" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="website">Website</label>
+                             {{#unless data.dataValues.ConnectLink.dataValues}}
+                                <form class="account_form accountForm">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="facebook" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="facebook">Facebook</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="linkedin" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="linkedin">Linkedin</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="github" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="github">Github</label>
+                                        </div> 
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="instagram" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="instagram">Instagram</label>
+                                        </div>
                                     </div>
-                                    <div class="input-field col s8">
-                                        <input placeholder="" id="link" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="link">Link</label>
+                                    <button id="connectSubmit" class="collapsible btn sendBtn waves-effect waves-light right" type="submit" name="action">Submit
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                    <div class="clear"></div>
+                                </form>
+                            {{else}}
+                                <h6>You have already entered the following information, 
+                                    if you want to change please fill all of the forms and click on the update button.</h6>
+                                <h6 class="profile-alert">Facebook: {{data.dataValues.ConnectLink.dataValues.facebook}}</h6>
+                                <h6 class="profile-alert">Linkedin: {{data.dataValues.ConnectLink.dataValues.linkedin}}</h6>
+                                <h6 class="profile-alert">Github: {{data.dataValues.ConnectLink.dataValues.github}}</h6>
+                                <h6 class="profile-alert">Instagram: {{data.dataValues.ConnectLink.dataValues.instagram}}</h6><br>
+                                <div class="divider"></div>
+                                <form class="account_form accountForm">
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="facebook" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="facebook">Facebook</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="linkedin" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="linkedin">Linkedin</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="github" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="github">Github</label>
+                                        </div> 
+                                        <div class="input-field col s12">
+                                            <input placeholder="" id="instagram" type="text" class="validate">
+                                            <label class="accountFieldLabel" for="instagram">Instagram</label>
+                                        </div> 
                                     </div>
-                                </div>
-                                <button id="connectSubmit" class="collapsible btn waves-effect waves-light right" type="submit" name="action">Submit
-                                    <i class="material-icons right">send</i>
-                                </button>
-                                <div class="clear"></div>
-                            </form>
-                            {{#if data.dataValues.ConnectLink}}
-                                <table id="tableBody" class="responsive-table">
-                                    <tbody>
-                                        <tr class="incoming-data">
-                                            <td>Website</td>
-                                            <td>Link</td>
-                                        </tr>
-                                        {{#each data.dataValues.ConnectLink}}
-                                            <tr class="incoming-data">
-                                                <td>{{dataValues.website}}</td>
-                                                <td>{{dataValues.link}}</td>
-                                                <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateConnect"><i class="material-icons">system_update_alt</i></a></td>
-                                                <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteConnect"><i class="material-icons">delete</i></a></td>
-                                            </tr>
-                                        {{/each}}
-                                    </tbody>
-                                </table>
-                            {{/if}}
+                                    <a id="update" data-updateid="{{data.dataValues.ConnectLink.dataValues.id}}" class="btn-floating btn-large waves-effect waves-light right updateConnect"><i class="material-icons">system_update_alt</i></a>
+                                    <div class="clear"></div>
+                                </form>
+                            {{/unless}}    
                         </div>
                     </li>
                     <li>

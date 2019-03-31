@@ -119,21 +119,25 @@ module.exports = function(app) {
     });
   });
 
-  //add profile info (connectLinks coming from the account page) to the DB
-  app.post("/api/connectLinks/:UserId", function(req, res) {
-    var website = req.body.website;
-    var link = req.body.link;
+   //add connect info (names coming from the account page) to the DB
+   app.post("/api/connectLinks/:UserId", function(req, res) {
+    var facebook = req.body.facebook;
+    var linkedin = req.body.linkedin;
+    var github = req.body.github;
+    var instagram = req.body.instagram;
 
-    db.ConnectLinks.create({
-      website: website,
-      link: link,
-      UserId: parseInt(req.params.UserId)
-    }).then(function(result) {
-      res.json(result);
+    var UserId = parseInt(req.params.UserId);
+
+    db.ConnectLink.create({
+      facebook: facebook,
+      linkedin: linkedin,
+      github: github,
+      instagram: instagram,
+      UserId: UserId
+    }).then(function(results) {
+      res.json(results);
     });
   });
-
-
   // Updating data record
   app.put("/api/updateName/:idToUpdate", function(req, res) {
 
@@ -224,16 +228,20 @@ module.exports = function(app) {
       res.json(result);
     });
   });
-   // Updating data record
-   app.put("/api/updateConnect/:idToUpdate", function(req, res) {
+  // Updating data record
+  app.put("/api/updateConnectLinks/:idToUpdate", function(req, res) {
 
-    var website = req.body.website;
-    var link = req.body.link;
+    var facebook = req.body.facebook;
+    var linkedin = req.body.linkedin;
+    var github = req.body.github;
+    var instagram = req.body.instagram;
     var UserId = parseInt(req.params.idToUpdate);
-    
-    db.ConnectLinks.update({
-      website: website,
-      link: link
+
+    db.ProfileName.update({
+      facebook: facebook,
+      linkedin: linkedin,
+      github: github,
+      instagram: instagram,
     }, {
       where: {
         id: UserId
@@ -280,17 +288,6 @@ module.exports = function(app) {
   app.delete("/api/deleteSkaccom/:idToDelete", function(req, res) {
     var UserId = parseInt(req.params.idToDelete);
     db.Skaccom.destroy({
-      where: {
-        id: UserId
-      }
-    }).then(function(result) {
-      res.json(result);
-    });
-  });
-  //Deleting record
-  app.delete("/api/deleteConnect/:idToDelete", function(req, res) {
-    var UserId = parseInt(req.params.idToDelete);
-    db.ConnectLinks.destroy({
       where: {
         id: UserId
       }
