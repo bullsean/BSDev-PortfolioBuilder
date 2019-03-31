@@ -141,14 +141,18 @@ h5 {
 .right {
     margin: 0;
 }
+.incoming-data {
+    border: 1px solid #092b29;
+}
 
+.profile-alert {
+    color: red;
+}
 .clear {
     clear: both;
 }
 
-.incoming-data {
-    border: 1px solid #092b29;
-}
+
 /* Footer styling
 * --------------------------------------- */
 footer {
