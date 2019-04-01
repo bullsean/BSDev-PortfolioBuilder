@@ -11,7 +11,7 @@ module.exports = function(app) {
   //When user click on login at the navbar he will be directed to the login page
   app.get("/login", function(req, res) {
     res.render("login", {
-      title: "Log In | Portfolio Creator"
+      title: "Log In | Portfolio Builder"
     });
   });
   //When user click on dark template button on the account page it will open the dark template including all of their inputs
@@ -30,7 +30,7 @@ module.exports = function(app) {
     }).then(function(results) {
       res.render("dark", {
         layout: "templates",
-        title: "Dark Template | Portfolio Creator",
+        title: "Dark Template | Portfolio Builder",
         data: results
       });
     });
@@ -51,7 +51,7 @@ module.exports = function(app) {
     }).then(function(results) {
       res.render("light", {
         layout: "templates",
-        title: "Light Template | Portfolio Creator",
+        title: "Light Template | Portfolio Builder",
         data: results
       });
     });
@@ -72,7 +72,7 @@ module.exports = function(app) {
     }).then(function(results) {
       res.render("additional", {
         layout: "templates",
-        title: "Additional Template | Portfolio Creator",
+        title: "Additional Template | Portfolio Builder",
         data: results
       });
     });
