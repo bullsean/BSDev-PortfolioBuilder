@@ -43,7 +43,7 @@ module.exports = function(app) {
         db.Experience,
         db.Skaccom,
         db.Licert,
-        db.ConnectLinks,
+        db.ConnectLink,
         db.Education,
         db.ProfileImage
       ],
@@ -56,7 +56,7 @@ module.exports = function(app) {
       });
     });
   });
-
+  //When user click on light template button on the account page it will open the dark template including all of their inputs
   app.get("/additional/:id", function(req, res) {
     db.User.findOne({
       include: [
@@ -64,7 +64,7 @@ module.exports = function(app) {
         db.Experience,
         db.Skaccom,
         db.Licert,
-        db.ConnectLinks,
+        db.ConnectLink,
         db.Education,
         db.ProfileImage
       ],
