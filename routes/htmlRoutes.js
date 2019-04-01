@@ -8,12 +8,6 @@ module.exports = function(app) {
     });
   });
 
-  //When user click on login at the navbar he will be directed to the login page
-  app.get("/login", function(req, res) {
-    res.render("login", {
-      title: "Log In | Portfolio Builder"
-    });
-  });
   //When user click on dark template button on the account page it will open the dark template including all of their inputs
   app.get("/dark/:id", function(req, res) {
     db.User.findOne({
