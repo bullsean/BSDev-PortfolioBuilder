@@ -3,19 +3,21 @@
         <div class="section no-pad-bot">
             <div class="container animated slideInUp">
                 <br><br>
-                <h1 class="header center grey-text text-darken-4">Ryan Meyer</h1>
+                <h1 class="header center grey-text text-darken-4">
+                    {{data.dataValues.ProfileName.dataValues.profileFirstName}}
+                    {{data.dataValues.ProfileName.dataValues.profileLastName}}
+                </h1>
                 <div class="row center">
-                    <h5 class="header col s12 grey-text text-darken-3">Full-Stack Web Developer</h5>
+                    <h5 class="header col s12 grey-text text-darken-3">{{data.dataValues.ProfileName.dataValues.title}}
+                    </h5>
                 </div>
                 <div class="row center">
-                    <img src="/images/ramy-kabalan-796973-unsplash.jpg" class="responsive-img valign" alt=""
-                        style="width: 20vw;">
+                    <img src="/uploads/{{data.dataValues.ProfileImage.dataValues.imageName}}"
+                        class="responsive-img valign" alt="" style="width: 20vw;">
                 </div>
                 <div class="row center">
                     <a href="#projects" id="download-button"
-                        class="btn-large waves-effect waves-light grey darken-1">Check
-                        Me
-                        Out!</a>
+                        class="btn-large waves-effect waves-light grey darken-1">Check Me Out!</a>
                 </div>
                 <br><br>
 
@@ -32,38 +34,24 @@
                 <div class="icon-block">
                     <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
                     <h2 class="header center grey-text text-darken-4">Projects</h2>
-
                 </div>
             </div>
-
         </div>
         <div class="divider"></div>
         <br><br>
-        {{> templates/project-block}}
         <div class="row animated slideInLeft">
             <div class="col s6">
-                <h4 class="center-align projectTitle">Experience Title</h4>
-                <h5>Description</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed ex eu odio feugiat laoreet.
-                    Pellentesque
-                    venenatis nisl sit amet augue tincidunt, vitae congue lectus porta. Sed sodales semper purus, vitae
-                    posuere
-                    nulla semper eget. Integer blandit velit viverra, tristique eros tincidunt, fermentum tortor. Fusce
-                    sodales
-                    nisl vitae dui ultrices laoreet. Etiam at consequat nisi. Nunc ut ligula mi. Nulla in lacus vitae
-                    eros
-                    pharetra mollis a id mauris. Maecenas ultricies mattis lacinia. Nullam dolor sapien, consequat in
-                    nisi
-                    eu,
-                    volutpat.</p>
-                <div class="center">
+                <h4 class="center-align projectTitle">{{data.Experiences.[0].comJectName}}</h4>
+                <h5>Title/Role: {{data.Experiences.[0].titleRole}}</h5>
+                {{debug data.Experiences.[0].comJectName}}
+                <p>{{data.Experiences.[0].description}}</p>
+                {{!-- <div class="center">
                     <a class="waves-effect waves-light btn-large grey">Link</a>
-                </div>
+                </div> --}}
             </div>
 
             <div class="col s5">
-                <img src="/images/jo-szczepanska-57782-unsplash.jpg" class="responsive-img projectImg"
-                    alt="First Project">
+                <img src="/images/jeff-sheldon-3231-unsplash.jpg" class="responsive-img projectImg" alt="First Project">
             </div>
         </div>
         <br>
@@ -74,76 +62,36 @@
                 <img src="/images/spacex-549326-unsplash.jpg" class="responsive-img projectImg" alt="First Project">
             </div>
             <div class="col s6">
-                <h4 class="center-align projectTitle">Additional Project Title</h4>
-                <h5>Description</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed ex eu odio feugiat laoreet.
-                    Pellentesque
-                    venenatis nisl sit amet augue tincidunt, vitae congue lectus porta. Sed sodales semper purus, vitae
-                    posuere
-                    nulla semper eget. Integer blandit velit viverra, tristique eros tincidunt, fermentum tortor. Fusce
-                    sodales
-                    nisl vitae dui ultrices laoreet. Etiam at consequat nisi. Nunc ut ligula mi. Nulla in lacus vitae
-                    eros
-                    pharetra mollis a id mauris. Maecenas ultricies mattis lacinia. Nullam dolor sapien, consequat in
-                    nisi
-                    eu,
-                    volutpat.</p>
-                <div class="center">
+                <h4 class="center-align projectTitle">{{data.Experiences.[1].comJectName}}</h4>
+                <h5>Title/Role: {{data.Experiences.[1].titleRole}}</h5>
+                <p>{{data.Experiences.[1].description}}</p>
+                {{!-- <div class="center">
                     <a class="waves-effect waves-light btn-large grey">Link</a>
-                </div>
+                </div> --}}
             </div>
 
         </div>
         <br>
         <div class="divider"></div>
         <br><br>
-        <div class="row">
-            <div class="col s4">
-                <div class="card horizontal">
-                    <div class="card-image">
-                        <img src="/images/arwin-neil-baichoo-1259757-unsplash.jpg">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
-                        </div>
-                    </div>
-                </div>
+        <div class="row animated slideInLeft">
+            <div class="col s6">
+                <h4 class="center-align projectTitle">{{data.Experiences.[2].comJectName}}</h4>
+                <h5>Title/Role: {{data.Experiences.[2].titleRole}}</h5>
+                {{debug data.Experiences.[2].comJectName}}
+                <p>{{data.Experiences.[2].description}}</p>
+                {{!-- <div class="center">
+                    <a class="waves-effect waves-light btn-large grey">Link</a>
+                </div> --}}
             </div>
-            <div class="col s4">
-                <div class="card horizontal">
-                    <div class="card-image">
-                        <img src="/images/arwin-neil-baichoo-1259757-unsplash.jpg">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s4">
-                <div class="card horizontal">
-                    <div class="card-image">
-                        <img src="/images/arwin-neil-baichoo-1259757-unsplash.jpg">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="col s5">
+                <img src="/images/jo-szczepanska-57782-unsplash.jpg" class="responsive-img projectImg"
+                    alt="First Project">
             </div>
         </div>
+        <br>
+        <div class="divider"></div>
     </div>
     </div>
     </div>
@@ -155,12 +103,33 @@
                 <div class="row">
                     <div class="col s12 center">
                         <h3><i class="mdi-content-send brown-text"></i></h3>
-                        <h2 class="grey-text">My Skills</h2>
-                        <h2 class="grey-text">Certificates</h2>
-                        <h2 class="grey-text">Awards</h2>
+                        <h2 class="grey-text">My Skills & Accomplishments</h2>
+                        <div class="row white black-text" style="border-radius: 25px;">
+                            {{#each data.dataValues.Skaccoms}}
+                            <div class="col s3">
+                                <p>{{dataValues.skaccomName}}</p>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <h2 class="grey-text">Certificates & Licenses</h2>
+                        <div class="row white black-text" style="border-radius: 25px;">
+                            {{#each data.dataValues.Licerts}}
+                            <div class="col s4">
+                                <p>{{dataValues.licertName}}</p>
+                            </div>
+                            {{/each}}
+                        </div>
                         <h2 class="grey-text">Education</h2>
-                        <h2 class="grey-text">Licenses</h2>
-                        <h2 class="grey-text">Accomplishments</h2>
+                        <div class="row white black-text" style="border-radius: 25px;">
+                            {{#each data.dataValues.Education}}
+                            <div class="col s6">
+                                <p>{{dataValues.institution}}</p>
+                            </div>
+                            <div class="col s6">
+                                <p>{{dataValues.degree}}</p>
+                            </div>
+                            {{/each}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -175,8 +144,16 @@
             <div class="row">
                 <div class="col s12 center">
                     <h2>Connect</h2>
-                    <h1><i class="fab fa-facebook-square"></i><i class="fab fa-instagram"></i><i
-                            class="fab fa-linkedin"></i><i class="fab fa-github-square"></i></h1>
+                    <h1>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.facebook}}"><i
+                                class="fab fa-facebook-square"></i></a>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.instagram}}"><i
+                                class="fab fa-instagram"></i></a>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.linkedin}}"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a id="logo" href="{{data.dataValues.ConnectLink.dataValues.github}}"><i
+                                class="fab fa-github-square"></i></a>
+                    </h1>
                 </div>
             </div>
 

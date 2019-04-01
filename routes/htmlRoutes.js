@@ -8,7 +8,7 @@ module.exports = function(app) {
     });
   });
 
-  //When user click on dark template image in the main page he will be directed to the dark template page
+  //When user click on dark template button on the account page it will open the dark template including all of their inputs
   app.get("/dark/:id", function(req, res) {
     db.User.findOne({
       include: [
@@ -29,6 +29,49 @@ module.exports = function(app) {
       });
     });
   });
+  //When user click on light template button on the account page it will open the dark template including all of their inputs
+  app.get("/light/:id", function(req, res) {
+    db.User.findOne({
+      include: [
+        db.ProfileName,
+        db.Experience,
+        db.Skaccom,
+        db.Licert,
+        db.ConnectLink,
+        db.Education,
+        db.ProfileImage
+      ],
+      where: { id: req.params.id }
+    }).then(function(results) {
+      res.render("light", {
+        layout: "templates",
+        title: "Light Template | Portfolio Builder",
+        data: results
+      });
+    });
+  });
+  //When user click on light template button on the account page it will open the dark template including all of their inputs
+  app.get("/additional/:id", function(req, res) {
+    db.User.findOne({
+      include: [
+        db.ProfileName,
+        db.Experience,
+        db.Skaccom,
+        db.Licert,
+        db.ConnectLink,
+        db.Education,
+        db.ProfileImage
+      ],
+      where: { id: req.params.id }
+    }).then(function(results) {
+      res.render("additional", {
+        layout: "templates",
+        title: "Additional Template | Portfolio Builder",
+        data: results
+      });
+    });
+
+  });
 
   //When user click on light template image in the main page he will be directed to the light template page
   app.get("/lightTemplateView", function(req, res) {
@@ -38,6 +81,7 @@ module.exports = function(app) {
     });
   });
 
+  //When user click on dark template image in the main page he will be directed to the dark template page
   app.get("/darkTemplateView", function(req, res) {
     res.render("darkTemplateView", {
       layout: "templates",
@@ -45,9 +89,9 @@ module.exports = function(app) {
     });
   });
 
-  //When user click on additionalTemplate template image in the main page he will be directed to this template page
-  app.get("/additionalTemplate", function(req, res) {
-    res.render("additionalTemplate", {
+  //When user click on alternative template image in the main page he will be directed to the alternative template page
+  app.get("/additionalTemplateView", function(req, res) {
+    res.render("additionalTemplateView", {
       layout: "templates",
       title: "Additional Template | Portfolio Builder"
     });

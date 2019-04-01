@@ -20,50 +20,55 @@
                         <div class="collapsible-body">
                             <!-- User can have only one name linked to his profile -->
                             {{#unless data.dataValues.ProfileName.dataValues}}
-                                <form class="account_form accountForm">
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <input placeholder="" id="first_name" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="first_name">First Name</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <input placeholder="" id="last_name" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="last_name">Last Name</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input placeholder="" id="title" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="title">Title</label>
-                                        </div> 
+                            <form class="account_form accountForm">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input placeholder="" id="first_name" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="first_name">First Name</label>
                                     </div>
-                                    <button id="nameSubmit" class="collapsible btn sendBtn waves-effect waves-light right" type="submit" name="action">Submit
-                                        <i class="material-icons right">send</i>
-                                    </button>
-                                    <div class="clear"></div>
-                                </form>
+                                    <div class="input-field col s6">
+                                        <input placeholder="" id="last_name" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="last_name">Last Name</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder="" id="title" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="title">Title</label>
+                                    </div>
+                                </div>
+                                <button id="nameSubmit" class="collapsible btn sendBtn waves-effect waves-light right"
+                                    type="submit" name="action" style="margin-bottom: 10px;">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                                <div class="clear"></div>
+                            </form>
                             {{else}}
-                                <h6>You have already entered the following profile information, 
-                                    if you want to change please fill the forms and click on the update button.</h6>
-                                <h6 class="profile-alert">Full Name: {{data.dataValues.ProfileName.dataValues.profileFirstName}} {{data.dataValues.ProfileName.dataValues.profileLastName}}</h6>
-                                <h6 class="profile-alert">Title: {{data.dataValues.ProfileName.dataValues.title}}</h6><br>
-                                <div class="divider"></div>
-                                <form class="account_form accountForm">
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <input placeholder="" id="first_name" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="first_name">First Name</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            <input placeholder="" id="last_name" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="last_name">Last Name</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input placeholder="" id="title" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="title">Title</label>
-                                        </div> 
+                            <h6>You have already entered the following profile information,
+                                if you want to change please fill the forms and click on the update button.</h6>
+                            <h6 class="profile-alert">Full Name:
+                                {{data.dataValues.ProfileName.dataValues.profileFirstName}}
+                                {{data.dataValues.ProfileName.dataValues.profileLastName}}</h6>
+                            <h6 class="profile-alert">Title: {{data.dataValues.ProfileName.dataValues.title}}</h6><br>
+                            <div class="divider"></div>
+                            <form class="account_form accountForm">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <input placeholder="" id="first_name" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="first_name">First Name</label>
                                     </div>
-                                    <a id="update" data-updateid="{{data.dataValues.ProfileName.dataValues.id}}" class="btn-floating btn-large waves-effect waves-light right updateName"><i class="material-icons">system_update_alt</i></a>
-                                    <div class="clear"></div>
-                                </form>
+                                    <div class="input-field col s6">
+                                        <input placeholder="" id="last_name" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="last_name">Last Name</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder="" id="title" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="title">Title</label>
+                                    </div>
+                                </div>
+                                <a id="update" data-updateid="{{data.dataValues.ProfileName.dataValues.id}}"
+                                    class="btn-floating btn-large waves-effect waves-light right updateName"><i
+                                        class="material-icons">system_update_alt</i></a>
+                                <div class="clear"></div>
+                            </form>
                             {{/unless}}
                         </div>
                     </li>
@@ -84,37 +89,43 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea placeholder="" id="description" type="text" class="validate materialize-textarea"></textarea>
+                                            <textarea placeholder="" id="description" type="text"
+                                                class="validate materialize-textarea"></textarea>
                                             <label class="accountFieldLabel" for="description">Description</label>
                                         </div>
                                     </div>
                                 </div>
-                                <button id="expSubmit" class="collapsible btn waves-effect waves-light right" type="submit" name="action">Submit
+                                <button id="expSubmit" class="collapsible btn waves-effect waves-light right"
+                                    style="margin-bottom: 10px;" type="submit" name="action">Submit
                                     <i class="material-icons right">send</i>
                                 </button>
                                 <div class="clear"></div>
                             </form>
                             {{#if data.dataValues.Experiences}}
-                                <table id="tableBody" class="responsive-table">
-                                    <tbody>
-                                        <tr class="incoming-data">
-                                            <td>Company/Project</td>
-                                            <td>Title/Role</td>
-                                            <td>Description</td>
-                                            <td>Update</td>
-                                            <td>Delete</td>
-                                        </tr>
-                                        {{#each data.dataValues.Experiences}}
-                                            <tr class="incoming-data todo-action">
-                                                <td>{{dataValues.comJectName}}</td>
-                                                <td>{{dataValues.titleRole}}</td>
-                                                <td>{{dataValues.description}}</td>
-                                                <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateExp"><i class="material-icons">system_update_alt</i></a></td>
-                                                <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteExp"><i class="material-icons">delete</i></a></td>
-                                            </tr>
-                                        {{/each}}
-                                    </tbody>
-                                </table>
+                            <table id="tableBody" class="responsive-table">
+                                <tbody>
+                                    <tr class="incoming-data">
+                                        <td>Company/Project</td>
+                                        <td>Title/Role</td>
+                                        <td>Description</td>
+                                        <td>Update</td>
+                                        <td>Delete</td>
+                                    </tr>
+                                    {{#each data.dataValues.Experiences}}
+                                    <tr class="incoming-data todo-action">
+                                        <td>{{dataValues.comJectName}}</td>
+                                        <td>{{dataValues.titleRole}}</td>
+                                        <td>{{dataValues.description}}</td>
+                                        <td><a id="update" data-updateid="{{dataValues.id}}"
+                                                class="btn-floating btn-large waves-effect waves-light updateExp"><i
+                                                    class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" data-deleteid="{{dataValues.id}}"
+                                                class="btn-floating btn-large waves-effect waves-light deleteExp"><i
+                                                    class="material-icons">delete</i></a></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
                             {{/if}}
                         </div>
                     </li>
@@ -134,166 +145,195 @@
                                         <label class="accountFieldLabel" for="degree">Degree</label>
                                     </div>
                                 </div>
-                                <button id="eduSubmit" class="collapsible btn waves-effect waves-light right" type="submit" name="action">Submit
+                                <button id="eduSubmit" class="collapsible btn waves-effect waves-light right"
+                                    style="margin-bottom: 10px;" type="submit" name="action">Submit
                                     <i class="material-icons right">send</i>
                                 </button>
                                 <div class="clear"></div>
                             </form>
                             {{#if data.dataValues.Education}}
-                                <table id="tableBody" class="responsive-table">
-                                    <tbody>
-                                        <tr class="incoming-data">
-                                            <td>Institution</td>
-                                            <td>Degree</td>
-                                            <td>Update</td>
-                                            <td>Delete</td>
-                                        </tr>
-                                        {{#each data.dataValues.Education}}
-                                            <tr class="incoming-data">
-                                                <td>{{dataValues.institution}}</td>
-                                                <td>{{dataValues.degree}}</td>
-                                                <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateEdu"><i class="material-icons">system_update_alt</i></a></td>
-                                                <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteEdu"><i class="material-icons">delete</i></a></td>
-                                            </tr>
-                                        {{/each}}
-                                    </tbody>
-                                </table>
+                            <table id="tableBody" class="responsive-table">
+                                <tbody>
+                                    <tr class="incoming-data">
+                                        <td>Institution</td>
+                                        <td>Degree</td>
+                                        <td>Update</td>
+                                        <td>Delete</td>
+                                    </tr>
+                                    {{#each data.dataValues.Education}}
+                                    <tr class="incoming-data">
+                                        <td>{{dataValues.institution}}</td>
+                                        <td>{{dataValues.degree}}</td>
+                                        <td><a id="update" data-updateid="{{dataValues.id}}"
+                                                class="btn-floating btn-large waves-effect waves-light updateEdu"><i
+                                                    class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" data-deleteid="{{dataValues.id}}"
+                                                class="btn-floating btn-large waves-effect waves-light deleteEdu"><i
+                                                    class="material-icons">delete</i></a></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
                             {{/if}}
                         </div>
                     </li>
                     <!-- End of education section -->
                     <!-- Start of license section -->
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">assignment</i>Licenses/Certifications</div>
+                        <div class="collapsible-header"><i class="material-icons">assignment</i>Licenses/Certifications
+                        </div>
                         <div class="collapsible-body">
                             <form class="account_form accountForm">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input placeholder="" id="lice-cert-name" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="lice-cert-name">Name of License/Certificate</label>
+                                        <label class="accountFieldLabel" for="lice-cert-name">Name of
+                                            License/Certificate</label>
                                     </div>
                                 </div>
-                                <button id="licertSubmit" class="collapsible btn waves-effect waves-light right" type="submit" name="action">Submit
+                                <button id="licertSubmit" class="collapsible btn waves-effect waves-light right"
+                                    type="submit" style="margin-bottom: 10px;" name="action">Submit
                                     <i class="material-icons right">send</i>
                                 </button>
                                 <div class="clear"></div>
                             </form>
                             {{#if data.dataValues.Licerts}}
-                                <table id="tableBody" class="responsive-table">
-                                    <tbody>
-                                        <tr class="incoming-data">
-                                            <td>Name of License/Certificate</td>
-                                        </tr>
-                                        {{#each data.dataValues.Licerts}}
-                                            <tr class="incoming-data">
-                                                <td>{{dataValues.licertName}}</td>
-                                                <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateLicert"><i class="material-icons">system_update_alt</i></a></td>
-                                                <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteLicert"><i class="material-icons">delete</i></a></td>
-                                            </tr>
-                                        {{/each}}
-                                    </tbody>
-                                </table>
+                            <table id="tableBody" class="responsive-table">
+                                <tbody>
+                                    <tr class="incoming-data">
+                                        <td>Name of License/Certificate</td>
+                                        <td>Update</td>
+                                        <td>Delete</td>
+                                    </tr>
+                                    {{#each data.dataValues.Licerts}}
+                                    <tr class="incoming-data">
+                                        <td>{{dataValues.licertName}}</td>
+                                        <td><a id="update" data-updateid="{{dataValues.id}}"
+                                                class="btn-floating btn-large waves-effect waves-light updateLicert"><i
+                                                    class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" data-deleteid="{{dataValues.id}}"
+                                                class="btn-floating btn-large waves-effect waves-light deleteLicert"><i
+                                                    class="material-icons">delete</i></a></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
                             {{/if}}
                         </div>
                     </li>
                     <!-- End of license section -->
                     <!-- Start of skills section -->
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">format_list_bulleted</i>Skills/Accomplishments</div>
+                        <div class="collapsible-header"><i
+                                class="material-icons">format_list_bulleted</i>Skills/Accomplishments</div>
                         <div class="collapsible-body">
                             <form class="account_form accountForm">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input placeholder="" id="skill-accom-name" type="text" class="validate">
-                                        <label class="accountFieldLabel" for="skill-accom-name">Name of Skill/Accomplishment</label>
+                                        <label class="accountFieldLabel" for="skill-accom-name">Name of
+                                            Skill/Accomplishment</label>
                                     </div>
                                 </div>
-                                <button id="skaccomSubmit" class="collapsible btn waves-effect waves-light right" type="submit" name="action">Submit
+                                <button id="skaccomSubmit" class="collapsible btn waves-effect waves-light right"
+                                    type="submit" style="margin-bottom: 10px;" name="action">Submit
                                     <i class="material-icons right">send</i>
                                 </button>
                                 <div class="clear"></div>
                             </form>
                             {{#if data.dataValues.Skaccoms}}
-                                <table id="tableBody" class="responsive-table">
-                                    <tbody>
-                                        <tr class="incoming-data">
-                                            <td>Name of Skill/Accomplishment</td>
-                                        </tr>
-                                        {{#each data.dataValues.Skaccoms}}
-                                            <tr class="incoming-data">
-                                                <td>{{dataValues.skaccomName}}</td>
-                                                <td><a id="update" data-updateid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light updateSkaccom"><i class="material-icons">system_update_alt</i></a></td>
-                                                <td><a id="delete" data-deleteid="{{dataValues.id}}" class="btn-floating btn-large waves-effect waves-light deleteSkaccom"><i class="material-icons">delete</i></a></td>
-                                            </tr>
-                                        {{/each}}
-                                    </tbody>
-                                </table>
+                            <table id="tableBody" class="responsive-table">
+                                <tbody>
+                                    <tr class="incoming-data">
+                                        <td>Name of Skill/Accomplishment</td>
+                                        <td>Update</td>
+                                        <td>Delete</td>
+                                    </tr>
+                                    {{#each data.dataValues.Skaccoms}}
+                                    <tr class="incoming-data">
+                                        <td>{{dataValues.skaccomName}}</td>
+                                        <td><a id="update" data-updateid="{{dataValues.id}}"
+                                                class="btn-floating btn-large waves-effect waves-light updateSkaccom"><i
+                                                    class="material-icons">system_update_alt</i></a></td>
+                                        <td><a id="delete" data-deleteid="{{dataValues.id}}"
+                                                class="btn-floating btn-large waves-effect waves-light deleteSkaccom"><i
+                                                    class="material-icons">delete</i></a></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
                             {{/if}}
-                            
+
                         </div>
                     </li>
                     <!-- End of skills section -->
                     <!-- Start of contact links section -->
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">contact_mail</i>Contact Information</div>
+                        <div class="collapsible-header"><i class="material-icons">contact_mail</i>Contact Information
+                        </div>
                         <div class="collapsible-body">
                             <!-- User must have 4 connect links only linked to his profile -->
-                             {{#unless data.dataValues.ConnectLink.dataValues}}
-                                <form class="account_form accountForm">
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input placeholder="" id="facebook" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="facebook">Facebook</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input placeholder="" id="linkedin" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="linkedin">Linkedin</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input placeholder="" id="github" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="github">Github</label>
-                                        </div> 
-                                        <div class="input-field col s12">
-                                            <input placeholder="" id="instagram" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="instagram">Instagram</label>
-                                        </div>
+                            {{#unless data.dataValues.ConnectLink.dataValues}}
+                            <form class="account_form accountForm">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input placeholder="" id="facebook" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="facebook">Facebook</label>
                                     </div>
-                                    <button id="connectSubmit" class="collapsible btn sendBtn waves-effect waves-light right" type="submit" name="action">Submit
-                                        <i class="material-icons right">send</i>
-                                    </button>
-                                    <div class="clear"></div>
-                                </form>
+                                    <div class="input-field col s12">
+                                        <input placeholder="" id="linkedin" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="linkedin">Linkedin</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder="" id="github" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="github">Github</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder="" id="instagram" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="instagram">Instagram</label>
+                                    </div>
+                                </div>
+                                <button id="connectSubmit"
+                                    class="collapsible btn sendBtn waves-effect waves-light right"
+                                    style="margin-bottom: 10px;" type="submit" name="action">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                                <div class="clear"></div>
+                            </form>
                             {{else}}
-                                <h6>You have already entered the following information, 
-                                    if you want to change please fill all of the forms and click on the update button.</h6>
-                                <h6 class="profile-alert">Facebook: {{data.dataValues.ConnectLink.dataValues.facebook}}</h6>
-                                <h6 class="profile-alert">Linkedin: {{data.dataValues.ConnectLink.dataValues.linkedin}}</h6>
-                                <h6 class="profile-alert">Github: {{data.dataValues.ConnectLink.dataValues.github}}</h6>
-                                <h6 class="profile-alert">Instagram: {{data.dataValues.ConnectLink.dataValues.instagram}}</h6><br>
-                                <div class="divider"></div>
-                                <form class="account_form accountForm">
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input placeholder="" id="facebook" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="facebook">Facebook</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input placeholder="" id="linkedin" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="linkedin">Linkedin</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input placeholder="" id="github" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="github">Github</label>
-                                        </div> 
-                                        <div class="input-field col s12">
-                                            <input placeholder="" id="instagram" type="text" class="validate">
-                                            <label class="accountFieldLabel" for="instagram">Instagram</label>
-                                        </div> 
+                            <h6>You have already entered the following information,
+                                if you want to change please fill all of the forms and click on the update button.</h6>
+                            <h6 class="profile-alert">Facebook: {{data.dataValues.ConnectLink.dataValues.facebook}}</h6>
+                            <h6 class="profile-alert">Linkedin: {{data.dataValues.ConnectLink.dataValues.linkedin}}</h6>
+                            <h6 class="profile-alert">Github: {{data.dataValues.ConnectLink.dataValues.github}}</h6>
+                            <h6 class="profile-alert">Instagram: {{data.dataValues.ConnectLink.dataValues.instagram}}
+                            </h6><br>
+                            <div class="divider"></div>
+                            <form class="account_form accountForm">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input placeholder="" id="facebook" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="facebook">Facebook</label>
                                     </div>
-                                    <a id="update" data-updateid="{{data.dataValues.ConnectLink.dataValues.id}}" class="btn-floating btn-large waves-effect waves-light right updateConnect"><i class="material-icons">system_update_alt</i></a>
-                                    <div class="clear"></div>
-                                </form>
-                            {{/unless}}    
+                                    <div class="input-field col s12">
+                                        <input placeholder="" id="linkedin" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="linkedin">Linkedin</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder="" id="github" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="github">Github</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input placeholder="" id="instagram" type="text" class="validate">
+                                        <label class="accountFieldLabel" for="instagram">Instagram</label>
+                                    </div>
+                                </div>
+                                <a id="update" data-updateid="{{data.dataValues.ConnectLink.dataValues.id}}"
+                                    class="btn-floating btn-large waves-effect waves-light right updateConnect"><i
+                                        class="material-icons">system_update_alt</i></a>
+                                <div class="clear"></div>
+                            </form>
+                            {{/unless}}
                         </div>
                     </li>
                     <!-- End of contact links section -->
@@ -301,33 +341,36 @@
                     <li>
                         <div class="collapsible-header"><i class="material-icons">photo</i>Profile Photo</div>
                         <div class="collapsible-body">
-                            <form class="col s12" action="/upload/{{data.id}}" method="POST" enctype="multipart/form-data">
-                                <div class = "row">
-                                <div class = "file-field input-field">
-                                    <div class = "btn">
-                                        <span>Browse</span>
-                                        <input name="filename" type="file"/>
-                                    </div>
-                                    
-                                    <div class = "file-path-wrapper">
-                                        <input id="filename" class = "file-path validate" type = "text"
-                                            placeholder = "Upload file" />
+                            <form class="col s12" action="/upload/{{data.id}}" method="POST"
+                                enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="file-field input-field">
+                                        <div class="btn">
+                                            <span>Browse</span>
+                                            <input name="filename" type="file" />
+                                        </div>
+
+                                        <div class="file-path-wrapper">
+                                            <input id="filename" class="file-path validate" type="text"
+                                                placeholder="Upload file" />
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
-                                <button class="collapsible btn uploadImage waves-effect waves-light right" type="submit">Submit
+                                <button class="collapsible btn uploadImage waves-effect waves-light right"
+                                    style="margin-bottom: 10px;" type="submit">Submit
                                     <i class="material-icons right">send</i>
                                 </button>
                             </form>
                             <div class="clear"></div>
-                            <div class="divider"></div>
                         </div>
                     </li>
                     <!-- End of profile photo section -->
                 </ul>
                 <!-- End of card body -->
-                <div class="card-action">
-                    <a class="btn" href="/dark/{{data.id}}" id="readyToGo" data-id=>Ready to Go</a>
+                <div class="card-action center">
+                    <a class="btn" href="/dark/{{data.id}}" id="readyToGo" data-id=>Ready to Go Dark</a>
+                    <a class="btn" href="/light/{{data.id}}" id="readyToGo" data-id=>Ready to Go Light</a>
+                    <a class="btn" href="/additional/{{data.id}}" id="readyToGo" data-id=>Ready to Go Again</a>
                 </div>
                 <div id="data" data-id={{data.id}} style="display: none"></div>
             </div>
