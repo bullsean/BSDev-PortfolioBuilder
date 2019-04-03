@@ -1,7 +1,7 @@
 # Portfolio Builder
 
 ### Team Name: 
-BS Developers (Bullock Seyham)
+BS Developers (Bullock Seyam)
 
 ### App Name: 
 Portfolio Builder (Portfolio Content Management System (PCMS))
