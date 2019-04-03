@@ -1,15 +1,15 @@
-#Portfolio Builder
+# Portfolio Builder
 
-###Team Name: 
+### Team Name: 
 BS Developers (Bullock Seyham)
 
-###App Name: 
+### App Name: 
 Portfolio Builder (Portfolio Content Management System (PCMS))
 
-###Problem/User Story: 
+### Problem/User Story: 
 Professionals/freelancers who don't have an affordable/quick way to build an online portfolio, PCMS allows users to choose and create a clean, beautiful personal portfolio that is able to be shared immediately with others.
 
-###Steps to use the app:
+### Steps to use the app:
 
 1. Sign up for an account. All you'll need is an email and password.
 
@@ -35,10 +35,9 @@ Professionals/freelancers who don't have an affordable/quick way to build an onl
 
 If you like our project, give it a STAR and watch us. We will be back with more in the future and hope to make enhancements as well (see the "Improvements" page of our website to check out what we are hoping for the future).
 
-          | Technologies used:
-----------|-------------------
-Front End | Materialize CSS library, Handlebarsjs Templating, Firebase Authentication/User Management, Animate.css, jquery
-Back End | Node.js, Express server,  MySQL, Sequelize, JAWSDB
-Deployment | Heroku
-
+Stack Component | Technologies used:
+| ---------- | -------------------|
+| Front End | Materialize CSS library, Handlebarsjs Templating, Firebase Authentication/User Management, Animate.css, jquery |
+| Back End | Node.js, Express server,  MySQL, Sequelize, JAWSDB |
+| Deployment | Heroku |
 
