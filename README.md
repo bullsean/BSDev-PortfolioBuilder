@@ -9,6 +9,8 @@ Portfolio Builder (Portfolio Content Management System (PCMS))
 ### Problem/User Story: 
 Professionals/freelancers who don't have an affordable/quick way to build an online portfolio, PCMS allows users to choose and create a clean, beautiful personal portfolio that is able to be shared immediately with others.
 
+### [Heroku Deployed Link](https://bullsean-portfolio-builder.herokuapp.com/)
+
 ### Steps to use the app:
 
 1. Sign up for an account. All you'll need is an email and password.
